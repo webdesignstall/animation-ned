@@ -56,7 +56,7 @@ function ScrollSection() {
                     <div className="scroll-section relative">
                         <Image src={'/img/home1.jpg'} height={941} width={1920} className="object-cover"/>  
                         <div className="absolute inset-0" style={{ background: 'linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%)' }}></div>   
-                        <div className="absolute left-[100px] top-[50px]">
+                        <div className="absolute left-[60px] top-[40px]">
                           <Image src={'/img/logo.png'} height={77} width={266} className="object-cover"/>
                         </div> 
 
