@@ -13,9 +13,9 @@ body,
 }
 
 :root {
-  --backgroundColor: #292929;
+  --backgroundColor: #EEEEEF;
   --primaryColor: #0aa1ff;
-  --primaryTextColor: #e6e6e6;
+  --primaryTextColor: #000;
 
   --headlineBig: clamp(5rem, 9.9vw, 15rem);
   --headlineMedium: clamp(1rem, 2vw, 4rem);
