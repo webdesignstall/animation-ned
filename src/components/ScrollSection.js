@@ -53,7 +53,7 @@ function ScrollSection() {
             <section className="scroll-section-outer">    
                 <div ref={triggerRef}>
                     <div ref={sectionRef} className="scroll-section-inner">
-                    <div className="scroll-section relative">
+                        <div className="scroll-section relative">
                         <Image src={'/img/home1.jpg'} height={941} width={1920} className="object-cover"/>  
                         <div className="absolute inset-0" style={{ background: 'linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%)' }}></div>   
                         <div className="absolute left-[60px] top-[40px]">
@@ -77,13 +77,13 @@ function ScrollSection() {
                           </ul>
                         </div> 
                         <h2 className="absolute bottom-0 leading-[274.56px] text-[100px] text-light italic text-white">A1-ontwerpgroep architecten B.N.A.</h2>
-                        <div className="absolute w-[59px] h-[100%] bg-[#93AA95] right-3 top-0 flex items-center justify-center">
+                        <div className="absolute w-[59px] h-[100%] bg-[#93AA95] right-0 top-0 flex items-center justify-center">
                             <Image src={'/img/arraw.png'} height={25} width={25} className="object-cover -rotate-90"/>
                         </div>
 
                     </div>
                     <div className="scroll-section">
-                        <h3>Section 2</h3>
+                    <h3>Section 2</h3>
                     </div>
                     <div className="scroll-section">
                         <h3>Section 3</h3>
