@@ -1,5 +1,4 @@
-import Footer from "@/components/Footer";
-import Hero from "@/components/Hero";
+
 import ScrollSection from "@/components/ScrollSection";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
