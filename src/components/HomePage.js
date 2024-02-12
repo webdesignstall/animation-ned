@@ -13,7 +13,7 @@ const rubik = Rubik({
 })
 
 
-function ScrollSection() {
+function HomePage() {
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
 
@@ -70,16 +70,16 @@ function ScrollSection() {
                           <div className="absolute right-[100px] top-[50px]">
                             <ul className="font-light text-[24.94px] leading-8 text-white	">
                               <li>
-                                  <Link href={'/'}>Luxe villa’s</Link>
+                                  <Link href={'/projects'}>Luxe villa’s</Link>
                               </li>
                               <li>
-                                  <Link href={'/'}>Projecten</Link>
+                                  <Link href={'/projects'}>Projecten</Link>
                               </li>
                               <li>
-                                  <Link href={'/'}>Utiliteitsbouw</Link>
+                                  <Link href={'/projects'}>Utiliteitsbouw</Link>
                               </li>
                               <li>
-                                  <Link href={'/'}>Contact</Link>
+                                  <Link href={'/projects'}>Contact</Link>
                               </li>
                             </ul>
                           </div> 
@@ -148,7 +148,7 @@ function ScrollSection() {
 
                       <div className="flex gap-5">
                           <div className="w-[710px] h-[740px]">
-                            <Link href='/'>
+                            <Link href='/projects'>
                               <Image src={'/img/luxevil.jpg'} width={710} height={780} className="object-cover w-[710px] h-[100%]" />
                             </Link>
                             
@@ -164,7 +164,7 @@ function ScrollSection() {
 
                                 }}    
                               >Luxe villa’s</p>
-                              <Link href='/'>
+                              <Link href='/projects'>
                                 <p 
 
                                 className="mt-3 underline"
@@ -191,7 +191,7 @@ function ScrollSection() {
                           </div>
                           
                            <div className="w-[710px] h-[740px]">
-                            <Link href='/'>
+                            <Link href='/projects'>
 
                             <Image src={'/img/Utiliteitsbouw.jpg'} width={710} height={780} className="object-cover w-[710px] h-[100%]" />
                               </Link>
@@ -208,7 +208,7 @@ function ScrollSection() {
 
                                 }}    
                               >Utiliteitsbouw</p>
-                              <Link href='/'>
+                              <Link href='/projects'>
                                 <p 
 
                                 className="mt-3 underline"
@@ -235,7 +235,7 @@ function ScrollSection() {
                           </div>     
 
                           <div className="w-[710px] h-[740px]">
-                            <Link href='/'>
+                            <Link href='/projects'>
                               <Image src={'/img/projecten.jpg'} width={710} height={780} className="object-cover w-[710px] h-[100%]" />
                             </Link>
                            
@@ -252,7 +252,7 @@ function ScrollSection() {
                                 }}    
                               >Projecten</p>
 
-                              <Link href='/'>
+                              <Link href='/projects'>
                                 <p 
 
                                 className="mt-3 underline"
@@ -479,4 +479,4 @@ function ScrollSection() {
   );
 }
 
-export default ScrollSection;
+export default HomePage;

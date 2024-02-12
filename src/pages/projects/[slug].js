@@ -1,11 +1,11 @@
 
-import HomePage from "@/components/HomePage";
+import ProjectDetails from "@/components/ProjectDetails";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
-export default function Home() {
+export default function Projects() {
 
     // const settings = {
     //     dots: true,
@@ -22,7 +22,7 @@ export default function Home() {
 
       return (
         <>
-          <HomePage/>   
+          <ProjectDetails/>   
         </>
        
       );
