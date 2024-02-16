@@ -1,211 +1,235 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import Slider from "react-slick";
-import Image from "next/image";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Mousewheel,  EffectCoverflow,  } from 'swiper/modules';
 import Link from "next/link";
+import Image from "next/image";
 
-import { Rubik } from "next/font/google";
-import Navber from "./Navber";
-import Footer from "./Footer";
 
-const rubik = Rubik({
-  weight: "400",
-  subsets: ["latin"],
-});
+gsap.registerPlugin(ScrollTrigger);
 
 function HomePage() {
-  const sectionRef = useRef(null);
-  const triggerRef = useRef(null);
-
-  gsap.registerPlugin(ScrollTrigger);
+  const swiperRef = useRef(null);
 
   useEffect(() => {
-    const pin = gsap.fromTo(
-      sectionRef.current,
-      {
-        translateX: 0,
-      },
-      {
-        translateX: "-300vw",
-        ease: "none",
-        duration: 1,
-        scrollTrigger: {
-          trigger: triggerRef.current,
-          start: "top top",
-          end: "2000 top",
-          scrub: 0.6,
-          pin: true,
-        },
-      }
-    );
-    return () => {
-      {
-        /* A return function for killing the animation on component unmount */
-      }
-      pin.kill();
-    };
+  
   }, []);
 
   const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    spaceBetween: 0,
+    slidesPerView: 3,
+    coverflowEffect: {
+      rotate: 0,
+      stretch: -500,
+      depth: 300,
+      modifier: 1,
+      slideShadows: false,
+    },
+    mousewheel: true,
+    modules: [EffectCoverflow, Mousewheel],
+    className: "mySwiper",
   };
 
   return (
-    <>
-      <section className="scroll-section-outer">
-        <div ref={triggerRef}>
-          <div ref={sectionRef} className="scroll-section-inner">
-            <div className="scroll-section">
-              <div className="flex gap-5 items-center h-[90vh]">
-                <div className="w-[80vh] h-[60vh] mr-10">
-                  <Link href="/projects/one">
-                    <Image
-                      src={"/img/luxevil.jpg"}
-                      width={710}
-                      height={780}
-                      className="object-cover w-[100$] h-[100%]"
-                    />
+    <Swiper
+    {...settings} ref={swiperRef}
+  
+  >
+
+    <SwiperSlide>
+          <div className="flex items-center h-[90vh]">
+            <div className="h-[60vh]">
+            <Image
+                  src={"/img/project/slider.jpg"}
+                  width={900}
+                  height={780}
+                
+                  className="w-[100%] h-[100%]"
+                />
+
+              <div className="mt-4 flex w-full justify-center">
+                <div>
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: 500,
+                      lineHeight: "15px",
+                      letterSpacing: "0em",
+                      textAlign: "left",
+                    }}
+                  >
+                    Luxe villa’s
+                  </p>
+                  <Link href="/">
+                    <p
+                      className="mt-3 underline"
+                      style={{
+                        position: "relative",
+
+                        fontSize: "13px",
+                        fontStyle: "italic",
+                        fontWeight: 300,
+                        lineHeight: "15px",
+                        letterSpacing: "-0.3499999940395355px",
+                        textAlign: "left",
+                      }}
+                    >
+                      bekijk project
+                    </p>
                   </Link>
-
-                  <div className="mt-4 flex w-full justify-center">
-                    <div>
-                      <p
-                        style={{
-                          fontSize: "14px",
-                          fontWeight: 500,
-                          lineHeight: "15px",
-                          letterSpacing: "0em",
-                          textAlign: "left",
-                        }}
-                      >
-                        Luxe villa’s
-                      </p>
-                      <Link href="/">
-                        <p
-                          className="mt-3 underline"
-                          style={{
-                            position: "relative",
-
-                            fontSize: "13px",
-                            fontStyle: "italic",
-                            fontWeight: 300,
-                            lineHeight: "15px",
-                            letterSpacing: "-0.3499999940395355px",
-                            textAlign: "left",
-                          }}
-                        >
-                          bekijk project
-                        </p>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="scroll-section">
-              <div className="flex gap-5 items-center h-[90vh]">
-                <div className="w-[80vh] h-[60vh] mr-10">
-                  <Link href="/projects/one">
-                    <Image
-                      src={"/img/project/div.h2d-746885aa.png"}
-                      width={710}
-                      height={780}
-                      className="object-cover w-[100%] h-[100%]"
-                    />
-                  </Link>
-
-                  <div className="mt-4 flex w-full justify-center">
-                    <div>
-                      <p
-                        style={{
-                          fontSize: "14px",
-                          fontWeight: 500,
-                          lineHeight: "15px",
-                          letterSpacing: "0em",
-                          textAlign: "left",
-                        }}
-                      >
-                        Luxe villa’s
-                      </p>
-                      <Link href="/">
-                        <p
-                          className="mt-3 underline"
-                          style={{
-                            position: "relative",
-
-                            fontSize: "13px",
-                            fontStyle: "italic",
-                            fontWeight: 300,
-                            lineHeight: "15px",
-                            letterSpacing: "-0.3499999940395355px",
-                            textAlign: "left",
-                          }}
-                        >
-                          bekijk project
-                        </p>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="scroll-section">
-              <div className="flex gap-5 items-center h-[90vh]">
-                <div className="w-[80vh] h-[60vh] mr-10">
-                  <Link href="/projects/one">
-                    <Image
-                      src={"/img/project/21393_frame.png"}
-                      width={710}
-                      height={780}
-                      className="object-cover w-[100%] h-[100%]"
-                    />
-                  </Link>
-
-                  <div className="mt-4 flex w-full justify-center">
-                    <div>
-                      <p
-                        style={{
-                          fontSize: "14px",
-                          fontWeight: 500,
-                          lineHeight: "15px",
-                          letterSpacing: "0em",
-                          textAlign: "left",
-                        }}
-                      >
-                        Luxe villa’s
-                      </p>
-                      <Link href="/">
-                        <p
-                          className="mt-3 underline"
-                          style={{
-                            position: "relative",
-
-                            fontSize: "13px",
-                            fontStyle: "italic",
-                            fontWeight: 300,
-                            lineHeight: "15px",
-                            letterSpacing: "-0.3499999940395355px",
-                            textAlign: "left",
-                          }}
-                        >
-                          bekijk project
-                        </p>
-                      </Link>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </>
+    </SwiperSlide>
+
+    <SwiperSlide>
+          <div className="flex gap-5 items-center h-[90vh]">
+            <div className="h-[60vh] mr-10">
+            <Image
+                  src={"/img/project/slider.jpg"}
+                  width={710}
+                  height={780}
+                  className="w-[100%] h-[100%]"
+                />
+              <div className="mt-4 flex w-full justify-center">
+                <div>
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: 500,
+                      lineHeight: "15px",
+                      letterSpacing: "0em",
+                      textAlign: "left",
+                    }}
+                  >
+                    Luxe villa’s
+                  </p>
+                  <Link href="/">
+                    <p
+                      className="mt-3 underline"
+                      style={{
+                        position: "relative",
+
+                        fontSize: "13px",
+                        fontStyle: "italic",
+                        fontWeight: 300,
+                        lineHeight: "15px",
+                        letterSpacing: "-0.3499999940395355px",
+                        textAlign: "left",
+                      }}
+                    >
+                      bekijk project
+                    </p>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+    </SwiperSlide>
+
+    <SwiperSlide>
+          <div className="flex gap-5 items-center h-[90vh]">
+            <div className="h-[60vh] mr-10">
+            <Image
+                  src={"/img/project/slider.jpg"}
+                  width={710}
+                  height={780}
+                  className="w-[100%] h-[100%]"
+                />
+
+              <div className="mt-4 flex w-full justify-center">
+                <div>
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: 500,
+                      lineHeight: "15px",
+                      letterSpacing: "0em",
+                      textAlign: "left",
+                    }}
+                  >
+                    Luxe villa’s
+                  </p>
+                  <Link href="/">
+                    <p
+                      className="mt-3 underline"
+                      style={{
+                        position: "relative",
+
+                        fontSize: "13px",
+                        fontStyle: "italic",
+                        fontWeight: 300,
+                        lineHeight: "15px",
+                        letterSpacing: "-0.3499999940395355px",
+                        textAlign: "left",
+                      }}
+                    >
+                      bekijk project
+                    </p>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+    </SwiperSlide>    
+
+    <SwiperSlide>
+          <div className="flex gap-5 items-center h-[90vh]">
+            <div className="h-[60vh] mr-10">
+            <Image
+                  src={"/img/project/slider.jpg"}
+                  width={710}
+                  height={780}
+                  className="w-[100%] h-[100%]"
+                />
+
+              <div className="mt-4 flex w-full justify-center">
+                <div>
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: 500,
+                      lineHeight: "15px",
+                      letterSpacing: "0em",
+                      textAlign: "left",
+                    }}
+                  >
+                    Luxe villa’s
+                  </p>
+                  <Link href="/">
+                    <p
+                      className="mt-3 underline"
+                      style={{
+                        position: "relative",
+
+                        fontSize: "13px",
+                        fontStyle: "italic",
+                        fontWeight: 300,
+                        lineHeight: "15px",
+                        letterSpacing: "-0.3499999940395355px",
+                        textAlign: "left",
+                      }}
+                    >
+                      bekijk project
+                    </p>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+    </SwiperSlide>  
+    
+  </Swiper>
   );
 }
 
 export default HomePage;
+
+
