@@ -3,6 +3,8 @@ import Project from "@/components/Project";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Navber from "@/components/Navber";
+import Footer from "@/components/Footer";
 
 
 export default function Projects() {
@@ -22,7 +24,9 @@ export default function Projects() {
 
       return (
         <>
-          <Project/>   
+        <Navber/>
+          <Project/> 
+          <Footer/>  
         </>
        
       );
