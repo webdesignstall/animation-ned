@@ -19,21 +19,30 @@ function HomePage() {
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
+    let scrollDirection = 1;
     const pin = gsap.fromTo(
       sectionRef.current,
       {
         translateX: 0,
       },
       {
-        translateX: "-300vw",
+        translateX: "-230vw",
         ease: "none",
-        duration: 1,
+        duration: 20,
         scrollTrigger: {
           trigger: triggerRef.current,
           start: "top top",
           end: "2000 top",
-          scrub: 0.6,
+          scrub: 0.2,
           pin: true,
+          onUpdate: (self) => {
+            // Adjust the duration based on the scroll direction
+            self.progress *= scrollDirection;
+          },
+          onToggle: ({direction}) => {
+            scrollDirection = direction === 1 ? 0.2 : -1;
+          },
+        
         },
       }
     );
@@ -111,6 +120,7 @@ function HomePage() {
             </div>
 
             <div className="scroll-section">
+
               <div className="flex flex-col items-center justify-around h-[100vh] w-[1263px]">
                 <p
                   className=""
@@ -167,136 +177,145 @@ function HomePage() {
                 </p>
               </div>
 
+              
+
+              
+
+            </div>
+
+            <div className="scroll-section">
               <div className="flex gap-5">
-                <div className="w-[710px] h-[740px]">
-                  <Link href="/projects">
-                    <Image
-                      src={"/img/luxevil.jpg"}
-                      width={710}
-                      height={780}
-                      className="object-cover w-[710px] h-[100%]"
-                    />
-                  </Link>
-
-                  <div className="mt-4">
-                    <p
-                      style={{
-                        fontSize: "14px",
-                        fontWeight: 500,
-                        lineHeight: "15px",
-                        letterSpacing: "0em",
-                        textAlign: "left",
-                      }}
-                    >
-                      Luxe villa’s
-                    </p>
+                  <div className="w-[710px] h-[740px]">
                     <Link href="/projects">
-                      <p
-                        className="mt-3 underline"
-                        style={{
-                          position: "relative",
+                      <Image
+                        src={"/img/luxevil.jpg"}
+                        width={710}
+                        height={780}
+                        className="object-cover w-[710px] h-[100%]"
+                      />
+                    </Link>
 
-                          fontSize: "13px",
-                          fontStyle: "italic",
-                          fontWeight: 300,
+                    <div className="mt-4">
+                      <p
+                        style={{
+                          fontSize: "14px",
+                          fontWeight: 500,
                           lineHeight: "15px",
-                          letterSpacing: "-0.3499999940395355px",
+                          letterSpacing: "0em",
                           textAlign: "left",
                         }}
                       >
-                        bekijk project
+                        Luxe villa’s
                       </p>
-                    </Link>
+                      <Link href="/projects">
+                        <p
+                          className="mt-3 underline"
+                          style={{
+                            position: "relative",
+
+                            fontSize: "13px",
+                            fontStyle: "italic",
+                            fontWeight: 300,
+                            lineHeight: "15px",
+                            letterSpacing: "-0.3499999940395355px",
+                            textAlign: "left",
+                          }}
+                        >
+                          bekijk project
+                        </p>
+                      </Link>
+                    </div>
                   </div>
-                </div>
 
-                <div className="w-[710px] h-[740px]">
-                  <Link href="/projects">
-                    <Image
-                      src={"/img/Utiliteitsbouw.jpg"}
-                      width={710}
-                      height={780}
-                      className="object-cover w-[710px] h-[100%]"
-                    />
-                  </Link>
-
-                  <div className="mt-4">
-                    <p
-                      style={{
-                        fontSize: "14px",
-                        fontWeight: 500,
-                        lineHeight: "15px",
-                        letterSpacing: "0em",
-                        textAlign: "left",
-                      }}
-                    >
-                      Utiliteitsbouw
-                    </p>
+                  <div className="w-[710px] h-[740px]">
                     <Link href="/projects">
-                      <p
-                        className="mt-3 underline"
-                        style={{
-                          position: "relative",
+                      <Image
+                        src={"/img/Utiliteitsbouw.jpg"}
+                        width={710}
+                        height={780}
+                        className="object-cover w-[710px] h-[100%]"
+                      />
+                    </Link>
 
-                          fontSize: "13px",
-                          fontStyle: "italic",
-                          fontWeight: 300,
+                    <div className="mt-4">
+                      <p
+                        style={{
+                          fontSize: "14px",
+                          fontWeight: 500,
                           lineHeight: "15px",
-                          letterSpacing: "-0.3499999940395355px",
+                          letterSpacing: "0em",
                           textAlign: "left",
                         }}
                       >
-                        bekijk project
+                        Utiliteitsbouw
                       </p>
-                    </Link>
+                      <Link href="/projects">
+                        <p
+                          className="mt-3 underline"
+                          style={{
+                            position: "relative",
+
+                            fontSize: "13px",
+                            fontStyle: "italic",
+                            fontWeight: 300,
+                            lineHeight: "15px",
+                            letterSpacing: "-0.3499999940395355px",
+                            textAlign: "left",
+                          }}
+                        >
+                          bekijk project
+                        </p>
+                      </Link>
+                    </div>
                   </div>
-                </div>
 
-                <div className="w-[710px] h-[740px]">
-                  <Link href="/projects">
-                    <Image
-                      src={"/img/projecten.jpg"}
-                      width={710}
-                      height={780}
-                      className="object-cover w-[710px] h-[100%]"
-                    />
-                  </Link>
-
-                  <div className="mt-4">
-                    <p
-                      style={{
-                        fontSize: "14px",
-                        fontWeight: 500,
-                        lineHeight: "15px",
-                        letterSpacing: "0em",
-                        textAlign: "left",
-                      }}
-                    >
-                      Projecten
-                    </p>
-
+                  <div className="w-[710px] h-[740px]">
                     <Link href="/projects">
-                      <p
-                        className="mt-3 underline"
-                        style={{
-                          position: "relative",
+                      <Image
+                        src={"/img/projecten.jpg"}
+                        width={710}
+                        height={780}
+                        className="object-cover w-[710px] h-[100%]"
+                      />
+                    </Link>
 
-                          fontSize: "13px",
-                          fontStyle: "italic",
-                          fontWeight: 300,
+                    <div className="mt-4">
+                      <p
+                        style={{
+                          fontSize: "14px",
+                          fontWeight: 500,
                           lineHeight: "15px",
-                          letterSpacing: "-0.3499999940395355px",
+                          letterSpacing: "0em",
                           textAlign: "left",
                         }}
                       >
-                        bekijk project
+                        Projecten
                       </p>
-                    </Link>
+
+                      <Link href="/projects">
+                        <p
+                          className="mt-3 underline"
+                          style={{
+                            position: "relative",
+
+                            fontSize: "13px",
+                            fontStyle: "italic",
+                            fontWeight: 300,
+                            lineHeight: "15px",
+                            letterSpacing: "-0.3499999940395355px",
+                            textAlign: "left",
+                          }}
+                        >
+                          bekijk project
+                        </p>
+                      </Link>
+                    </div>
                   </div>
-                </div>
               </div>
+            </div>
 
-              <div class="ml-[200px]">
+            <div className="scroll-section">
+            <div class="ml-[200px]">
                 <p
                   className="mb-[80px]"
                   style={{
@@ -478,7 +497,8 @@ function HomePage() {
                   </div>
                 </div>
               </div>
-            </div>
+              </div>
+            
           </div>
         </div>
       </section>
