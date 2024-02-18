@@ -13,8 +13,36 @@ gsap.registerPlugin(ScrollTrigger);
 
 function HomePage() {
   const swiperRef = useRef(null);
+  const triggerRef = useRef(null);
 
   useEffect(() => {
+
+    let scrollDirection = 1;
+    const pin = gsap.fromTo(
+      swiperRef.current,
+      {
+        translateX: 0,
+      },
+      {
+        translateX: "-230vw",
+        ease: "none",
+        duration: 20,
+        scrollTrigger: {
+          trigger: swiperRef.current,
+          start: "top top",
+          end: "2000 top",
+          scrub: 0.2,
+          pin: true,        
+        
+        },
+      }
+    );
+    return () => {
+      {
+        /* A return function for killing the animation on component unmount */
+      }
+      pin.kill();
+    };
   
   }, []);
 
@@ -42,7 +70,7 @@ function HomePage() {
   
   >
 
-    <SwiperSlide>
+    <SwiperSlide  >
           <div className="flex items-center h-[90vh]">
             <div className="h-[60vh]">
             <Image
