@@ -4,6 +4,8 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Slider from "react-slick";
 import Image from "next/image";
 import Link from "next/link";
+import SplitType from 'split-type'
+
 
 import { Rubik } from "next/font/google";
 
@@ -18,7 +20,42 @@ function HomePage() {
 
   gsap.registerPlugin(ScrollTrigger);
 
+
+
   useEffect(() => {
+
+
+      const tl = gsap.timeline();
+
+      // tl.to('.homeTitle',2, {opacity: 1, yPercent: -80, ease: 'expo.out'}, '-=4')
+
+      const ourText = SplitType.create('.homeTitle', { types: 'chars' });
+      const chars = ourText.chars
+
+      gsap.fromTo(
+          chars,
+          {
+              y: 100,
+              opacity: 0
+          },
+          {
+              y: 0,
+              opacity: 1,
+              stagger: 0.05,
+              duration: 2,
+              ease: 'power4.out',
+
+          }
+      )
+
+      gsap.fromTo('.home1bg', {
+          scale: 1.2
+      }, {
+          scale: 1,
+          duration: 2,
+          ease: 'power2.inOut'
+      })
+
     let scrollDirection = 1;
     const pin = gsap.fromTo(
       sectionRef.current,
@@ -72,7 +109,7 @@ function HomePage() {
                 src={"/img/home1.jpg"}
                 height={941}
                 width={1920}
-                className="object-cover"
+                className="object-cover home1bg"
               />
               <div
                 className="absolute inset-0"
@@ -106,7 +143,7 @@ function HomePage() {
                   </li>
                 </ul>
               </div>
-              <h2 className="absolute bottom-0 leading-[274.56px] text-[100px] text-light italic text-white">
+              <h2 className="homeTitle absolute bottom-0 leading-[274.56px] text-[100px] text-light italic text-white">
                 A1-ontwerpgroep architecten B.N.A.
               </h2>
               <div className="absolute w-[59px] h-[100%] bg-[#93AA95] right-0 top-0 flex items-center justify-center">
