@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 import '../styles/globals.css'
+// import '../styles/locomotive-css.css'
 
 
 export default function App({ Component, pageProps }) {
