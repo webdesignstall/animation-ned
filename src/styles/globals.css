@@ -49,7 +49,16 @@ body {
 
 .scroll-section-outer {
   overflow: hidden;
+  position: relative;
 }
+/*.scroll-section-outer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: orangered;
+  z-index: 999;
+}*/
 
 .scroll-section-inner {
   height: 100vh;
