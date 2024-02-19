@@ -1,13 +1,19 @@
+'use client'
+
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
+
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Slider from "react-slick";
 import Image from "next/image";
 import Link from "next/link";
 import SplitType from 'split-type'
+import SplitText from "../utiles/Split3.min";
+
 
 
 import { Rubik } from "next/font/google";
+import {useGSAP} from "@gsap/react";
 
 const rubik = Rubik({
   weight: "400",
@@ -17,79 +23,109 @@ const rubik = Rubik({
 function HomePage() {
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
+  const categoryImage = useRef(null);
+  const categoryImageTrigger = useRef(null);
 
   gsap.registerPlugin(ScrollTrigger);
 
+    const homeTitle = useRef();
+    useGSAP(()=> {
 
 
-  useEffect(() => {
+        const scrollTween =   gsap.fromTo(
+            sectionRef.current,
+            {
+                translateX: 0,
+            },
+            {
+                translateX: "-230vw",
+                ease: "none",
+                duration: 20,
+                scrollTrigger: {
+                    trigger: triggerRef.current,
+                    start: "top top",
+                    end: "2000 top",
+                    scrub: 0.2,
+                    pin: true
+                },
+            }
+        );
+
+        // home page title animation
+        const ourText = SplitType.create(homeTitle.current, { types: 'lines', lineClass: 'lineChildren' });
+        const chars = ourText.lines
 
 
-      const tl = gsap.timeline();
+        gsap.fromTo(
+            chars,
+            {
+                y: 100,
+                opacity: 0
+            },
+            {
+                y: 0,
+                opacity: 1,
+                stagger: 0.05,
+                duration: 2,
+                ease: 'power2',
 
-      // tl.to('.homeTitle',2, {opacity: 1, yPercent: -80, ease: 'expo.out'}, '-=4')
+            }
+        )
 
-      const ourText = SplitType.create('.homeTitle', { types: 'chars' });
-      const chars = ourText.chars
 
-      gsap.fromTo(
-          chars,
-          {
-              y: 100,
-              opacity: 0
-          },
-          {
-              y: 0,
-              opacity: 1,
-              stagger: 0.05,
-              duration: 2,
-              ease: 'power4.out',
 
-          }
-      )
 
-      gsap.fromTo('.home1bg', {
-          scale: 1.2
-      }, {
-          scale: 1,
-          duration: 2,
-          ease: 'power2.inOut'
-      })
+        // home page background animation
+        gsap.fromTo('.home1bg', {
+            scale: 1.5
+        }, {
+            scale: 1,
+            duration: 2,
+            ease: 'power2.inOut'
+        })
 
-    let scrollDirection = 1;
-    const pin = gsap.fromTo(
-      sectionRef.current,
-      {
-        translateX: 0,
-      },
-      {
-        translateX: "-230vw",
-        ease: "none",
-        duration: 20,
-        scrollTrigger: {
-          trigger: triggerRef.current,
-          start: "top top",
-          end: "2000 top",
-          scrub: 0.2,
-          pin: true,
-          onUpdate: (self) => {
-            // Adjust the duration based on the scroll direction
-            self.progress *= scrollDirection;
-          },
-          onToggle: ({direction}) => {
-            scrollDirection = direction === 1 ? 0.2 : -1;
-          },
-        
-        },
-      }
-    );
-    return () => {
-      {
-        /* A return function for killing the animation on component unmount */
-      }
-      pin.kill();
-    };
-  }, []);
+        // home page nav link
+        const homeNav = SplitType.create('.home-nav-link', { types: 'lines' });
+        const navLinkText = homeNav.lines
+        gsap.fromTo(
+            navLinkText,
+            {
+                y: 100,
+                opacity: 0
+            },
+            {
+                y: 0,
+                opacity: 1,
+                stagger: 0.05,
+                duration: 2,
+                ease: 'power4.out',
+
+            }
+        )
+
+
+        const categoryImageAnimation = (target)=> {
+            gsap.fromTo(target, {
+                scale: 1.5,
+            }, {
+                scale: 1,
+                duration: 2,
+                scrollTrigger: {
+                    trigger: target,
+                    containerAnimation: scrollTween,
+                },
+                ease: "power4.inOut"
+            });
+        }
+
+
+
+        categoryImageAnimation('.category-image1')
+        categoryImageAnimation('.category-image2')
+        categoryImageAnimation('.category-image3')
+
+    })
+
 
   const settings = {
     dots: true,
@@ -104,59 +140,63 @@ function HomePage() {
       <section className="scroll-section-outer">
         <div ref={triggerRef}>
           <div ref={sectionRef} className="scroll-section-inner">
-            <div className="scroll-section relative">
-              <Image
-                src={"/img/home1.jpg"}
-                height={941}
-                width={1920}
-                className="object-cover home1bg"
-              />
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%)",
-                }}
-              ></div>
-              <div className="absolute left-[60px] top-[40px]">
-                <Image
-                  src={"/img/logo.png"}
-                  height={77}
-                  width={266}
-                  className="object-cover"
-                />
+              <div className="scroll-section relative overflow-hidden">
+                  <Image
+                      alt={'home image'}
+                      src={"/img/home1.jpg"}
+                      height={941}
+                      width={1920}
+                      className="object-cover home1bg"
+                  />
+                  <div
+                      className="absolute inset-0"
+                      style={{
+                          background:
+                              "linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%)",
+                      }}
+                  ></div>
+                  <div className="absolute left-[60px] top-[40px]">
+                      <Image
+                          alt={'logo'}
+                          src={"/img/logo.png"}
+                          height={77}
+                          width={266}
+                          className="object-cover"
+                      />
+                  </div>
+
+                  <div className="absolute right-[100px] top-[50px]">
+                      <ul className="font-light text-[24.94px] leading-8 text-white">
+                          <li>
+                              <Link href={"/projects"} className='home-nav-link'>Luxe villa’s</Link>
+                          </li>
+                          <li>
+                              <Link href={"/projects"} className='home-nav-link'>Projecten</Link>
+                          </li>
+                          <li>
+                              <Link href={"/projects"} className='home-nav-link'>Utiliteitsbouw</Link>
+                          </li>
+                          <li>
+                              <Link href={"/projects"} className='home-nav-link'>Contact</Link>
+                          </li>
+                      </ul>
+                  </div>
+                  <h2 ref={homeTitle}
+                      className="homeTitle absolute bottom-0 leading-[274.56px] text-[100px] text-light italic text-white">
+                      A1-ontwerpgroep architecten B.N.A.
+                  </h2>
+                  <div
+                      className="absolute w-[59px] h-[100%] bg-[#93AA95] right-0 top-0 flex items-center justify-center">
+                      <Image
+                          src={"/img/arraw.png"}
+                          height={25}
+                          width={25}
+                          className="object-cover -rotate-90"
+                      />
+                  </div>
               </div>
 
-              <div className="absolute right-[100px] top-[50px]">
-                <ul className="font-light text-[24.94px] leading-8 text-white	">
-                  <li>
-                    <Link href={"/projects"}>Luxe villa’s</Link>
-                  </li>
-                  <li>
-                    <Link href={"/projects"}>Projecten</Link>
-                  </li>
-                  <li>
-                    <Link href={"/projects"}>Utiliteitsbouw</Link>
-                  </li>
-                  <li>
-                    <Link href={"/projects"}>Contact</Link>
-                  </li>
-                </ul>
-              </div>
-              <h2 className="homeTitle absolute bottom-0 leading-[274.56px] text-[100px] text-light italic text-white">
-                A1-ontwerpgroep architecten B.N.A.
-              </h2>
-              <div className="absolute w-[59px] h-[100%] bg-[#93AA95] right-0 top-0 flex items-center justify-center">
-                <Image
-                  src={"/img/arraw.png"}
-                  height={25}
-                  width={25}
-                  className="object-cover -rotate-90"
-                />
-              </div>
-            </div>
-
-            <div className="scroll-section">
+              <div className="scroll-section">
 
               <div className="flex flex-col items-center justify-around h-[100vh] w-[1263px]">
                 <p
@@ -220,280 +260,297 @@ function HomePage() {
 
             </div>
 
-            <div className="scroll-section">
-              <div className="flex gap-5">
-                  <div className="w-[710px] h-[740px]">
-                    <Link href="/projects">
-                      <Image
-                        src={"/img/luxevil.jpg"}
-                        width={710}
-                        height={780}
-                        className="object-cover w-[710px] h-[100%]"
-                      />
-                    </Link>
+              <div className='scroll-section'>
+                  <div className='flex gap-5 items-center h-[100vh]'>
 
-                    <div className="mt-4">
-                      <p
-                        style={{
-                          fontSize: "14px",
-                          fontWeight: 500,
-                          lineHeight: "15px",
-                          letterSpacing: "0em",
-                          textAlign: "left",
-                        }}
-                      >
-                        Luxe villa’s
-                      </p>
-                      <Link href="/projects">
-                        <p
-                          className="mt-3 underline"
-                          style={{
-                            position: "relative",
+                      <div className="h-[75%]" ref={categoryImageTrigger}>
+                          <div className='overflow-hidden' style={{height: '100%'}}>
+                              <Link href="/projects">
+                                  <Image
+                                      ref={categoryImage}
+                                      alt={'luxevil'}
+                                      src={"/img/luxevil.jpg"}
+                                      width={710}
+                                      height={780}
+                                      className="object-cover w-[710px] h-[100%] category-image1 overflow-hidden"
+                                  />
+                              </Link>
+                          </div>
 
-                            fontSize: "13px",
-                            fontStyle: "italic",
-                            fontWeight: 300,
-                            lineHeight: "15px",
-                            letterSpacing: "-0.3499999940395355px",
-                            textAlign: "left",
-                          }}
-                        >
-                          bekijk project
-                        </p>
-                      </Link>
-                    </div>
+
+                          <div className="mt-4">
+                              <p
+                                  style={{
+                                      fontSize: "14px",
+                                      fontWeight: 500,
+                                      lineHeight: "15px",
+                                      letterSpacing: "0em",
+                                      textAlign: "left",
+                                  }}
+                              >
+                                  Luxe villa’s
+                              </p>
+                              <Link href="/projects">
+                                  <p
+                                      className="mt-3 underline"
+                                      style={{
+                                          position: "relative",
+
+                                          fontSize: "13px",
+                                          fontStyle: "italic",
+                                          fontWeight: 300,
+                                          lineHeight: "15px",
+                                          letterSpacing: "-0.3499999940395355px",
+                                          textAlign: "left",
+                                      }}
+                                  >
+                                      bekijk project
+                                  </p>
+                              </Link>
+                          </div>
+                      </div>
+
+                      <div className="h-[75%]" ref={categoryImageTrigger}>
+                          <div className='overflow-hidden' style={{height: '100%'}}>
+                              <Link href="/projects">
+                                  <Image
+                                      ref={categoryImage}
+                                      alt={'luxevil'}
+                                      src={"/img/utiliteitsbouw.jpg"}
+                                      width={710}
+                                      height={780}
+                                      className="object-cover w-[710px] h-[100%] category-image2 overflow-hidden"
+                                  />
+                              </Link>
+                          </div>
+
+
+                          <div className="mt-4">
+                              <p
+                                  style={{
+                                      fontSize: "14px",
+                                      fontWeight: 500,
+                                      lineHeight: "15px",
+                                      letterSpacing: "0em",
+                                      textAlign: "left",
+                                  }}
+                              >
+                                  Utiliteitsbouw
+                              </p>
+                              <Link href="/projects">
+                                  <p
+                                      className="mt-3 underline"
+                                      style={{
+                                          position: "relative",
+
+                                          fontSize: "13px",
+                                          fontStyle: "italic",
+                                          fontWeight: 300,
+                                          lineHeight: "15px",
+                                          letterSpacing: "-0.3499999940395355px",
+                                          textAlign: "left",
+                                      }}
+                                  >
+                                      bekijk project
+                                  </p>
+                              </Link>
+                          </div>
+                      </div>
+
+                      <div className="h-[75%]" ref={categoryImageTrigger}>
+                          <div className='overflow-hidden' style={{height: '100%'}}>
+                              <Link href="/projects">
+                                  <Image
+                                      ref={categoryImage}
+                                      alt={'luxevil'}
+                                      src={"/img/projecten.jpg"}
+                                      width={710}
+                                      height={780}
+                                      className="object-cover w-[710px] h-[100%] category-image3 overflow-hidden"
+                                  />
+                              </Link>
+                          </div>
+
+
+                          <div className="mt-4">
+                              <p
+                                  style={{
+                                      fontSize: "14px",
+                                      fontWeight: 500,
+                                      lineHeight: "15px",
+                                      letterSpacing: "0em",
+                                      textAlign: "left",
+                                  }}
+                              >
+                                  Projecten
+                              </p>
+                              <Link href="/projects">
+                                  <p
+                                      className="mt-3 underline"
+                                      style={{
+                                          position: "relative",
+
+                                          fontSize: "13px",
+                                          fontStyle: "italic",
+                                          fontWeight: 300,
+                                          lineHeight: "15px",
+                                          letterSpacing: "-0.3499999940395355px",
+                                          textAlign: "left",
+                                      }}
+                                  >
+                                      bekijk project
+                                  </p>
+                              </Link>
+                          </div>
+                      </div>
                   </div>
 
-                  <div className="w-[710px] h-[740px]">
-                    <Link href="/projects">
-                      <Image
-                        src={"/img/Utiliteitsbouw.jpg"}
-                        width={710}
-                        height={780}
-                        className="object-cover w-[710px] h-[100%]"
-                      />
-                    </Link>
 
-                    <div className="mt-4">
-                      <p
-                        style={{
-                          fontSize: "14px",
-                          fontWeight: 500,
-                          lineHeight: "15px",
-                          letterSpacing: "0em",
-                          textAlign: "left",
-                        }}
-                      >
-                        Utiliteitsbouw
-                      </p>
-                      <Link href="/projects">
-                        <p
-                          className="mt-3 underline"
-                          style={{
-                            position: "relative",
-
-                            fontSize: "13px",
-                            fontStyle: "italic",
-                            fontWeight: 300,
-                            lineHeight: "15px",
-                            letterSpacing: "-0.3499999940395355px",
-                            textAlign: "left",
-                          }}
-                        >
-                          bekijk project
-                        </p>
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="w-[710px] h-[740px]">
-                    <Link href="/projects">
-                      <Image
-                        src={"/img/projecten.jpg"}
-                        width={710}
-                        height={780}
-                        className="object-cover w-[710px] h-[100%]"
-                      />
-                    </Link>
-
-                    <div className="mt-4">
-                      <p
-                        style={{
-                          fontSize: "14px",
-                          fontWeight: 500,
-                          lineHeight: "15px",
-                          letterSpacing: "0em",
-                          textAlign: "left",
-                        }}
-                      >
-                        Projecten
-                      </p>
-
-                      <Link href="/projects">
-                        <p
-                          className="mt-3 underline"
-                          style={{
-                            position: "relative",
-
-                            fontSize: "13px",
-                            fontStyle: "italic",
-                            fontWeight: 300,
-                            lineHeight: "15px",
-                            letterSpacing: "-0.3499999940395355px",
-                            textAlign: "left",
-                          }}
-                        >
-                          bekijk project
-                        </p>
-                      </Link>
-                    </div>
-                  </div>
               </div>
-            </div>
 
-            <div className="scroll-section">
-            <div class="ml-[200px]">
-                <p
-                  className="mb-[80px]"
-                  style={{
-                    fontSize: "72px",
-                    fontWeight: 250,
-                    lineHeight: "102px",
-                    letterSpacing: "0em",
-                    textAlign: "left",
-                  }}
-                >
-                  Contact
-                </p>
-
-                <div className="mb-[50px]">
-                  <p
-                    className={`${rubik.className} uppercase mb-4`}
-                    style={{
-                      fontSize: "16px",
-                      fontWeight: 400,
-                      lineHeight: "24px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                      color: "#93AA95",
-                    }}
-                  >
-                    contact
-                  </p>
-
-                  <p
-                    className={`${rubik.className}`}
-                    style={{
-                      fontSize: "16px",
-                      fontWeight: 400,
-                      lineHeight: "24px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                    }}
-                  >
-                    010-4523552
-                  </p>
-
-                  <p
-                    className={`${rubik.className}`}
-                    style={{
-                      fontSize: "16px",
-                      fontWeight: 400,
-                      lineHeight: "24px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                    }}
-                  >
-                    info@a1-ontwerpgroep.nl
-                  </p>
-                </div>
-
-                <div className="mb-[50px]">
-                  <p
-                    className={`${rubik.className} uppercase mb-4`}
-                    style={{
-                      fontSize: "16px",
-                      fontWeight: 400,
-                      lineHeight: "24px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                      color: "#93AA95",
-                    }}
-                  >
-                    adres
-                  </p>
-
-                  <p
-                    className={`${rubik.className}`}
-                    style={{
-                      fontSize: "16px",
-                      fontWeight: 400,
-                      lineHeight: "24px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                    }}
-                  >
-                    Hendrik Wachterstraat 13 <br /> 3065 LD Rotterdam <br />{" "}
-                    Nederland
-                  </p>
-                </div>
-
-                <div className="mb-[50px]">
-                  <p
-                    className={`${rubik.className} uppercase mb-4`}
-                    style={{
-                      fontSize: "16px",
-                      fontWeight: 400,
-                      lineHeight: "24px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                      color: "#93AA95",
-                    }}
-                  >
-                    gegevens
-                  </p>
-
-                  <p
-                    className={`${rubik.className}`}
-                    style={{
-                      fontSize: "16px",
-                      fontWeight: 400,
-                      lineHeight: "24px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                    }}
-                  >
-                    KVK-nummer: 52685063
-                  </p>
-
-                  <p
-                    className={`${rubik.className}`}
-                    style={{
-                      fontSize: "16px",
-                      fontWeight: 400,
-                      lineHeight: "24px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                    }}
-                  >
-                    BTW-nummer: NL001470939B85
-                  </p>
-                </div>
-
-                <div className="mb-[50px]">
-                  <div className="flex gap-5">
-                    <Link href="/">
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+              <div className="scroll-section">
+                  <div class="ml-[200px]">
+                      <p
+                          className="mb-[80px]"
+                          style={{
+                              fontSize: "72px",
+                              fontWeight: 250,
+                              lineHeight: "102px",
+                              letterSpacing: "0em",
+                              textAlign: "left",
+                          }}
                       >
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M20 3C20 2.20435 19.6839 1.44129 19.1213 0.87868C18.5587 0.31607 17.7956 0 17 0L3 0C2.20435 0 1.44129 0.31607 0.87868 0.87868C0.31607 1.44129 0 2.20435 0 3L0 17C0 17.7956 0.31607 18.5587 0.87868 19.1213C1.44129 19.6839 2.20435 20 3 20H8C8.13261 20 8.25979 19.9473 8.35355 19.8536C8.44732 19.7598 8.5 19.6326 8.5 19.5V13.5C8.5 13.3674 8.44732 13.2402 8.35355 13.1464C8.25979 13.0527 8.13261 13 8 13H7C6.60218 13 6.22064 12.842 5.93934 12.5607C5.65804 12.2794 5.5 11.8978 5.5 11.5C5.5 11.1022 5.65804 10.7206 5.93934 10.4393C6.22064 10.158 6.60218 10 7 10H8C8.13261 10 8.25979 9.94732 8.35355 9.85355C8.44732 9.75979 8.5 9.63261 8.5 9.5V7C8.50106 6.07207 8.87015 5.18244 9.5263 4.5263C10.1824 3.87015 11.0721 3.50106 12 3.5H14.5C14.8978 3.5 15.2794 3.65804 15.5607 3.93934C15.842 4.22064 16 4.60218 16 5C16 5.39782 15.842 5.77936 15.5607 6.06066C15.2794 6.34196 14.8978 6.5 14.5 6.5H12C11.8674 6.5 11.7402 6.55268 11.6464 6.64645C11.5527 6.74021 11.5 6.86739 11.5 7V9.5C11.5 9.63261 11.5527 9.75979 11.6464 9.85355C11.7402 9.94732 11.8674 10 12 10H13C13.3978 10 13.7794 10.158 14.0607 10.4393C14.342 10.7206 14.5 11.1022 14.5 11.5C14.5 11.8978 14.342 12.2794 14.0607 12.5607C13.7794 12.842 13.3978 13 13 13H12C11.8674 13 11.7402 13.0527 11.6464 13.1464C11.5527 13.2402 11.5 13.3674 11.5 13.5V19.5C11.5 19.6326 11.5527 19.7598 11.6464 19.8536C11.7402 19.9473 11.8674 20 12 20H17C17.7956 20 18.5587 19.6839 19.1213 19.1213C19.6839 18.5587 20 17.7956 20 17V3Z"
+                          Contact
+                      </p>
+
+                      <div className="mb-[50px]">
+                          <p
+                              className={`${rubik.className} uppercase mb-4`}
+                              style={{
+                                  fontSize: "16px",
+                                  fontWeight: 400,
+                                  lineHeight: "24px",
+                                  letterSpacing: "0em",
+                                  textAlign: "left",
+                                  color: "#93AA95",
+                              }}
+                          >
+                              contact
+                          </p>
+
+                          <p
+                              className={`${rubik.className}`}
+                              style={{
+                                  fontSize: "16px",
+                                  fontWeight: 400,
+                                  lineHeight: "24px",
+                                  letterSpacing: "0em",
+                                  textAlign: "left",
+                              }}
+                          >
+                              010-4523552
+                          </p>
+
+                          <p
+                              className={`${rubik.className}`}
+                              style={{
+                                  fontSize: "16px",
+                                  fontWeight: 400,
+                                  lineHeight: "24px",
+                                  letterSpacing: "0em",
+                                  textAlign: "left",
+                              }}
+                          >
+                          info@a1-ontwerpgroep.nl
+                          </p>
+                      </div>
+
+                      <div className="mb-[50px]">
+                          <p
+                              className={`${rubik.className} uppercase mb-4`}
+                              style={{
+                                  fontSize: "16px",
+                                  fontWeight: 400,
+                                  lineHeight: "24px",
+                                  letterSpacing: "0em",
+                                  textAlign: "left",
+                                  color: "#93AA95",
+                              }}
+                          >
+                              adres
+                          </p>
+
+                          <p
+                              className={`${rubik.className}`}
+                              style={{
+                                  fontSize: "16px",
+                                  fontWeight: 400,
+                                  lineHeight: "24px",
+                                  letterSpacing: "0em",
+                                  textAlign: "left",
+                              }}
+                          >
+                              Hendrik Wachterstraat 13 <br/> 3065 LD Rotterdam <br/>{" "}
+                              Nederland
+                          </p>
+                      </div>
+
+                      <div className="mb-[50px]">
+                          <p
+                              className={`${rubik.className} uppercase mb-4`}
+                              style={{
+                                  fontSize: "16px",
+                                  fontWeight: 400,
+                                  lineHeight: "24px",
+                                  letterSpacing: "0em",
+                                  textAlign: "left",
+                                  color: "#93AA95",
+                              }}
+                          >
+                              gegevens
+                          </p>
+
+                          <p
+                              className={`${rubik.className}`}
+                              style={{
+                                  fontSize: "16px",
+                                  fontWeight: 400,
+                                  lineHeight: "24px",
+                                  letterSpacing: "0em",
+                                  textAlign: "left",
+                              }}
+                          >
+                              KVK-nummer: 52685063
+                          </p>
+
+                          <p
+                              className={`${rubik.className}`}
+                              style={{
+                                  fontSize: "16px",
+                                  fontWeight: 400,
+                                  lineHeight: "24px",
+                                  letterSpacing: "0em",
+                                  textAlign: "left",
+                              }}
+                          >
+                              BTW-nummer: NL001470939B85
+                          </p>
+                      </div>
+
+                      <div className="mb-[50px]">
+                          <div className="flex gap-5">
+                              <Link href="/">
+                                  <svg
+                                      width="20"
+                                      height="20"
+                                      viewBox="0 0 20 20"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                      <path
+                                          fill-rule="evenodd"
+                                          clip-rule="evenodd"
+                                          d="M20 3C20 2.20435 19.6839 1.44129 19.1213 0.87868C18.5587 0.31607 17.7956 0 17 0L3 0C2.20435 0 1.44129 0.31607 0.87868 0.87868C0.31607 1.44129 0 2.20435 0 3L0 17C0 17.7956 0.31607 18.5587 0.87868 19.1213C1.44129 19.6839 2.20435 20 3 20H8C8.13261 20 8.25979 19.9473 8.35355 19.8536C8.44732 19.7598 8.5 19.6326 8.5 19.5V13.5C8.5 13.3674 8.44732 13.2402 8.35355 13.1464C8.25979 13.0527 8.13261 13 8 13H7C6.60218 13 6.22064 12.842 5.93934 12.5607C5.65804 12.2794 5.5 11.8978 5.5 11.5C5.5 11.1022 5.65804 10.7206 5.93934 10.4393C6.22064 10.158 6.60218 10 7 10H8C8.13261 10 8.25979 9.94732 8.35355 9.85355C8.44732 9.75979 8.5 9.63261 8.5 9.5V7C8.50106 6.07207 8.87015 5.18244 9.5263 4.5263C10.1824 3.87015 11.0721 3.50106 12 3.5H14.5C14.8978 3.5 15.2794 3.65804 15.5607 3.93934C15.842 4.22064 16 4.60218 16 5C16 5.39782 15.842 5.77936 15.5607 6.06066C15.2794 6.34196 14.8978 6.5 14.5 6.5H12C11.8674 6.5 11.7402 6.55268 11.6464 6.64645C11.5527 6.74021 11.5 6.86739 11.5 7V9.5C11.5 9.63261 11.5527 9.75979 11.6464 9.85355C11.7402 9.94732 11.8674 10 12 10H13C13.3978 10 13.7794 10.158 14.0607 10.4393C14.342 10.7206 14.5 11.1022 14.5 11.5C14.5 11.8978 14.342 12.2794 14.0607 12.5607C13.7794 12.842 13.3978 13 13 13H12C11.8674 13 11.7402 13.0527 11.6464 13.1464C11.5527 13.2402 11.5 13.3674 11.5 13.5V19.5C11.5 19.6326 11.5527 19.7598 11.6464 19.8536C11.7402 19.9473 11.8674 20 12 20H17C17.7956 20 18.5587 19.6839 19.1213 19.1213C19.6839 18.5587 20 17.7956 20 17V3Z"
                           fill="#93AA95"
                         />
                       </svg>
