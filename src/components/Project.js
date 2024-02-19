@@ -73,28 +73,34 @@ function HomePage() {
     <SwiperSlide  >
           <div className="flex items-center h-[90vh]">
             <div className="h-[60vh]">
-            <Image
-                  src={"/img/project/slider.jpg"}
-                  width={900}
-                  height={780}
-                
-                  className="w-[100%] h-[100%]"
-                />
+                <Link href={`/projects/slug`}>
+                    <Image
+                        alt={'project name'}
+                        src={"/img/project/slider.jpg"}
+                        width={900}
+                        height={780}
+
+                        className="w-[100%] h-[100%]"
+                    />
+                </Link>
+
 
               <div className="mt-4 flex w-full justify-center">
                 <div>
-                  <p
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: 500,
-                      lineHeight: "15px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                    }}
-                  >
-                    Luxe villa’s
-                  </p>
-                  <Link href="/">
+                    <Link href={`/projects/slug`}>
+                      <p
+                        style={{
+                          fontSize: "14px",
+                          fontWeight: 500,
+                          lineHeight: "15px",
+                          letterSpacing: "0em",
+                          textAlign: "left",
+                        }}
+                      >
+                        Luxe villa’s
+                      </p>
+                    </Link>
+
                     <p
                       className="mt-3 underline"
                       style={{
@@ -110,7 +116,7 @@ function HomePage() {
                     >
                       bekijk project
                     </p>
-                  </Link>
+
                 </div>
               </div>
             </div>
@@ -120,26 +126,30 @@ function HomePage() {
     <SwiperSlide>
           <div className="flex gap-5 items-center h-[90vh]">
             <div className="h-[60vh] mr-10">
-            <Image
-                  src={"/img/project/slider.jpg"}
-                  width={710}
-                  height={780}
-                  className="w-[100%] h-[100%]"
-                />
+                <Link href={`/projects/slug`}>
+                    <Image
+                          src={"/img/project/slider.jpg"}
+                          width={710}
+                          height={780}
+                          className="w-[100%] h-[100%]"
+                        />
+                </Link>
               <div className="mt-4 flex w-full justify-center">
                 <div>
-                  <p
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: 500,
-                      lineHeight: "15px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                    }}
-                  >
-                    Luxe villa’s
-                  </p>
-                  <Link href="/">
+                    <Link href={`/projects/slug`}>
+                      <p
+                        style={{
+                          fontSize: "14px",
+                          fontWeight: 500,
+                          lineHeight: "15px",
+                          letterSpacing: "0em",
+                          textAlign: "left",
+                        }}
+                      >
+                        Luxe villa’s
+                      </p>
+                    </Link>
+
                     <p
                       className="mt-3 underline"
                       style={{
@@ -155,7 +165,7 @@ function HomePage() {
                     >
                       bekijk project
                     </p>
-                  </Link>
+
                 </div>
               </div>
             </div>
@@ -165,27 +175,31 @@ function HomePage() {
     <SwiperSlide>
           <div className="flex gap-5 items-center h-[90vh]">
             <div className="h-[60vh] mr-10">
-            <Image
-                  src={"/img/project/slider.jpg"}
-                  width={710}
-                  height={780}
-                  className="w-[100%] h-[100%]"
-                />
+                <Link href={`/projects/slug`}>
+                    <Image
+                          src={"/img/project/slider.jpg"}
+                          width={710}
+                          height={780}
+                          className="w-[100%] h-[100%]"
+                        />
+                </Link>
 
               <div className="mt-4 flex w-full justify-center">
                 <div>
-                  <p
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: 500,
-                      lineHeight: "15px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                    }}
-                  >
-                    Luxe villa’s
-                  </p>
-                  <Link href="/">
+                    <Link href={`/projects/slug`}>
+                      <p
+                        style={{
+                          fontSize: "14px",
+                          fontWeight: 500,
+                          lineHeight: "15px",
+                          letterSpacing: "0em",
+                          textAlign: "left",
+                        }}
+                      >
+                        Luxe villa’s
+                      </p>
+                    </Link>
+
                     <p
                       className="mt-3 underline"
                       style={{
@@ -201,7 +215,6 @@ function HomePage() {
                     >
                       bekijk project
                     </p>
-                  </Link>
                 </div>
               </div>
             </div>
@@ -211,27 +224,31 @@ function HomePage() {
     <SwiperSlide>
           <div className="flex gap-5 items-center h-[90vh]">
             <div className="h-[60vh] mr-10">
-            <Image
-                  src={"/img/project/slider.jpg"}
-                  width={710}
-                  height={780}
-                  className="w-[100%] h-[100%]"
-                />
+                <Link href={`/projects/slug`}>
+                    <Image
+                          src={"/img/project/slider.jpg"}
+                          width={710}
+                          height={780}
+                          className="w-[100%] h-[100%]"
+                        />
+                </Link>
 
               <div className="mt-4 flex w-full justify-center">
                 <div>
-                  <p
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: 500,
-                      lineHeight: "15px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                    }}
-                  >
-                    Luxe villa’s
-                  </p>
-                  <Link href="/">
+                    <Link href={`/projects/slug`}>
+                      <p
+                        style={{
+                          fontSize: "14px",
+                          fontWeight: 500,
+                          lineHeight: "15px",
+                          letterSpacing: "0em",
+                          textAlign: "left",
+                        }}
+                      >
+                        Luxe villa’s
+                      </p>
+                    </Link>
+
                     <p
                       className="mt-3 underline"
                       style={{
@@ -247,7 +264,7 @@ function HomePage() {
                     >
                       bekijk project
                     </p>
-                  </Link>
+
                 </div>
               </div>
             </div>
