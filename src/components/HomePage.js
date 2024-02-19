@@ -14,6 +14,7 @@ import SplitText from "../utiles/Split3.min";
 
 import { Rubik } from "next/font/google";
 import {useGSAP} from "@gsap/react";
+import Loader from "@/components/Loader";
 
 const rubik = Rubik({
   weight: "400",
@@ -51,10 +52,39 @@ function HomePage() {
             }
         );
 
+
+       /* gsap.to('.loader', {
+            y: '-100%', // Move the loader up by its own height (assuming it's 100% height)
+            duration: 4,
+        })*/
+
+        const loader = '.loader1';
+        const loader2 = '.loader2';
+        const loader3 = '.loader3';
+
+        gsap.to('.loader1', {
+            y: '-100%',
+            duration: 4,
+            ease: 'power4.inOut'
+        });
+        gsap.to('.loader2', {
+            y: '-100%',
+            duration: 4,
+            ease: 'power4.inOut',
+            delay: 0.2
+
+        });
+        gsap.to('.loader3', {
+            y: '-100%',
+            duration: 4,
+            ease: 'power4.inOut',
+            delay: 0.3
+
+        });
+
         // home page title animation
         const ourText = SplitType.create(homeTitle.current, { types: 'lines', lineClass: 'lineChildren' });
         const chars = ourText.lines
-
 
         gsap.fromTo(
             chars,
@@ -72,15 +102,13 @@ function HomePage() {
             }
         )
 
-
-
-
         // home page background animation
         gsap.fromTo('.home1bg', {
             scale: 1.5
         }, {
             scale: 1,
             duration: 2,
+            delay: 1,
             ease: 'power2.inOut'
         })
 
@@ -118,8 +146,6 @@ function HomePage() {
             });
         }
 
-
-
         categoryImageAnimation('.category-image1')
         categoryImageAnimation('.category-image2')
         categoryImageAnimation('.category-image3')
@@ -137,13 +163,25 @@ function HomePage() {
 
   return (
     <>
-      <section className="scroll-section-outer">
-        <div ref={triggerRef}>
-          <div ref={sectionRef} className="scroll-section-inner">
-              <div className="scroll-section relative overflow-hidden">
-                  <Image
-                      alt={'home image'}
-                      src={"/img/home1.jpg"}
+
+        <div className='loader1 fixed left-0 top-0 w-[33.33%] h-[100%] bg-orange-600 z-50'>
+
+        </div>
+        <div className='loader2 fixed left-[33.33%] top-0 w-[33.33%] h-[100%] bg-orange-600 z-50'>
+
+        </div>
+        <div className='loader3 fixed left-[66.66%] top-0 w-[33%] h-[100%] bg-orange-600 z-50'>
+
+        </div>
+
+
+        <section className="scroll-section-outer">
+            <div ref={triggerRef}>
+                <div ref={sectionRef} className="scroll-section-inner">
+                    <div className="scroll-section relative overflow-hidden">
+                        <Image
+                            alt={'home image'}
+                            src={"/img/home1.jpg"}
                       height={941}
                       width={1920}
                       className="object-cover home1bg"
@@ -253,10 +291,6 @@ function HomePage() {
                   />
                 </p>
               </div>
-
-              
-
-              
 
             </div>
 
