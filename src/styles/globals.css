@@ -48,12 +48,12 @@ body {
 }
 
 .scroll-section-outer {
-  /*box-sizing: border-box;
+  box-sizing: border-box;
   overflow: hidden;
   position: relative;
   overflow-x: auto;
   white-space: nowrap;
-  width: 100%;*/
+  width: 100%;
 }
 /*.scroll-section-outer::before {
   content: "";

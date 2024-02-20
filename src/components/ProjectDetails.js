@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+// import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -19,8 +20,8 @@ const rubik = Rubik({
 function ProjectDetails() {
 
 
-      const sectionRef = useRef(null);
-      const triggerRef = useRef(null);
+    const sectionRef = useRef(null);
+    const triggerRef = useRef(null);
     const containerRef = useRef(null)
     const marginLeft = useRef(null)
     const marginLeft2 = useRef(null)
@@ -31,6 +32,13 @@ function ProjectDetails() {
     useGSAP(()=>{
         let sections = gsap.utils.toArray('.scroll-section');
 
+       /* let smoother = ScrollSmoother.create({
+            smooth: 2,
+            effects: true,
+            normalizeScroll: true
+        });*/
+
+
         const scrollTween = gsap.fromTo(
             sectionRef.current,
             {
@@ -39,7 +47,7 @@ function ProjectDetails() {
             {
                 translateX: `-${sectionRef.current.offsetWidth}`,
                 ease: "none",
-                duration: 300,
+                duration: 500,
                 scrollTrigger: {
                     trigger: triggerRef.current,
                     start: "top top",
@@ -75,38 +83,65 @@ function ProjectDetails() {
 
     })
 
-   /* useEffect(() => {
+
+
+
+    useEffect(() => {
+        const container = containerRef.current;
+
+        const handleWheel = (event) => {
+            event.preventDefault();
+
+            const deltaY = event.deltaY;
+            const targetScroll = container.scrollTop + deltaY;
+
+            gsap.to(container, {
+                scrollTop: targetScroll,
+                duration: 20, // Adjust duration as needed
+                ease: 'power2.out', // Adjust easing function as needed
+            });
+        };
+
+        // container.addEventListener('wheel', handleWheel);
+        //
+        // return () => {
+        //     container.removeEventListener('wheel', handleWheel);
+        // };
+    }, []);
+
+
+    /* useEffect(() => {
 
 
 
 
 
-     const pin = gsap.fromTo(
-      sectionRef.current,
-      {
-        translateX: 0,
-      },
-      {
-        translateX: "-300vw",
-        ease: "none",
-        duration: 300,
-        scrollTrigger: {
-          trigger: triggerRef.current,
-          start: "top top",
-          end: "2000 top",
-          scrub: 1,
-          pin: true
-        },
-      }
-    );
-    return () => {
-      {
-        /!* A return function for killing the animation on component unmount *!/
-      }
-      pin.kill();
-      // scroll.destroy();
-    };
-  }, []);*/
+      const pin = gsap.fromTo(
+       sectionRef.current,
+       {
+         translateX: 0,
+       },
+       {
+         translateX: "-300vw",
+         ease: "none",
+         duration: 300,
+         scrollTrigger: {
+           trigger: triggerRef.current,
+           start: "top top",
+           end: "2000 top",
+           scrub: 1,
+           pin: true
+         },
+       }
+     );
+     return () => {
+       {
+         /!* A return function for killing the animation on component unmount *!/
+       }
+       pin.kill();
+       // scroll.destroy();
+     };
+   }, []);*/
 
 
 

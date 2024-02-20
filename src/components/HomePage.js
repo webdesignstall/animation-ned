@@ -9,6 +9,8 @@ import Image from "next/image";
 import Link from "next/link";
 import SplitType from 'split-type'
 import SplitText from "../utiles/Split3.min";
+import { ScrollSmoother } from "gsap-trial/dist/ScrollSmoother";
+
 
 
 
@@ -27,10 +29,26 @@ function HomePage() {
   const categoryImage = useRef(null);
   const categoryImageTrigger = useRef(null);
 
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+
+    useEffect(() => {
+        let smoother = ScrollSmoother.create({
+            content: '.scroll-section-outer',
+            smooth: 1,
+            speed: 0.1,
+            normalizeScroll: true
+        });
+    }, []);
+
+
+
 
     const homeTitle = useRef();
     useGSAP(()=> {
+
+
+
 
 
         const scrollTween =   gsap.fromTo(
@@ -176,9 +194,10 @@ function HomePage() {
 
 
         <section className="scroll-section-outer">
-            <div ref={triggerRef}>
-                <div ref={sectionRef} className="scroll-section-inner">
-                    <div className="scroll-section relative overflow-hidden">
+            <div ref={triggerRef} className='scroll-wrap'>
+               <div ref={sectionRef} className="scroll-section-inner">
+
+               <div  className="scroll-section relative overflow-hidden">
                         <Image
                             alt={'home image'}
                             src={"/img/home1.jpg"}
@@ -234,9 +253,9 @@ function HomePage() {
                   </div>
               </div>
 
-              <div className="scroll-section">
+              <div  className="scroll-section w-[1263px]">
 
-              <div className="flex flex-col items-center justify-around h-[100vh] w-[1263px]">
+              <div className="flex flex-col items-center justify-around h-[100vh] w-[1263px] text-wrap">
                 <p
                   className=""
                   style={{
@@ -443,7 +462,7 @@ function HomePage() {
               </div>
 
               <div className="scroll-section">
-                  <div class="ml-[200px]">
+                  <div className="ml-[200px]">
                       <p
                           className="mb-[80px]"
                           style={{
