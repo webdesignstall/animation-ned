@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, {useRef, useEffect, useState} from "react";
 import { gsap } from "gsap";
 
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -197,6 +197,8 @@ function HomePage() {
 
     const imageRef = useRef(null);
 
+    const [imageSrc, setImageSrc] = useState('/img/home/home1.jpg')
+
     const homeImages = [
         "/img/home/home1.jpg",
         "/img/home/home2.jpeg",
@@ -218,7 +220,10 @@ function HomePage() {
 
             // Increment the index for the next image
             currentIndex = (currentIndex + 1) % homeImages.length;
-            imageRef.current.src = homeImages[currentIndex];
+            // imageRef.current.src = homeImages[currentIndex];
+
+            setImageSrc(homeImages[currentIndex])
+
             console.log(currentIndex)
         };
 
@@ -257,8 +262,8 @@ function HomePage() {
                         <div className="scroll-section relative overflow-hidden bg-section">
 
                             <div className='w-[100vw]'>
-                                <img
-                                    src={homeImages[0]}
+                                <Image
+                                    src={imageSrc}
                                     alt={'home image'}
                                     ref={imageRef}
                                     height={941}
