@@ -5,14 +5,10 @@ export default function Footer() {
     <div className="bg-[#EEEEEF] border-t-2 border-[#c4c4c4]">
       <div className="container mx-auto flex justify-between items-center my-2">
         <div>
-         <h1>Footer section</h1>
+         <h1>Galerij</h1>
         </div>
         <div>
-          <img
-            src="https://i.ibb.co/GkZSypG/right-icon.png"
-            alt=""
-            className="w-10 h-6"
-          />
+            Website gemaakt door <Link className='underline font-black' href='#'>Grandsolution</Link>
         </div>
       </div>
     </div>

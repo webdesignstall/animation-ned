@@ -133,37 +133,4 @@ body {
 }
 
 
-/*.homeTitle {*/
-
-/*  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);*/
-/*  !*color: red;*!*/
-/*}*/
-
-.lineParent{
-  overflow: hidden;
-}
-
-.lineChildren{
-  transform: translate(0, 500px);
-}
-
-
-.box{
-  width: 100px;
-  height: 100px;
-  padding: 10px;
-  margin-bottom: 600px;
-}
-
-
-.a{
-  background: green;
-}
-.b{
-  background: yellow;
-}
-
-.c{
-  background: orangered;
-}
 

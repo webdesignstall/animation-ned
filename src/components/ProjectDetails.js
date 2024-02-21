@@ -1,14 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-// import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
-
 import Image from "next/image";
 import Link from "next/link";
 
 import { Rubik } from "next/font/google";
 import {useGSAP} from "@gsap/react";
-import {ScrollSmoother} from "gsap-trial/dist/ScrollSmoother";
+// import {ScrollSmoother} from "gsap-trial/dist/ScrollSmoother";
 
 
 const rubik = Rubik({
@@ -28,17 +26,10 @@ function ProjectDetails() {
     const marginLeft2 = useRef(null)
     const section10MarginLeft = useRef(null)
 
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+    gsap.registerPlugin(ScrollTrigger);
 
 
     useGSAP(()=>{
-        let sections = gsap.utils.toArray('.scroll-section');
-
-       /* let smoother = ScrollSmoother.create({
-            smooth: 2,
-            effects: true,
-            normalizeScroll: true
-        });*/
 
 
         const scrollTween = gsap.fromTo(
@@ -49,17 +40,29 @@ function ProjectDetails() {
             {
                 translateX: `-600vw`,
                 ease: "none",
-                duration: 500,
+                duration: 1000,
                 scrollTrigger: {
                     trigger: triggerRef.current,
                     start: "top top",
                     end: "3000 top",
-                    scrub: 1,
+                    scrub: 2,
                     pin: true
                 },
             }
         );
 
+
+
+        gsap.fromTo('.section-one', {
+            y: 200,
+            opacity: 0
+        }, {
+            opacity: 1,
+            y: 0,
+            ease: 'power2.inOut',
+            stagger: 1,
+            duration: 1.5
+        })
 
         gsap.to(marginLeft.current, {
             marginLeft: -150,
@@ -95,15 +98,15 @@ function ProjectDetails() {
 
     })
 
-    useEffect(() => {
+    /*useEffect(() => {
         let smoother = ScrollSmoother.create({
             content: '.scroll-section-outer',
             smooth: 1,
-            speed: 0.3,
+            speed: 0.2,
             normalizeScroll: true
         });
 
-    }, []);
+    }, []);*/
 
 
 
@@ -111,17 +114,51 @@ function ProjectDetails() {
     return (
         <>
             <section className="scroll-section-outer bg-[#EEEEEF]" ref={containerRef}>
+
                 <div ref={triggerRef}>
+                    <div style={{
+                        display: 'flex'
+                    }}>
+
+                        <div>
+
+                            <Link href='/projects'
+                                  style={{
+                                      fontSize: '16px',
+                                      fontWeight: 500,
+                                      lineHeight: '24px',
+                                      letterSpacing: ' 0em',
+                                      textAlign: 'left',
+                                      color: '#202020',
+                                  }}
+
+                                  className='fixed left-[80px] top-[30px] z-50 font-black flex items-center gap-5'
+                            >
+
+                                <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.01578 12.0001L6.69684 11.3523L1.89427 6.78472H19.9942V5.86871H1.81723L6.69684 1.22783L6.01578 0.580078L0.69312 5.64234L0.686929 5.63644L0.00585938 6.28418L0.0120506 6.29008L0.00585938 6.29596L0.686929 6.94372L0.69312 6.93782L6.01578 12.0001Z"
+                                        fill="#202020"/>
+                                </svg>
+
+                                Terug
+
+                            </Link>
+
+                        </div>
+                    </div>
                     <div ref={sectionRef} className="scroll-section-inner">
+
+
                         <div className="scroll-section">
-                            <div className="flex gap-5 h-[100vh justify-center items-center w-[710px]">
-                                <div className="mt-4">
-                                    <p
+                            <div className="flex gap-5 h-[100vh justify-center items-center w-[915px]">
+                                <div className="mt-4 section-one">
+                                <p
                                         style={{
                                             fontSize: "14px",
-                                            fontWeight: 500,
-                                            lineHeight: "15px",
-                                            letterSpacing: "0em",
+                                            fontWeight: 400,
+                                            lineHeight: "16.71px",
                                             textAlign: "center",
                                         }}
                                     >
@@ -129,33 +166,18 @@ function ProjectDetails() {
                                     </p>
                                     <Link href="/">
                                         <p
-                                            className="mt-10 text-[#202020]"
+                                            className="mt-10 text-[#202020] title"
                                             style={{
                                                 position: "relative",
-
-                                                fontSize: "40px",
-                                                fontWeight: 500,
-                                                lineHeight: "15px",
-                                                letterSpacing: "-0.3499999940395355px",
+                                                fontSize: "109.87px",
+                                                fontWeight: 200,
+                                                lineHeight: "130px",
                                                 textAlign: "center",
                                             }}
                                         >
-                                            project
+                                            project <br/> Rotterdam
                                         </p>
-                                        <p
-                                            className="mt-10 text-[#202020]"
-                                            style={{
-                                                position: "relative",
 
-                                                fontSize: "40px",
-                                                fontWeight: 500,
-                                                lineHeight: "15px",
-                                                letterSpacing: "-0.3499999940395355px",
-                                                textAlign: "center",
-                                            }}
-                                        >
-                                            Rotterdam
-                                        </p>
                                     </Link>
                                 </div>
                             </div>
@@ -228,7 +250,7 @@ function ProjectDetails() {
                             </div>
                         </div>
                         <div className="mr-2">
-                            <div className="flex items-center h-full w-[1150px]">
+                            <div className="flex items-center h-full w-[775px]">
                                 <div className="" ref={marginLeft2}>
                                     <Link href="/">
                                         <Image

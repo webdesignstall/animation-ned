@@ -1,22 +1,19 @@
-'use client'
-
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import Slider from "react-slick";
 import Image from "next/image";
 import Link from "next/link";
 import SplitType from 'split-type'
-import SplitText from "../utiles/Split3.min";
-import { ScrollSmoother } from "gsap-trial/dist/ScrollSmoother";
+// import { ScrollSmoother } from "gsap-trial/dist/ScrollSmoother";
 
-
-
+import 'swiper/css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import { Rubik } from "next/font/google";
 import {useGSAP} from "@gsap/react";
-import Loader from "@/components/Loader";
+
 
 const rubik = Rubik({
   weight: "400",
@@ -29,10 +26,10 @@ function HomePage() {
   const categoryImage = useRef(null);
   const categoryImageTrigger = useRef(null);
 
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  gsap.registerPlugin(ScrollTrigger);
 
 
-    useEffect(() => {
+  /*  useEffect(() => {
         let smoother = ScrollSmoother.create({
             content: '.scroll-section-outer',
             smooth: 1,
@@ -40,8 +37,7 @@ function HomePage() {
             normalizeScroll: true
         });
 
-    }, []);
-
+    }, []);*/
 
 
 
@@ -57,22 +53,17 @@ function HomePage() {
             {
                 translateX: "-230vw",
                 ease: "none",
-                duration: 20,
+                duration: 500,
                 scrollTrigger: {
                     trigger: triggerRef.current,
                     start: "top top",
                     end: "2000 top",
-                    scrub: 0.2,
+                    scrub: 2,
                     pin: true
                 },
             }
         );
 
-
-       /* gsap.to('.loader', {
-            y: '-100%', // Move the loader up by its own height (assuming it's 100% height)
-            duration: 4,
-        })*/
 
         // home page title animation
         const ourText = SplitType.create(homeTitle.current, { types: 'chars' });
@@ -193,6 +184,57 @@ function HomePage() {
 
     })
 
+    const settings = {
+        dots: true,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 1000,
+        pauseOnHover: true
+    };
+
+
+    const imageRef = useRef(null);
+
+    const homeImages = [
+        "/img/home/home1.jpg",
+        "/img/home/home2.jpeg",
+        "/img/home/home3.jpeg",
+        "/img/home/home4.jpeg",
+        "/img/home/home5.jpeg",
+        "/img/home/home6.jpeg"
+    ]; // Add more images if needed
+
+    useEffect(() => {
+        // Define images to be used
+
+
+        let currentIndex = 0;
+
+        const changeImage = () => {
+            // Update the image source
+
+
+            // Increment the index for the next image
+            currentIndex = (currentIndex + 1) % homeImages.length;
+            imageRef.current.src = homeImages[currentIndex];
+            console.log(currentIndex)
+        };
+
+        // GSAP timeline
+        const timeline = gsap.timeline({ repeat: -1, delay: 6 });
+
+        // Add the image change animation to the timeline
+        timeline.to(imageRef.current, { opacity: 0, duration: 1, delay: 6, scale:1, onComplete: changeImage })
+            .fromTo(imageRef.current, {scale: 1.5}, { scale: 1, opacity: 1, duration: 1, ease: 'power2.inOut' });
+
+        // Cleanup on component unmount
+        return () => {
+            timeline.kill(); // Kill the GSAP timeline to prevent memory leaks
+        };
+    }, []);
+
   return (
     <>
 
@@ -211,130 +253,142 @@ function HomePage() {
             <div ref={triggerRef} className='scroll-wrap'>
                <div ref={sectionRef} className="scroll-section-inner">
 
-               <div  className="scroll-section relative overflow-hidden bg-section">
-                   <Image
-                      alt={'home image'}
-                      src={"/img/home1.jpg"}
-                      height={941}
-                      width={1920}
-                      className="object-cover home1bg"
-                  />
-                  <div
-                      className="absolute inset-0"
-                      style={{
-                          background:
-                              "linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%)",
-                      }}
-                  ></div>
-                  <div className="absolute left-[60px] top-[40px]">
-                      <Image
-                          alt={'logo'}
-                          src={"/img/logo.png"}
-                          height={77}
-                          width={266}
-                          className="object-cover"
-                      />
-                  </div>
 
-                  <div className="absolute right-[100px] top-[50px]">
-                      <ul className="font-light text-[24.94px] leading-8 text-white">
-                          <li>
-                              <Link href={"/projects"} className='home-nav-link'>Luxe villa’s</Link>
-                          </li>
-                          <li>
-                              <Link href={"/projects"} className='home-nav-link'>Projecten</Link>
-                          </li>
-                          <li>
-                              <Link href={"/projects"} className='home-nav-link'>Utiliteitsbouw</Link>
-                          </li>
-                          <li>
-                              <Link href={"/projects"} className='home-nav-link'>Contact</Link>
-                          </li>
-                      </ul>
-                  </div>
-                  <h2 ref={homeTitle}
-                      className="homeTitle absolute bottom-0 leading-[274.56px] text-[100px] text-light italic text-white">
-                      A1-ontwerpgroep architecten B.N.A.
-                  </h2>
-                  <div
-                      className="absolute w-[59px] h-[100%] bg-[#93AA95] right-0 top-0 flex items-center justify-center">
-                      <Image
-                          src={"/img/arraw.png"}
-                          height={25}
-                          width={25}
-                          className="object-cover -rotate-90"
-                      />
-                  </div>
-              </div>
+                        <div className="scroll-section relative overflow-hidden bg-section">
 
-              <div  className="scroll-section w-[1263px]">
+                            <div className='w-[100vw]'>
+                                <img
+                                    src={homeImages[0]}
+                                    alt={'home image'}
+                                    ref={imageRef}
+                                    height={941}
+                                    width={1920}
+                                    className="object-cover home1bg h-full w-[100vw]"
+                                />
+                            </div>
 
-              <div className="flex flex-col items-center justify-around h-[100vh] w-[1263px] text-wrap">
-                <p
-                  className=""
-                  style={{
-                    fontSize: "13px",
-                    fontWeight: "500",
-                    lineHeight: "15px",
-                    letterSpacing: "0em",
-                    textAlign: "left",
-                  }}
-                >
-                  A1-ontwerpgroep
-                </p>
-                <div>
-                  <p
-                    style={{
-                      fontSize: "33px",
-                      fontStyle: "italic",
-                      fontWeight: 200,
-                      lineHeight: "46px",
-                      letterSpacing: "-1.0499999523162842px",
-                      textAlign: "center",
-                      width: "689px",
-                    }}
-                  >
-                    Als Architect weten wij uw droom te realiseren. Met inzet
-                    van onze professie en ervaring kunnen we tot in detail op uw
-                    wensen inspelen. Van luxe villa’s tot project of
-                    utiliteitsbouw. Van idee tot werkelijkheid. Dit doen wij al
-                    meer dan 35 jaar met plezier.
-                  </p>
-                </div>
-                <p
-                  style={{
-                    position: "relative",
 
-                    fontSize: "13px",
-                    fontStyle: "italic",
-                    fontWeight: 300,
-                    lineHeight: "15px",
-                    letterSpacing: "-0.3499999940395355px",
-                    textAlign: "left",
-                  }}
-                >
-                  Bekijk Alle projecten
-                  <span
-                    className={`
+                            <div
+                                className="absolute inset-0"
+                                style={{
+                                    background:
+                                        "linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%)",
+                                }}
+                            ></div>
+                            <div className="absolute left-[60px] top-[40px]">
+                                <Image
+                                    alt={'logo'}
+                                    src={"/img/logo.png"}
+                                    height={77}
+                                    width={266}
+                                    className="object-cover"
+                                />
+                            </div>
+
+                            <div className="absolute right-[100px] top-[50px]">
+                                <ul className="font-light text-[24.94px] leading-8 text-white">
+                                    <li>
+                                        <Link href={"/projects"} className='home-nav-link'>Luxe villa’s</Link>
+                                    </li>
+                                    <li>
+                                        <Link href={"/projects"} className='home-nav-link'>Projecten</Link>
+                                    </li>
+                                    <li>
+                                        <Link href={"/projects"} className='home-nav-link'>Utiliteitsbouw</Link>
+                                    </li>
+                                    <li>
+                                        <Link href={"/projects"} className='home-nav-link'>Contact</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h2 ref={homeTitle}
+                                className="homeTitle absolute bottom-0 leading-[274.56px] text-[100px] text-light italic text-white">
+                                A1-ontwerpgroep architecten B.N.A.
+                            </h2>
+                            <div
+                                className="absolute w-[59px] h-[100%] bg-[#93AA95] right-0 top-0 flex items-center justify-center">
+                                <Image
+                                    src={"/img/arraw.png"}
+                                    height={25}
+                                    width={25}
+                                    className="object-cover -rotate-90"
+                                />
+                            </div>
+
+
+
+
+                       </div>
+
+
+                   <div className="scroll-section w-[1263px]">
+
+                       <div className="flex flex-col items-center justify-around h-[100vh] w-[1263px] text-wrap">
+                           <p
+                               className=""
+                               style={{
+                                   fontSize: "13px",
+                                   fontWeight: "500",
+                                   lineHeight: "15px",
+                                   letterSpacing: "0em",
+                                   textAlign: "left",
+                               }}
+                           >
+                               A1-ontwerpgroep
+                           </p>
+                           <div>
+                               <p
+                                   style={{
+                                       fontSize: "33px",
+                                       fontStyle: "italic",
+                                       fontWeight: 200,
+                                       lineHeight: "46px",
+                                       letterSpacing: "-1.0499999523162842px",
+                                       textAlign: "center",
+                                       width: "689px",
+                                   }}
+                               >
+                                   Als Architect weten wij uw droom te realiseren. Met inzet
+                                   van onze professie en ervaring kunnen we tot in detail op uw
+                                   wensen inspelen. Van luxe villa’s tot project of
+                                   utiliteitsbouw. Van idee tot werkelijkheid. Dit doen wij al
+                                   meer dan 35 jaar met plezier.
+                               </p>
+                           </div>
+                           <p
+                               style={{
+                                   position: "relative",
+
+                                   fontSize: "13px",
+                                   fontStyle: "italic",
+                                   fontWeight: 300,
+                                   lineHeight: "15px",
+                                   letterSpacing: "-0.3499999940395355px",
+                                   textAlign: "left",
+                               }}
+                           >
+                               Bekijk Alle projecten
+                               <span
+                                   className={`
                               block h-[1px] bg-black absolute bottom-0 left-0 w-full
                             `}
-                    style={{
-                      content: "''",
-                    }}
-                  />
-                </p>
-              </div>
+                                   style={{
+                                       content: "''",
+                                   }}
+                               />
+                           </p>
+                       </div>
 
-            </div>
+                   </div>
 
-              <div className='scroll-section'>
-                  <div className='flex gap-5 items-center h-[100vh]'>
+                   <div className='scroll-section'>
+                       <div className='flex gap-5 items-center h-[100vh]'>
 
-                      <div className="h-[75%]" ref={categoryImageTrigger}>
-                          <div className='overflow-hidden' style={{height: '100%'}}>
-                              <Link href="/projects">
-                                  <Image
-                                      ref={categoryImage}
+                           <div className="h-[75%]" ref={categoryImageTrigger}>
+                               <div className='overflow-hidden' style={{height: '100%'}}>
+                                   <Link href="/projects">
+                                       <Image
+                                           ref={categoryImage}
                                       alt={'luxevil'}
                                       src={"/img/luxevil.jpg"}
                                       width={710}
