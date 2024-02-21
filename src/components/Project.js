@@ -7,55 +7,19 @@ import 'swiper/css/pagination';
 import { Mousewheel,  EffectCoverflow,  } from 'swiper/modules';
 import Link from "next/link";
 import Image from "next/image";
-import {useGSAP} from "@gsap/react";
 
 
 gsap.registerPlugin(ScrollTrigger);
 
 function HomePage() {
   const swiperRef = useRef(null);
-  const triggerRef = useRef(null);
 
-  /*useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
-    let scrollDirection = 1;
-    const pin = gsap.fromTo(
-      swiperRef.current,
-      {
-        translateX: 0,
-      },
-      {
-        translateX: "-230vw",
-        ease: "none",
-        duration: 20,
-        scrollTrigger: {
-          trigger: swiperRef.current,
-          start: "top top",
-          end: "2000 top",
-          scrub: 0.2,
-          pin: true,        
-        
-        },
-      }
-    );
-    return () => {
-      {
-        /!* A return function for killing the animation on component unmount *!/
-      }
-      pin.kill();
-    };
-  
-  }, []);*/
-
-
-    /*useGSAP(()=>{
-        gsap.to('.swiper-slide-active', {
-            duration: 2,
-            translateX: -200
-        })
-    })*/
 
     useEffect(() => {
+
+
         // Initialize the Swiper instance
         const swiper = swiperRef.current.swiper;
 
@@ -153,12 +117,12 @@ function HomePage() {
     slidesPerView: 3,
     coverflowEffect: {
       rotate: 0,
-      stretch: -500,
-      depth: 200,
-      modifier: 1,
+      stretch: -80,
+      depth: 100,
+      modifier: 10,
       slideShadows: false,
     },
-    speed: 1000,
+    speed: 800,
     mousewheel: true,
     modules: [EffectCoverflow, Mousewheel],
     className: "mySwiper",
@@ -166,7 +130,7 @@ function HomePage() {
 
   return (
 
-      <>
+
           <Swiper
               {...settings} ref={swiperRef}
 
@@ -463,7 +427,7 @@ function HomePage() {
 
 
           </Swiper>
-      </>
+
 
   );
 }
