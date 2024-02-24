@@ -74,8 +74,41 @@ function HomePage() {
         const homeNav = SplitType.create('.home-nav-link', { types: 'lines' });
         const navLinkText = homeNav.lines
 
+        gsap.fromTo(
+            chars,
+            {
+                y: 100,
+                opacity: 0
+            },
+            {
+                y: 0,
+                opacity: 1,
+                stagger: 0.05,
+                duration: 2,
+                ease: 'power2',
+                delay: 1
 
-        gsap.to('.loader1', {
+            }
+        )
+
+        gsap.fromTo(
+            navLinkText,
+            {
+                y: 100,
+                opacity: 0
+            },
+            {
+                y: 0,
+                opacity: 1,
+                stagger: 0.05,
+                duration: 2,
+                ease: 'power4.out',
+                delay: 1.5
+
+            }
+        )
+
+        /*gsap.to('.loader1', {
             y: '-100%',
             duration: 4,
             ease: 'power4.inOut',
@@ -129,7 +162,7 @@ function HomePage() {
                 )
             }
 
-        });
+        });*/
 
 
 
@@ -231,8 +264,9 @@ function HomePage() {
         const timeline = gsap.timeline({ repeat: -1, delay: 6 });
 
         // Add the image change animation to the timeline
-        timeline.to(imageRef.current, { opacity: 0, duration: 1, delay: 6, scale:1, onComplete: changeImage })
-            .fromTo(imageRef.current, {scale: 1.5}, { scale: 1, opacity: 1, duration: 1, ease: 'power2.inOut' });
+        timeline.to(imageRef.current, { opacity: 0, duration: 0.5, delay: 6, scale:1, onComplete: changeImage })
+            .to(imageRef.current,  { scale: 1, opacity: 1, duration: 0.5, ease: 'sine' });
+
 
         // Cleanup on component unmount
         return () => {
@@ -243,7 +277,7 @@ function HomePage() {
   return (
     <>
 
-        <div className='loader1 fixed left-0 top-0 w-[33.33%] h-[100%] bg-orange-600 z-50'>
+       {/* <div className='loader1 fixed left-0 top-0 w-[33.33%] h-[100%] bg-orange-600 z-50'>
 
         </div>
         <div className='loader2 fixed left-[33.33%] top-0 w-[33.33%] h-[100%] bg-orange-600 z-50'>
@@ -252,12 +286,11 @@ function HomePage() {
         <div className='loader3 fixed left-[66.66%] top-0 w-[33%] h-[100%] bg-orange-600 z-50'>
 
         </div>
-
+*/}
 
         <section className="scroll-section-outer">
             <div ref={triggerRef} className='scroll-wrap'>
                <div ref={sectionRef} className="scroll-section-inner">
-
 
                         <div className="scroll-section relative overflow-hidden bg-section">
 
@@ -326,7 +359,7 @@ function HomePage() {
                        </div>
 
 
-                   <div className="scroll-section w-[1263px]">
+                   <div className="scroll-section w-[1463px]">
 
                        <div className="flex flex-col items-center justify-around h-[100vh] w-[1263px] text-wrap">
                            <p
