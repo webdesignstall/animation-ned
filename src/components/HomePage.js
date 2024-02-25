@@ -302,12 +302,12 @@ function HomePage() {
                         <div className="scroll-section relative overflow-hidden bg-section">
 
                             <div className='w-[100vw]'>
-                                <img
+                                <Image
                                     src={imageSrc}
                                     alt={'home image'}
                                     ref={imageRef}
                                     height={941}
-                                    width={1920}
+                                    width={1048}
                                     className="object-cover home1bg h-full w-[100vw]"
                                 />
                             </div>
