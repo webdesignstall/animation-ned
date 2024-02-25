@@ -234,10 +234,10 @@ function HomePage() {
 
     const homeImages = [
         "/img/home/home1.jpg",
-        "/img/home/home2.jpeg",
+        "/img/home/home2.jpg",
         "/img/home/home3.jpeg",
-        "/img/home/home4.jpeg",
-        "/img/home/home5.jpeg",
+        "/img/home/home4.jpg",
+        "/img/home/home5.jpg",
         "/img/home/home6.jpeg"
     ]; // Add more images if needed
 
@@ -261,11 +261,11 @@ function HomePage() {
         };
 
         // GSAP timeline
-        const timeline = gsap.timeline({ repeat: -1, delay: 6 });
+        const timeline = gsap.timeline({ repeat: -1});
 
         // Add the image change animation to the timeline
-        timeline.to(imageRef.current, { opacity: 0, duration: 0.5, delay: 6, scale:1, onComplete: changeImage })
-            .formTo(imageRef.current, {1.3}  { scale: 1, opacity: 1, duration: 0.5, ease: 'power2.inOut' });
+        timeline.to(imageRef.current, { opacity: 0.5, duration: 1, delay: 6, scale:1, onComplete: changeImage })
+            .to(imageRef.current, { scale: 1, duration: 1, opacity: 1, ease: 'power1' });
 
 
         // Cleanup on component unmount
@@ -302,7 +302,7 @@ function HomePage() {
                         <div className="scroll-section relative overflow-hidden bg-section">
 
                             <div className='w-[100vw]'>
-                                <Image
+                                <img
                                     src={imageSrc}
                                     alt={'home image'}
                                     ref={imageRef}
