@@ -265,7 +265,7 @@ function HomePage() {
 
         // Add the image change animation to the timeline
         timeline.to(imageRef.current, { opacity: 0, duration: 0.5, delay: 6, scale:1, onComplete: changeImage })
-            .to(imageRef.current,  { scale: 1, opacity: 1, duration: 0.5, ease: 'sine' });
+            .formTo(imageRef.current, {1.3}  { scale: 1, opacity: 1, duration: 0.5, ease: 'power2.inOut' });
 
 
         // Cleanup on component unmount
