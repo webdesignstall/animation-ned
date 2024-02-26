@@ -45,24 +45,46 @@ function HomePage() {
 
     useGSAP(()=> {
 
-        const scrollTween =   gsap.fromTo(
+        /*const scrollTween =   gsap.fromTo(
             sectionRef.current,
             {
                 translateX: 0,
             },
             {
-                translateX: "-230vw",
+                // translateX: "-230vw",
                 ease: "none",
                 duration: 500,
                 scrollTrigger: {
                     trigger: triggerRef.current,
                     start: "top top",
-                    end: "2000 top",
+                    end: "top top",
+                    scrub: 2,
+                    pin: true
+                },
+            }
+        );*/
+
+        const isMobile = window.innerWidth <= 768; // Adjust the breakpoint as needed
+
+        const scrollTween = gsap.fromTo(
+            sectionRef.current,
+            {
+                translateX: 0,
+            },
+            {
+                translateX: isMobile ? 0 : "-230vw", // Set translateX based on screen width
+                ease: "none",
+                duration: 500,
+                scrollTrigger: {
+                    trigger: triggerRef.current,
+                    start: "top top",
+                    end: isMobile ? 'top top' : `2000 top`,
                     scrub: 2,
                     pin: true
                 },
             }
         );
+
 
 
         // home page title animation
@@ -299,9 +321,9 @@ function HomePage() {
             <div ref={triggerRef} className='scroll-wrap'>
                <div ref={sectionRef} className="scroll-section-inner">
 
-                        <div className="scroll-section relative overflow-hidden bg-section">
+                   <div className="scroll-section relative overflow-hidden bg-section">
 
-                            <div className='w-[100vw]'>
+                            <div className='h-[695px] md:h-full md:w-[100vw]'>
                                 <Image
                                     src={imageSrc}
                                     alt={'home image'}
@@ -320,20 +342,35 @@ function HomePage() {
                                         "linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%)",
                                 }}
                             ></div>
-                            <div className="absolute left-[60px] top-[40px]">
-                                <Image
-                                    alt={'logo'}
-                                    src={"/img/logo.png"}
-                                    height={77}
-                                    width={266}
-                                    className="object-cover"
-                                />
-                            </div>
+                       <div className="absolute left-6 top-6 md:left-[60px] md:top-[40px]">
+                           <Image
+                               alt={'logo'}
+                               src={"/img/logo.png"}
+                               height={133}
+                               width={133}
+                               className="md:object-cover block md:hidden"
+                           />
+                           <Image
+                               alt={'logo'}
+                               src={"/img/logo.png"}
+                               height={77}
+                               width={266}
+                               className="object-cover hidden md:block"
+                           />
+                       </div>
 
-                            <div className="absolute right-[100px] top-[50px]">
-                                <ul className="font-light text-[24.94px] leading-8 text-white">
-                                    <li>
-                                        <Link href={"/projects"} className='home-nav-link'>Luxe villa’s</Link>
+                       <div className="absolute right-6 top-10 block md:hidden">
+                           <svg width="28" height="9" viewBox="0 0 28 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                               <path d="M27.3489 6.54053V8.16986H11.0569V6.54053H27.3489Z" fill="white"/>
+                               <path d="M27.3689 0.817383V2.44671H0.487152V0.817383H27.3689Z" fill="white"/>
+                           </svg>
+                       </div>
+
+
+                       <div className="hidden md:block absolute right-[100px] top-[50px]">
+                           <ul className="font-light text-[24.94px] leading-8 text-white">
+                               <li>
+                                   <Link href={"/projects"} className='home-nav-link'>Luxe villa’s</Link>
                                     </li>
                                     <li>
                                         <Link href={"/projects"} className='home-nav-link'>Projecten</Link>
@@ -347,51 +384,37 @@ function HomePage() {
                                 </ul>
                             </div>
                             <h2 ref={homeTitle}
-                                className="homeTitle absolute bottom-0 leading-[274.56px] text-[100px] text-light italic text-white">
+                                className="homeTitle text-[41px] absolute bottom-0 leading-[41px] md:leading-[274.56px] md:text-[100px] text-light italic text-white text-wrap text-center p-4">
                                 A1-ontwerpgroep architecten B.N.A.
                             </h2>
-                            <div
-                                className="absolute w-[59px] h-[100%] bg-[#93AA95] right-0 top-0 flex items-center justify-center">
-                                <Image
-                                    src={"/img/arraw.png"}
-                                    height={25}
-                                    width={25}
-                                    className="object-cover -rotate-90"
-                                />
-                            </div>
-
-
-
+                       <div className='hidden md:block'>
+                           <div
+                               className="absolute flex w-[59px] h-[100%] bg-[#93AA95] right-0 top-0 items-center justify-center">
+                               <Image
+                                   src={"/img/arraw.png"}
+                                   height={25}
+                                   width={25}
+                                   className="object-cover -rotate-90"
+                               />
+                           </div>
 
                        </div>
 
 
-                   <div className="scroll-section w-[1463px]">
+                   </div>
 
-                       <div className="flex flex-col items-center justify-around h-[100vh] w-[1263px] text-wrap">
+                   <div className="scroll-section md:w-[1463px] md:flex justify-center">
+
+                       <div
+                           className="block md:flex flex-col items-center justify-around md:h-[100vh] md:w-[1263px] text-wrap px-5 py-[120px]">
                            <p
-                               className=""
-                               style={{
-                                   fontSize: "13px",
-                                   fontWeight: "500",
-                                   lineHeight: "15px",
-                                   letterSpacing: "0em",
-                                   textAlign: "left",
-                               }}
+                               className="text-[13px] font-[500] leading-[15px] text-center"
                            >
-                               A1-ontwerpgroep
+                           A1-ontwerpgroep
                            </p>
                            <div>
                                <p
-                                   style={{
-                                       fontSize: "33px",
-                                       fontStyle: "italic",
-                                       fontWeight: 200,
-                                       lineHeight: "46px",
-                                       letterSpacing: "-1.0499999523162842px",
-                                       textAlign: "center",
-                                       width: "689px",
-                                   }}
+                                   className='text-[22px] md:text-[33px] italic font-[200px] leading-[32px] md:leading-[46px] md:text-center md:w-[689px] py-16 text-center'
                                >
                                    Als Architect weten wij uw droom te realiseren. Met inzet
                                    van onze professie en ervaring kunnen we tot in detail op uw
@@ -401,129 +424,129 @@ function HomePage() {
                                </p>
                            </div>
                            <p
+                               className='underline'
                                style={{
                                    position: "relative",
-
                                    fontSize: "13px",
                                    fontStyle: "italic",
                                    fontWeight: 300,
                                    lineHeight: "15px",
                                    letterSpacing: "-0.3499999940395355px",
-                                   textAlign: "left",
+                                   textAlign: "center",
                                }}
                            >
                                Bekijk Alle projecten
-                               <span
+                              {/* <span
                                    className={`
-                              block h-[1px] bg-black absolute bottom-0 left-0 w-full
-                            `}
+                                  block h-[1px] bg-black absolute bottom-0 left-[25%] right-[45%] w-1/2
+                                `}
                                    style={{
                                        content: "''",
                                    }}
-                               />
+                               />*/}
                            </p>
                        </div>
 
                    </div>
 
                    <div className='scroll-section'>
-                       <div className='flex gap-5 items-center h-[100vh]'>
+                        <div className='md:flex lg-flex 2xl-flex gap-5 items-center md:h-[100vh] lg-h-[100vh] xl-h-[100vh]'>
 
-                           <div className="h-[75%]" ref={categoryImageTrigger}>
-                               <div className='overflow-hidden' style={{height: '100%'}}>
-                                   <Link href="/projects">
-                                       <Image
-                                           ref={categoryImage}
-                                      alt={'luxevil'}
-                                      src={"/img/luxevil.jpg"}
-                                      width={710}
-                                      height={780}
-                                      className="object-cover w-[710px] h-[100%] category-image1 overflow-hidden"
-                                  />
-                              </Link>
-                          </div>
+                          <div className="md:h-[75%] lg-h-[75%] xl-h-[75%] p-4" ref={categoryImageTrigger}>
+                                   <div className='overflow-hidden' style={{height: '100%'}}>
+                                       <Link href="/projects">
+                                           <Image
+                                               ref={categoryImage}
+                                          alt={'luxevil'}
+                                          src={"/img/luxevil.jpg"}
+                                          width={710}
+                                          height={780}
+                                          className="object-cover h-[416px] w-full md:w-[710px] md:h-[100%] category-image1 overflow-hidden"
+                                      />
+                                  </Link>
+                              </div>
 
 
-                          <div className="mt-4">
-                              <p
-                                  style={{
-                                      fontSize: "14px",
-                                      fontWeight: 500,
-                                      lineHeight: "15px",
-                                      letterSpacing: "0em",
-                                      textAlign: "left",
-                                  }}
-                              >
-                                  Luxe villa’s
-                              </p>
-                              <Link href="/projects">
+                              <div className="mt-4">
                                   <p
-                                      className="mt-3 underline"
                                       style={{
-                                          position: "relative",
-
-                                          fontSize: "13px",
-                                          fontStyle: "italic",
-                                          fontWeight: 300,
+                                          fontSize: "14px",
+                                          fontWeight: 500,
                                           lineHeight: "15px",
-                                          letterSpacing: "-0.3499999940395355px",
+                                          letterSpacing: "0em",
                                           textAlign: "left",
                                       }}
                                   >
-                                      bekijk project
+                                      Luxe villa’s
                                   </p>
-                              </Link>
+                                  <Link href="/projects">
+                                      <p
+                                          className="mt-3 underline"
+                                          style={{
+                                              position: "relative",
+
+                                              fontSize: "13px",
+                                              fontStyle: "italic",
+                                              fontWeight: 300,
+                                              lineHeight: "15px",
+                                              letterSpacing: "-0.3499999940395355px",
+                                              textAlign: "left",
+                                          }}
+                                      >
+                                          bekijk project
+                                      </p>
+                                  </Link>
+                              </div>
                           </div>
-                      </div>
 
-                      <div className="h-[75%]" ref={categoryImageTrigger}>
-                          <div className='overflow-hidden' style={{height: '100%'}}>
-                              <Link href="/projects">
-                                  <Image
-                                      ref={categoryImage}
-                                      alt={'luxevil'}
-                                      src={"/img/utiliteitsbouw.jpg"}
-                                      width={710}
-                                      height={780}
-                                      className="object-cover w-[710px] h-[100%] category-image2 overflow-hidden"
-                                  />
-                              </Link>
-                          </div>
+                          <div className="md:h-[75%] lg-h-[75%] xl-h-[75%] p-4" ref={categoryImageTrigger}>
+                              <div className='overflow-hidden' style={{height: '100%'}}>
+                                  <Link href="/projects">
+                                      <Image
+                                          ref={categoryImage}
+                                          alt={'luxevil'}
+                                          src={"/img/utiliteitsbouw.jpg"}
+                                          width={710}
+                                          height={780}
+                                          className="object-cover h-[416px] w-full md:w-[710px] md:h-[100%] category-image2 overflow-hidden"
+                                      />
+                                  </Link>
+                              </div>
 
 
-                          <div className="mt-4">
-                              <p
-                                  style={{
-                                      fontSize: "14px",
-                                      fontWeight: 500,
-                                      lineHeight: "15px",
-                                      letterSpacing: "0em",
-                                      textAlign: "left",
-                                  }}
-                              >
-                                  Utiliteitsbouw
-                              </p>
-                              <Link href="/projects">
+                              <div className="mt-4">
                                   <p
-                                      className="mt-3 underline"
                                       style={{
-                                          position: "relative",
-
-                                          fontSize: "13px",
-                                          fontStyle: "italic",
-                                          fontWeight: 300,
+                                          fontSize: "14px",
+                                          fontWeight: 500,
                                           lineHeight: "15px",
-                                          letterSpacing: "-0.3499999940395355px",
+                                          letterSpacing: "0em",
                                           textAlign: "left",
                                       }}
                                   >
-                                      bekijk project
+                                      Utiliteitsbouw
                                   </p>
-                              </Link>
-                          </div>
-                      </div>
+                                  <Link href="/projects">
+                                      <p
+                                          className="mt-3 underline"
+                                          style={{
+                                              position: "relative",
 
-                      <div className="h-[75%]" ref={categoryImageTrigger}>
+                                              fontSize: "13px",
+                                              fontStyle: "italic",
+                                              fontWeight: 300,
+                                              lineHeight: "15px",
+                                              letterSpacing: "-0.3499999940395355px",
+                                              textAlign: "left",
+                                          }}
+                                      >
+                                          bekijk project
+                                      </p>
+                                  </Link>
+                              </div>
+                          </div>
+
+                          <div className="md:h-[75%] lg-h-[75%] xl-h-[75%] p-4" ref={categoryImageTrigger}>
                           <div className='overflow-hidden' style={{height: '100%'}}>
                               <Link href="/projects">
                                   <Image
@@ -532,12 +555,10 @@ function HomePage() {
                                       src={"/img/projecten.jpg"}
                                       width={710}
                                       height={780}
-                                      className="object-cover w-[710px] h-[100%] category-image3 overflow-hidden"
+                                      className="object-cover w-full h-[416px] md:w-[710px] md:h-[100%] category-image3 overflow-hidden"
                                   />
                               </Link>
                           </div>
-
-
                           <div className="mt-4">
                               <p
                                   style={{
@@ -569,22 +590,15 @@ function HomePage() {
                               </Link>
                           </div>
                       </div>
-                  </div>
+                        </div>
 
 
               </div>
 
-              <div className="scroll-section">
-                  <div className="ml-[200px]">
+              <div className="scroll-section border-t-2 px-6 py-8 w-[600px] flex align-middle">
+                  <div className="md:ml-[100px]">
                       <p
-                          className="mb-[80px]"
-                          style={{
-                              fontSize: "72px",
-                              fontWeight: 250,
-                              lineHeight: "102px",
-                              letterSpacing: "0em",
-                              textAlign: "left",
-                          }}
+                          className="mb-[80px] text-[31px] md:text-[72px] font-[200] md:font-[250] leading-[39px] md:leading-[102px]"
                       >
                           Contact
                       </p>
