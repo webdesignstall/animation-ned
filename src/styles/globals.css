@@ -132,6 +132,61 @@ body {
   object-fit: cover;
 }
 
+.main-menu {
+  list-style-type: none;
+}
+
+.wrapper {
+  width: 88%;
+  margin: 0 auto;
+}
+
+nav {
+  position: relative;
+  height: 10rem;
+  background-color: linen;
+  z-index: 10;
+
+  .wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .ham {
+    margin-left: auto;
+
+    span {
+      font-size: 2rem;
+      cursor: pointer;
+    }
+  }
+
+  .main-menu {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    z-index: -1;
+
+    background-color: red;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+  opacity: 0;
+    height: 0;
+
+    li {
+      margin: 1rem 0;
+      font-size: 3rem;
+    }
+  }
+}
+
+
 
 /* CSS media query for screens with a maximum width of 768 pixels */
 @media only screen and (max-width: 961px) {
@@ -155,6 +210,8 @@ body {
     height: auto!important;
   }
 }
+
+
 
 
 
