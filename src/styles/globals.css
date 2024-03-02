@@ -134,7 +134,7 @@ body {
 
 
 /* CSS media query for screens with a maximum width of 768 pixels */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 961px) {
   .scroll-section-inner {
     height: 100%!important;
     width: 100%!important;
