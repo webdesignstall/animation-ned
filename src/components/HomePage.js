@@ -398,12 +398,21 @@ function HomePage() {
                                 </ul>
                             </div>
                             <h2 ref={homeTitle}
-                                className="homeTitle text-[30px] absolute bottom-0 md:leading-[40px]  sm:text-[35px] md:text-[40px] lg:text-[60px] lg:leading-[50.56px] 2xl:text-[100px] xl:leading-[274.56px] text-light italic text-white text-wra p-4"
-                                style={{textWrap: 'wrap'}}
+                                className="homeTitle absolute bottom-0
+                                 text-[30px] sm:text-[35px]
+                                 md:text-[40px] md:leading-[40px]
+                                 lg:text-[50px] lg:leading-[30.56px]
+                                 xl:text-[70px]  xl:leading-[70.56px]
+                                 2xl:text-[90px]
+                                 text-light italic text-white text-wra whitespace-pre-wrap p-4"
                             >
 
                                 A1-ontwerpgroep architecten B.N.A.
                             </h2>
+
+
+
+
                        <div className='hidden md:block'>
                            <div
                                className="absolute flex w-[59px] h-[100%] bg-[#93AA95] right-0 top-0 items-center justify-center">
@@ -425,20 +434,22 @@ function HomePage() {
                        <div
                            className="block md:flex flex-col items-center justify-around md:h-[100vh] md:w-[1263px] text-wrap px-5 py-[120px]">
 
-                           <div className='py-16'>
+                           <div className='py-16 text-center'>
                                <p
                                    className="text-[16px] mb-10 font-[500] leading-[15px] text-center"
                                >
                                    A1-ontwerpgroep
                                </p>
                                <p
-                                   className='text-[22px] md:text-[33px] italic font-[200px] leading-[32px] md:leading-[46px] md:text-center md:w-[689px]  text-center'
+                                   className='text-[22px] md:text-[33px] italic font-[200px] leading-[32px] md:leading-[46px] md:w-[689px] whitespace-pre-wrap text-center'
+                                   style={{overflowWrap: '-moz-initial'}}
                                >
                                    Als Architect weten wij uw droom te realiseren. Met inzet
-                                   van onze professie en ervaring kunnen we tot in detail op uw
-                                   wensen inspelen. Van luxe villa’s tot project of
-                                   utiliteitsbouw. Van idee tot werkelijkheid. Dit doen wij al
-                                   meer dan 35 jaar met plezier.
+                                      van onze professie en ervaring kunnen we tot in detail op uw
+                                      wensen inspelen. Van luxe villa’s tot project of
+                                      utiliteitsbouw. Van idee tot werkelijkheid. Dit doen wij al
+                                      meer dan 35 jaar met plezier.
+
                                </p>
                            </div>
                            <p
