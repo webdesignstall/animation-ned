@@ -155,7 +155,7 @@ function ProjectDetails() {
                     <div ref={sectionRef} className="scroll-section-inner">
 
 
-                        <div className="scroll-section">
+                        <div className="scroll-section flex items-center h-full">
                             <div className="flex gap-5 h-[100vh justify-center items-center w-[915px]">
                                 <div className="mt-4 section-one">
                                 <p
@@ -198,7 +198,7 @@ function ProjectDetails() {
                                 </Link>
                             </div>
                         </div>
-                        <div className="scroll-section mr-16">
+                        <div className="scroll-section mr-16 flex items-center h-full">
                             <div className="flex gap-5 items-center justify-center">
                                 <div className="w-[710px]">
                                     <Link href="/">
@@ -213,7 +213,7 @@ function ProjectDetails() {
                                 </div>
                             </div>
                         </div>
-                        <div className="scroll-section mr-32">
+                        <div className="scroll-section mr-32 flex items-center h-full">
                             <div className="flex gap-5 items-center justify-center">
                                 <div className="w-[410px]" ref={marginLeft}>
                                     <Link href="/">
@@ -280,7 +280,7 @@ function ProjectDetails() {
                             </div>
                         </div>
 
-                        <div className="scroll-section ml-[200px] mr-1">
+                        <div className="scroll-section flex items-center h-full ml-[200px] mr-1">
                             <div className="flex gap-5 items-center justify-center">
                                 <div className="w-[755.34px]">
                                     <Link href="/">
@@ -295,7 +295,7 @@ function ProjectDetails() {
                                 </div>
                             </div>
                         </div>
-                        <div className="scroll-section mr-32">
+                        <div className="scroll-section flex items-center h-full mr-32">
                             <div className="flex gap-5 items-center justify-center">
                                 <div className="w-[558.92px] h-[373px]" ref={section10MarginLeft}>
                                     <Link href="/">
@@ -324,7 +324,7 @@ function ProjectDetails() {
                             </div>
                         </div>
 
-                        <div className="scroll-section">
+                        <div className="scroll-section flex items-center h-full">
                             <div className="flex gap-5 h-[100vh justify-center items-center w-[710px]">
                                 <div className="mt-4">
                                     <p
