@@ -443,7 +443,7 @@ function HomePage() {
                               </svg>
                           </div>
 
-                          <div className="absolute left-0 top-0 z-50 bg-gray-300 bg-transparent w-full text-center py-8 transform -translate-y-60"
+                          <div className="absolute left-0 top-0 z-50 bg-gray-300 w-full text-center py-8 transform -translate-y-60"
                                ref={mobileMenu}>
                               <ul>
                                   <li>
