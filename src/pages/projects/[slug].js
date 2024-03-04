@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 import ResponsiveProjectDetails from "@/components/ResponsiveProjectDetails";
 
+
 export default function Projects() {
   return (
     <>
