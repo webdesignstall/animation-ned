@@ -38,7 +38,7 @@ export default function ResponsiveProjectDetails() {
             src={"/img/project/22420_frame.png"}
             width={710}
             height={610}
-            className="w-full h-[40vh] rounded"
+            className="w-full h-[45vh] rounded"
           />
         </Link>
         <div className="mt-5">
@@ -47,7 +47,7 @@ export default function ResponsiveProjectDetails() {
               src={"/img/project/22424_frame.png"}
               width={710}
               height={710}
-            className="w-full h-[40vh] rounded"
+            className="w-full h-[45vh] rounded"
             />
           </Link>
         </div>
@@ -57,7 +57,7 @@ export default function ResponsiveProjectDetails() {
               src={"/img/project/22428_frame.png"}
               width={710}
               height={710}
-            className="w-full h-[40vh] rounded"
+            className="w-full h-[45vh] rounded"
             />
           </Link>
         </div>
@@ -67,7 +67,7 @@ export default function ResponsiveProjectDetails() {
               src={"/img/project/22418_frame.png"}
               width={710}
               height={710}
-            className="w-full h-[40vh] rounded"
+            className="w-full h-[45vh] rounded"
             />
           </Link>
         </div>
@@ -77,7 +77,7 @@ export default function ResponsiveProjectDetails() {
               src={"/img/project/220410_frame.png"}
               width={710}
               height={710}
-            className="w-full h-[40vh] rounded"
+            className="w-full h-[45vh] rounded"
             />
           </Link>
         </div>
@@ -87,7 +87,7 @@ export default function ResponsiveProjectDetails() {
               src={"/img/projectDetail/section-9.jpeg"}
               width={710}
               height={710}
-            className="w-full h-[40vh] rounded"
+            className="w-full h-[45vh] rounded"
             />
           </Link>
         </div>
@@ -97,7 +97,7 @@ export default function ResponsiveProjectDetails() {
               src={"/img/projectDetail/section7.jpeg"}
               width={710}
               height={710}
-            className="w-full h-[40vh] rounded"
+            className="w-full h-[45vh] rounded"
             />
           </Link>
         </div>
@@ -107,7 +107,7 @@ export default function ResponsiveProjectDetails() {
               src={"/img/project/22419_frame.png"}
               width={710}
               height={710}
-            className="w-full h-[40vh] rounded"
+            className="w-full h-[45vh] rounded"
             />
           </Link>
         </div>
