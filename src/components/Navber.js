@@ -13,7 +13,7 @@ export default function Navber() {
             </h2>
           </Link>
 
-          <ul className="flex gap-5 text-[#4d4c4c]">
+          <ul className="flex text-sm gap-5 text-[#4d4c4c]">
             <Link href="/">Luxe villa’s</Link>
             <Link href="/">Utiliteitsbouw</Link>
             <Link href="/">Projecten</Link>
@@ -23,7 +23,7 @@ export default function Navber() {
           <Link href="#">Contact</Link>
         </div>
       </div>
-      <div className="md:hidden container mx-auto px-10 z-30">
+      <div className="md:hidden container mx-auto px-5 z-30">
         <div className="flex gap-14 items-center justify-between">
           <Link href="/">
             <Image
@@ -54,7 +54,7 @@ export default function Navber() {
           </Link>
         </div>
         <div>
-          <ul className="flex gap-5 pb-5 text-[#4d4c4c]">
+          <ul className="flex text-sm gap-5 pb-5 text-[#4d4c4c]">
             <Link href="/">Luxe villa’s</Link>
             <Link href="/">Utiliteitsbouw</Link>
             <Link href="/">Projecten</Link>
