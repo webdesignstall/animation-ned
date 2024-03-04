@@ -18,7 +18,7 @@ const query = gql`
 const Test = ({ title }) => {
     return (
         <div>
-            <p>{title}</p>
+            <h1>{title}</h1>
         </div>
     );
 };

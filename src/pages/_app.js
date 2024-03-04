@@ -4,9 +4,14 @@ const inter = Inter({ subsets: ['latin'] })
 
 
 import '../styles/globals.css'
+import {ApolloClient, ApolloProvider, InMemoryCache} from "@apollo/client";
 
 // import '../styles/locomotive-css.css'
 
+const wpClient = new ApolloClient({
+    uri: process.env.NEXT_PUBLIC_API_ENDPOINT,
+    cache: new InMemoryCache()
+});
 
 
 export default function App({ Component, pageProps }) {
@@ -14,10 +19,7 @@ export default function App({ Component, pageProps }) {
 
 
         <main className={inter.className}>
-            {/*<ApolloProvider client={wpClient}>*/}
-
-                <Component {...pageProps} />
-            {/*</ApolloProvider>*/}
+             <Component {...pageProps} />
         </main>
 
 
