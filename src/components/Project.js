@@ -71,11 +71,11 @@ function HomePage() {
       const previousSlideElement = swiper.slides[previousSlideIndex];
       const nextSlideElement = swiper.slides[nextSlideIndex];
 
-      const activeTitle = activeSlideElement.querySelector(".title");
-      const previousTitle = previousSlideElement.querySelector(".title");
+      const activeTitle = activeSlideElement?.querySelector(".title");
+      const previousTitle = previousSlideElement?.querySelector(".title");
 
-      const previousImage = previousSlideElement.querySelector(".slide-image");
-      const activeImage = activeSlideElement.querySelector(".slide-image");
+      const previousImage = previousSlideElement?.querySelector(".slide-image");
+      const activeImage = activeSlideElement?.querySelector(".slide-image");
 
       activeSlideImage(activeImage);
 
@@ -85,15 +85,18 @@ function HomePage() {
       slideImage(previousImage);
 
       if (nextSlideElement) {
-        const nextTitle = nextSlideElement.querySelector(".title");
-        const nextImage = nextSlideElement.querySelector(".slide-image");
+        const nextTitle = nextSlideElement?.querySelector(".title");
+        const nextImage = nextSlideElement?.querySelector(".slide-image");
         slideImage(nextImage);
       }
     });
 
     const activeIndex = swiper.activeIndex;
     const activeSlideElement = swiper.slides[activeIndex];
-    const activeTitle = activeSlideElement.querySelector(".title");
+    const activeTitle = activeSlideElement?.querySelector(".title");
+    if(!activeTitle){
+      return activeSlideElement
+    }
     activeTitle.style.display = "flex";
 
     // Cleanup the event listener when the component unmounts
@@ -441,7 +444,6 @@ function HomePage() {
               />
             </Link>
           </div>
-
           <div className="mt-6 w-10/12 mx-auto justify-center title ">
             <div>
               <Link href={`/projects/slug`}>
