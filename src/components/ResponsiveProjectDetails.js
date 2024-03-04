@@ -38,24 +38,76 @@ export default function ResponsiveProjectDetails() {
             src={"/img/project/22420_frame.png"}
             width={710}
             height={610}
-            className="w-full h-full"
+            className="w-full h-[40vh] rounded"
           />
         </Link>
         <div className="mt-5">
           <Link href="/" className="mt-5">
             <Image
-              src={"/img/project/22420_frame.png"}
+              src={"/img/project/22424_frame.png"}
               width={710}
               height={710}
+            className="w-full h-[40vh] rounded"
             />
           </Link>
         </div>
         <div className="mt-5">
           <Link href="/" className="mt-5">
             <Image
-              src={"/img/project/22420_frame.png"}
+              src={"/img/project/22428_frame.png"}
               width={710}
               height={710}
+            className="w-full h-[40vh] rounded"
+            />
+          </Link>
+        </div>
+        <div className="mt-5">
+          <Link href="/" className="mt-5">
+            <Image
+              src={"/img/project/22418_frame.png"}
+              width={710}
+              height={710}
+            className="w-full h-[40vh] rounded"
+            />
+          </Link>
+        </div>
+        <div className="mt-5">
+          <Link href="/" className="mt-5">
+            <Image
+              src={"/img/project/220410_frame.png"}
+              width={710}
+              height={710}
+            className="w-full h-[40vh] rounded"
+            />
+          </Link>
+        </div>
+        <div className="mt-5">
+          <Link href="/" className="mt-5">
+            <Image
+              src={"/img/projectDetail/section-9.jpeg"}
+              width={710}
+              height={710}
+            className="w-full h-[40vh] rounded"
+            />
+          </Link>
+        </div>
+        <div className="mt-5">
+          <Link href="/" className="mt-5">
+            <Image
+              src={"/img/projectDetail/section7.jpeg"}
+              width={710}
+              height={710}
+            className="w-full h-[40vh] rounded"
+            />
+          </Link>
+        </div>
+        <div className="mt-5">
+          <Link href="/" className="mt-5">
+            <Image
+              src={"/img/project/22419_frame.png"}
+              width={710}
+              height={710}
+            className="w-full h-[40vh] rounded"
             />
           </Link>
         </div>
