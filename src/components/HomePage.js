@@ -20,13 +20,15 @@ const rubik = Rubik({
   subsets: ["latin"],
 });
 
-function HomePage() {
+ function HomePage() {
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
   const categoryImage = useRef(null);
   const categoryImageTrigger = useRef(null);
 
   gsap.registerPlugin(ScrollTrigger);
+
+
 
 
   /*  useEffect(() => {
@@ -46,6 +48,9 @@ function HomePage() {
 
 
 
+
+
+
     useGSAP(()=> {
 
         const sectionWrap = document.querySelectorAll('.scroll-section');
@@ -58,7 +63,6 @@ function HomePage() {
             totalWidth += offsetWidthValue;
         }
 
-        console.log('Total width:', totalWidth);
 
         /*const scrollTween =   gsap.fromTo(
             sectionRef.current,
