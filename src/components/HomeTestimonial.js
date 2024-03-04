@@ -1,6 +1,6 @@
-import Link from "next/link";
 
-export default function HomeTestimonial() {
+
+const HomeTestimonial = () => {
     return (
         <div className="scroll-section md:w-[1463px] md:flex justify-center">
 
@@ -11,7 +11,7 @@ export default function HomeTestimonial() {
                     <p
                         className="text-[16px] mb-10 font-[500] leading-[15px] text-center"
                     >
-                        A1-ontwerpgroep
+                       Hi
                     </p>
                     <p
                         className='text-[22px] md:text-[33px] italic font-[200px] leading-[32px] md:leading-[46px] md:w-[689px] whitespace-pre-wrap text-center'
@@ -39,17 +39,18 @@ export default function HomeTestimonial() {
                 >
                     Bekijk Alle projecten
                     {/* <span
-                                   className={`
-                                  block h-[1px] bg-black absolute bottom-0 left-[25%] right-[45%] w-1/2
-                                `}
-                                   style={{
-                                       content: "''",
-                                   }}
-                               />*/}
+className={`
+block h-[1px] bg-black absolute bottom-0 left-[25%] right-[45%] w-1/2
+`}
+style={{
+content: "''",
+}}
+/>*/}
                 </p>
             </div>
 
         </div>
-
     );
-}
+};
+
+export default HomeTestimonial;

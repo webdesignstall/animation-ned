@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Navber() {
+const Navber=() =>{
   return (
     <div className="sticky top-0 left-0 bottom-0 bg-[#EEEEEF] border-b-2 border-[#c4c4c4] mb-5 z-50">
       <div className="hidden container mx-auto md:flex justify-between items-center my-5">
@@ -63,4 +63,9 @@ export default function Navber() {
       </div>
     </div>
   );
+
 }
+
+
+
+export  default  Navber;
