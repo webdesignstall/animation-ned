@@ -17,8 +17,8 @@ export default function Projects() {
       return (
         <div className='h-[100vh]'>
           <Navber/>
-            <div className='pt-14 h-[83vh] overflow-hidden flex justify-center'>
-                <div className='w-[90vw]'>
+            <div className='pt-14 md:h-[83vh] overflow-hidden flex justify-center'>
+                <div className='md:w-[90vw]'>
                     <Project/>
                 </div>
             </div>
