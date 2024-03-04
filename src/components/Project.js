@@ -441,7 +441,6 @@ function HomePage() {
               />
             </Link>
           </div>
-
           <div className="mt-6 w-10/12 mx-auto justify-center title ">
             <div>
               <Link href={`/projects/slug`}>

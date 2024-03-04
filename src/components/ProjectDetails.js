@@ -110,7 +110,7 @@ function ProjectDetails() {
   return (
     <>
       <section
-        className="hidden md:block scroll-section-outer bg-[#EEEEEF]"
+        className="scroll-section-outer bg-[#EEEEEF]"
         ref={containerRef}
       >
         <div ref={triggerRef}>
