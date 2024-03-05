@@ -7,11 +7,15 @@ import "swiper/css/pagination";
 import { Mousewheel, EffectCoverflow } from "swiper/modules";
 import Link from "next/link";
 import Image from "next/image";
+import {useParams} from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function HomePage() {
+function Project({data}) {
   const swiperRef = useRef(null);
+
+  const params = useParams();
+
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -133,454 +137,124 @@ function HomePage() {
 
       <div className="hidden xl:block">
         <Swiper {...settings} ref={swiperRef}>
-            <SwiperSlide>
-                <div className='w-[728px] xl:ml-[-175px] 2xl:ml-[-60px]'>
-                    <div className="h-[437px]">
-                        <div className="h-full">
-                            <div className="h-full">
-                                <Link href={`/projects/slug`}>
-                                    <Image
-                                        alt={"project name"}
-                                        src={"/img/slider/slider-1.jpeg"}
-                                        width={900}
-                                        height={780}
-                                        className="w-[100%] h-[100%] slide-image"
-                                    />
-                                </Link>
+
+            {
+                data?.projects?.map((project )=>(
+                    <SwiperSlide key={project?.id}>
+                        <div className='w-[728px] xl:ml-[-175px] 2xl:ml-[-60px]'>
+                            <div className="h-[437px]">
+                                <div className="h-full">
+                                    <div className="h-full">
+                                        <Link href={`/${params?.category}/${project?.slug}`}>
+                                            <Image
+                                                alt={project?.title}
+                                                src={project?.featuredImage?.node?.sourceUrl}
+                                                width={900}
+                                                height={780}
+                                                className="w-[100%] h-[100%] slide-image"
+                                            />
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                className="hide mt-6 w-full justify-center title "
+                                style={{display: "none"}}
+                            >
+                                <div>
+                                  <Link href={`/${params?.category}/${project?.slug}`}>
+                                        <p
+                                            style={{
+                                                fontSize: "45.47px",
+                                                fontWeight: 200,
+                                                lineHeight: "46.58px",
+                                                letterSpacing: "0em",
+                                                textAlign: "center",
+                                            }}
+                                        >
+                                            {project?.title}
+                                        </p>
+                                    </Link>
+
+                                    <p
+                                        style={{
+                                            position: "relative",
+                                            fontSize: "13px",
+                                            fontWeight: 400,
+                                            lineHeight: "42.47px",
+                                            textAlign: "center",
+                                        }}
+                                    >
+                                        bekijk project
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </SwiperSlide>
+                ))
+            }
 
-                    <div
-                        className="hide mt-6 w-full justify-center title "
-                        style={{display: "none"}}
-                    >
-                        <div>
-                            <Link href={`/projects/slug`}>
-                                <p
-                                    style={{
-                                        fontSize: "45.47px",
-                                        fontWeight: 200,
-                                        lineHeight: "46.58px",
-                                        letterSpacing: "0em",
-                                        textAlign: "center",
-                                    }}
-                                >
-                                    Luxe villa’s
-                                </p>
-                            </Link>
 
-                            <p
-                                style={{
-                                    position: "relative",
-                                    fontSize: "13px",
-                                    fontWeight: 400,
-                                    lineHeight: "42.47px",
-                                    textAlign: "center",
-                                }}
-                            >
-                                bekijk project
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className='w-[728px] xl:ml-[-175px] 2xl:ml-[-60px]'>
-                    <div className="h-[437px]">
-                        <div className="h-full">
-                            <div className="h-full">
-                                <Link href={`/projects/slug`}>
-                                    <Image
-                                        alt={"project name"}
-                                        src={"/img/slider/slider-1.jpeg"}
-                                        width={900}
-                                        height={780}
-                                        className="w-[100%] h-[100%] slide-image"
-                                    />
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        className="hide mt-6 w-full justify-center title "
-                        style={{display: "none"}}
-                    >
-                        <div>
-                            <Link href={`/projects/slug`}>
-                                <p
-                                    style={{
-                                        fontSize: "45.47px",
-                                        fontWeight: 200,
-                                        lineHeight: "46.58px",
-                                        letterSpacing: "0em",
-                                        textAlign: "center",
-                                    }}
-                                >
-                                    Luxe villa’s
-                                </p>
-                            </Link>
-
-                            <p
-                                style={{
-                                    position: "relative",
-                                    fontSize: "13px",
-                                    fontWeight: 400,
-                                    lineHeight: "42.47px",
-                                    textAlign: "center",
-                                }}
-                            >
-                                bekijk project
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className='w-[728px] xl:ml-[-175px] 2xl:ml-[-60px]'>
-                    <div className="h-[437px]">
-                        <div className="h-full">
-                            <div className="h-full">
-                                <Link href={`/projects/slug`}>
-                                    <Image
-                                        alt={"project name"}
-                                        src={"/img/slider/slider-1.jpeg"}
-                                        width={900}
-                                        height={780}
-                                        className="w-[100%] h-[100%] slide-image"
-                                    />
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        className="hide mt-6 w-full justify-center title "
-                        style={{display: "none"}}
-                    >
-                        <div>
-                            <Link href={`/projects/slug`}>
-                                <p
-                                    style={{
-                                        fontSize: "45.47px",
-                                        fontWeight: 200,
-                                        lineHeight: "46.58px",
-                                        letterSpacing: "0em",
-                                        textAlign: "center",
-                                    }}
-                                >
-                                    Luxe villa’s
-                                </p>
-                            </Link>
-
-                            <p
-                                style={{
-                                    position: "relative",
-                                    fontSize: "13px",
-                                    fontWeight: 400,
-                                    lineHeight: "42.47px",
-                                    textAlign: "center",
-                                }}
-                            >
-                                bekijk project
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className='w-[728px] xl:ml-[-175px] 2xl:ml-[-60px]'>
-                    <div className="h-[437px]">
-                        <div className="h-full">
-                            <div className="h-full">
-                                <Link href={`/projects/slug`}>
-                                    <Image
-                                        alt={"project name"}
-                                        src={"/img/slider/slider-1.jpeg"}
-                                        width={900}
-                                        height={780}
-                                        className="w-[100%] h-[100%] slide-image"
-                                    />
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        className="hide mt-6 w-full justify-center title "
-                        style={{display: "none"}}
-                    >
-                        <div>
-                            <Link href={`/projects/slug`}>
-                                <p
-                                    style={{
-                                        fontSize: "45.47px",
-                                        fontWeight: 200,
-                                        lineHeight: "46.58px",
-                                        letterSpacing: "0em",
-                                        textAlign: "center",
-                                    }}
-                                >
-                                    Luxe villa’s
-                                </p>
-                            </Link>
-
-                            <p
-                                style={{
-                                    position: "relative",
-                                    fontSize: "13px",
-                                    fontWeight: 400,
-                                    lineHeight: "42.47px",
-                                    textAlign: "center",
-                                }}
-                            >
-                                bekijk project
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className='w-[728px] xl:ml-[-175px] 2xl:ml-[-60px]'>
-                    <div className="h-[437px]">
-                        <div className="h-full">
-                            <div className="h-full">
-                                <Link href={`/projects/slug`}>
-                                    <Image
-                                        alt={"project name"}
-                                        src={"/img/slider/slider-1.jpeg"}
-                                        width={900}
-                                        height={780}
-                                        className="w-[100%] h-[100%] slide-image"
-                                    />
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        className="hide mt-6 w-full justify-center title "
-                        style={{display: "none"}}
-                    >
-                        <div>
-                            <Link href={`/projects/slug`}>
-                                <p
-                                    style={{
-                                        fontSize: "45.47px",
-                                        fontWeight: 200,
-                                        lineHeight: "46.58px",
-                                        letterSpacing: "0em",
-                                        textAlign: "center",
-                                    }}
-                                >
-                                    Luxe villa’s
-                                </p>
-                            </Link>
-
-                            <p
-                                style={{
-                                    position: "relative",
-                                    fontSize: "13px",
-                                    fontWeight: 400,
-                                    lineHeight: "42.47px",
-                                    textAlign: "center",
-                                }}
-                            >
-                                bekijk project
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className='w-[728px] xl:ml-[-175px] 2xl:ml-[-60px]'>
-                    <div className="h-[437px]">
-                        <div className="h-full">
-                            <div className="h-full">
-                                <Link href={`/projects/slug`}>
-                                    <Image
-                                        alt={"project name"}
-                                        src={"/img/slider/slider-1.jpeg"}
-                                        width={900}
-                                        height={780}
-                                        className="w-[100%] h-[100%] slide-image"
-                                    />
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        className="hide mt-6 w-full justify-center title "
-                        style={{display: "none"}}
-                    >
-                        <div>
-                            <Link href={`/projects/slug`}>
-                                <p
-                                    style={{
-                                        fontSize: "45.47px",
-                                        fontWeight: 200,
-                                        lineHeight: "46.58px",
-                                        letterSpacing: "0em",
-                                        textAlign: "center",
-                                    }}
-                                >
-                                    Luxe villa’s
-                                </p>
-                            </Link>
-
-                            <p
-                                style={{
-                                    position: "relative",
-                                    fontSize: "13px",
-                                    fontWeight: 400,
-                                    lineHeight: "42.47px",
-                                    textAlign: "center",
-                                }}
-                            >
-                                bekijk project
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide>
         </Swiper>
       </div>
 
         {/*For mobile */}
       <section className="block xl:hidden bg-[#eeeeef]">
-            <div className="w-full">
-                <div className="w-10/12 mx-auto">
-                    <Link href={`/projects/slug`}>
-                        <Image
-                            alt={"project name"}
-                            src={"/img/slider/slider-1.jpeg"}
-                            width={900}
-                            height={780}
-                            className="w-[100%] slide-image"
-                        />
-                    </Link>
-                </div>
-                <div className="mt-6 w-10/12 mx-auto justify-center title ">
-                    <div>
-                        <Link href={`/projects/slug`}>
-                            <p
-                                style={{
-                                    fontSize: "30px",
-                                    fontWeight: 200,
-                                    lineHeight: "46.58px",
-                                    letterSpacing: "0em",
-                                    textAlign: "center",
-                                }}
-                            >
-                                Luxe villa’s
-                            </p>
-                        </Link>
 
-                        <p
-                            style={{
-                                position: "relative",
-                                fontSize: "13px",
-                                fontWeight: 400,
-                                lineHeight: "42.47px",
-                                textAlign: "center",
-                            }}
-                        >
-                            bekijk project
-                        </p>
-                    </div>
-                </div>
-                <div className="w-full border-b-2 border-[#c5c5c5]"></div>
-            </div>
-            <div className="w-full my-10">
-                <div className="w-10/12 mx-auto">
-                    <Link href={`/projects/slug`}>
-                        <Image
-                            alt={"project name"}
-                            src={"/img/slider/slider-1.jpeg"}
-                            width={900}
-                            height={780}
-                            className="w-[100%] h-[100%] slide-image"
-                        />
-                    </Link>
-                </div>
-                <div className="mt-6 hide  w-10/12 mx-auto justify-center title ">
-                    <div>
-                        <Link href={`/projects/slug`}>
-                            <p
-                                style={{
-                                    fontSize: "30px",
-                                    fontWeight: 200,
-                                    lineHeight: "46.58px",
-                                    letterSpacing: "0em",
-                    textAlign: "center",
-                  }}
-                >
-                  Villa aan de IJssel
-                </p>
-              </Link>
+          {
+              data?.projects?.map((project)=> (
+                  <div key={project?.id} className="w-full my-4">
+                      <div className="w-10/12 mx-auto">
+                        <Link href={`/${params?.category}/${project?.slug}`}>
+                          <Image
+                              alt={project?.title}
+                              src={project?.featuredImage?.node?.sourceUrl}
+                                  width={900}
+                                  height={780}
+                                  className="w-[100%] slide-image"
+                              />
+                          </Link>
+                      </div>
+                      <div className="mt-6 w-10/12 mx-auto justify-center title ">
+                          <div>
+                            <Link href={`/${params?.category}/${project?.slug}`}>
+                                  <p
+                                      style={{
+                                          fontSize: "30px",
+                                          fontWeight: 200,
+                                          lineHeight: "46.58px",
+                                          letterSpacing: "0em",
+                                          textAlign: "center",
+                                      }}
+                                  >
+                                    {project?.title}
+                                  </p>
+                              </Link>
 
-              <p
-                style={{
-                  position: "relative",
-                  fontSize: "13px",
-                  fontWeight: 400,
-                  lineHeight: "42.47px",
-                  textAlign: "center",
-                }}
-              >
-                IJssel
-              </p>
-            </div>
-          </div>
-          <div className="w-full border-b-2 border-[#c5c5c5]"></div>
-        </div>
-            <div className="w-full my-10">
-          <div className="w-10/12 mx-auto">
-            <Link href={`/projects/slug`}>
-              <Image
-                alt={"project name"}
-                src={"/img/slider/slider-1.jpeg"}
-                width={900}
-                height={780}
-                className="w-[100%] h-[100%] slide-image"
-              />
-            </Link>
-          </div>
-          <div className="mt-6 hide w-10/12 mx-auto justify-center title ">
-            <div>
-              <Link href={`/projects/slug`}>
-                <p
-                  style={{
-                    fontSize: "30px",
-                    fontWeight: 200,
-                    lineHeight: "46.58px",
-                    letterSpacing: "0em",
-                    textAlign: "center",
-                  }}
-                >
-                  Villa aan de IJssel
-                </p>
-              </Link>
+                              <p
+                                  style={{
+                                      position: "relative",
+                                      fontSize: "13px",
+                                      fontWeight: 400,
+                                      lineHeight: "42.47px",
+                                      textAlign: "center",
+                                  }}
+                              >
+                                  bekijk project
+                              </p>
+                          </div>
+                      </div>
+                      <div className="w-full border-b-2 border-[#c5c5c5]"></div>
+                  </div>
 
-              <p
-                style={{
-                  position: "relative",
-                  fontSize: "13px",
-                  fontWeight: 400,
-                  lineHeight: "42.47px",
-                  textAlign: "center",
-                }}
-              >
-                IJssel
-              </p>
-            </div>
-          </div>
-        </div>
+              ))
+          }
+
+
       </section>
     </>
   );
 }
 
-export default HomePage;
+export default Project;

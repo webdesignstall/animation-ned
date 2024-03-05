@@ -13,7 +13,7 @@ const rubik = Rubik({
   subsets: ["latin"],
 });
 
-function ProjectDetails() {
+function ProjectDetails({params, data}) {
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
   const containerRef = useRef(null);
@@ -106,15 +106,6 @@ function ProjectDetails() {
     });
   });
 
-  /*useEffect(() => {
-        let smoother = ScrollSmoother.create({
-            content: '.scroll-section-outer',
-            smooth: 1,
-            speed: 0.2,
-            normalizeScroll: true
-        });
-
-    }, []);*/
 
   useEffect(() => {
     window.onbeforeunload = function () {
@@ -136,7 +127,7 @@ function ProjectDetails() {
           >
             <div>
               <Link
-                href="/projects"
+                href={`/${params?.category}`}
                 style={{
                   fontSize: "16px",
                   fontWeight: 500,
@@ -176,22 +167,26 @@ function ProjectDetails() {
                       textAlign: "center",
                     }}
                   >
-                    Luxe villa’s
+                    {params?.category}
                   </p>
-                  <Link href="/">
+                    <div style={{maxWidth: '700px', overflow: "hidden"}}>
+
+
                     <p
                       className="mt-10 text-[#202020] title"
                       style={{
-                        position: "relative",
+
                         fontSize: "109.87px",
                         fontWeight: 200,
                         lineHeight: "130px",
                         textAlign: "center",
+                        textWrap: 'wrap'
                       }}
                     >
-                      project <br /> Rotterdam
+                      {data?.projectDetail?.title}
                     </p>
-                  </Link>
+                    </div>
+
                 </div>
               </div>
             </div>
