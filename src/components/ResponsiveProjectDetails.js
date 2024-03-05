@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function ResponsiveProjectDetails() {
   return (
     <>
-      <section>
+      <section className='fixed top-0'>
         <Link
           href="/projects"
           style={{
@@ -32,86 +32,165 @@ export default function ResponsiveProjectDetails() {
         </Link>
       </section>
 
-      <div className="w-10/12 mx-auto">
-        <Link href="/">
-          <Image
-            src={"/img/project/22420_frame.png"}
-            width={710}
-            height={610}
-            className="w-full h-[45vh] rounded"
-          />
-        </Link>
-        <div className="mt-5">
-          <Link href="/" className="mt-5">
-            <Image
-              src={"/img/project/22424_frame.png"}
-              width={710}
-              height={710}
-            className="w-full h-[45vh] rounded"
-            />
-          </Link>
+        <div className="">
+
+            <div className="mt-4 h-[60vh] flex justify-center items-center">
+                <div className='text-center'>
+                    <p className=''
+                    >
+                        Luxe villa’s
+                    </p>
+
+                    <p
+                        className="mt-10 text-[#202020] title text-6xl"
+                    >
+                        project <br/> Rotterdam
+                    </p>
+                </div>
+
+            </div>
+
+            <div className='mb-14'>
+                <Image
+                    src={"/img/project/22420_frame.png"}
+                    width={710}
+                    height={610}
+                    className="w-full h-auto"
+                />
+            </div>
+            <div className="mt-5 w-10/12 mx-auto mb-14">
+
+                <Image
+                    src={"/img/project/22424_frame.png"}
+                    width={710}
+                    height={710}
+                    className="w-full h-auto"
+                />
+
+            </div>
+            <div className="mt-5 w-10/12 mx-auto mb-14">
+
+                <Image
+                    src={"/img/project/22428_frame.png"}
+                    width={710}
+                    height={710}
+                    className="w-full h-auto"
+                />
+
+            </div>
+            <div className="mt-5 mb-14">
+
+                <Image
+                    src={"/img/project/22418_frame.png"}
+                    width={710}
+                    height={710}
+                    className="w-full h-auto"
+                />
+
+            </div>
+            <div className="mt-5 mb-14">
+
+                <Image
+                    src={"/img/project/220410_frame.png"}
+                    width={710}
+                    height={710}
+                    className="w-full h-auto"
+                />
+
+            </div>
+            <div className="mt-5 w-10/12 mx-auto mb-14">
+
+                <Image
+                    src={"/img/projectDetail/section-9.jpeg"}
+                    width={710}
+                    height={710}
+                    className="w-full h-auto"
+                />
+
+            </div>
+            <div className="mt-5 mb-14">
+
+                <Image
+                    src={"/img/projectDetail/section7.jpeg"}
+                    width={710}
+                    height={710}
+                    className="w-full h-auto"
+                />
+
+            </div>
+            <div className="mt-5 w-10/12 mx-auto mb-14">
+                <Image
+                    src={"/img/projectDetail/mobile-section-9.jpeg"}
+                    width={710}
+                    height={710}
+                    className="w-full h-auto"
+                />
+            </div>
+
+            <div className="mt-5 w-10/12 mx-auto mb-14">
+                <Image
+                    src={"/img/projectDetail/section-10.jpeg"}
+                    width={710}
+                    height={710}
+                    className="w-full h-auto"
+                />
+            </div>
+
+            <div className="mt-5">
+                <Image
+                    src={"/img/projectDetail/section-11.jpeg"}
+                    width={710}
+                    height={710}
+                    className="w-full h-auto"
+                />
+            </div>
+
+            <div className="flex gap-5 h-[60vh] justify-center items-center">
+                <div className="mt-4">
+                    <p
+                        style={{
+                            fontSize: "14px",
+                            fontWeight: 500,
+                            lineHeight: "15px",
+                            letterSpacing: "0em",
+                            textAlign: "center",
+                        }}
+                    >
+                        Luxe villa’s
+                    </p>
+                    <Link href="/">
+                        <p
+                            className="mt-10 text-[#202020]"
+                            style={{
+                                position: "relative",
+
+                                fontSize: "40px",
+                                fontWeight: 500,
+                                lineHeight: "15px",
+                                letterSpacing: "-0.3499999940395355px",
+                                textAlign: "center",
+                            }}
+                        >
+                            project
+                        </p>
+                        <p
+                            className="mt-10 text-[#202020]"
+                            style={{
+                                position: "relative",
+
+                                fontSize: "40px",
+                                fontWeight: 500,
+                                lineHeight: "15px",
+                                letterSpacing: "-0.3499999940395355px",
+                                textAlign: "center",
+                            }}
+                        >
+                            Rotterdam
+                        </p>
+                    </Link>
+                </div>
+            </div>
         </div>
-        <div className="mt-5">
-          <Link href="/" className="mt-5">
-            <Image
-              src={"/img/project/22428_frame.png"}
-              width={710}
-              height={710}
-            className="w-full h-[45vh] rounded"
-            />
-          </Link>
-        </div>
-        <div className="mt-5">
-          <Link href="/" className="mt-5">
-            <Image
-              src={"/img/project/22418_frame.png"}
-              width={710}
-              height={710}
-            className="w-full h-[45vh] rounded"
-            />
-          </Link>
-        </div>
-        <div className="mt-5">
-          <Link href="/" className="mt-5">
-            <Image
-              src={"/img/project/220410_frame.png"}
-              width={710}
-              height={710}
-            className="w-full h-[45vh] rounded"
-            />
-          </Link>
-        </div>
-        <div className="mt-5">
-          <Link href="/" className="mt-5">
-            <Image
-              src={"/img/projectDetail/section-9.jpeg"}
-              width={710}
-              height={710}
-            className="w-full h-[45vh] rounded"
-            />
-          </Link>
-        </div>
-        <div className="mt-5">
-          <Link href="/" className="mt-5">
-            <Image
-              src={"/img/projectDetail/section7.jpeg"}
-              width={710}
-              height={710}
-            className="w-full h-[45vh] rounded"
-            />
-          </Link>
-        </div>
-        <div className="mt-5">
-          <Link href="/" className="mt-5">
-            <Image
-              src={"/img/project/22419_frame.png"}
-              width={710}
-              height={710}
-            className="w-full h-[45vh] rounded"
-            />
-          </Link>
-        </div>
-      </div>
     </>
   );
 }

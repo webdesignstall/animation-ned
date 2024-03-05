@@ -105,7 +105,7 @@ function HomePage() {
     };
   }, []);
 
-  const settings = {
+  /*const settings = {
     initialSlide: 2,
     effect: "coverflow",
     grabCursor: true,
@@ -123,7 +123,27 @@ function HomePage() {
     mousewheel: true,
     modules: [EffectCoverflow, Mousewheel],
     className: "mySwiper",
-  };
+  };*/
+
+    const settings = {
+        initialSlide: 2,
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        spaceBetween: 0,
+        slidesPerView: 3,
+        coverflowEffect: {
+            rotate: 0,
+            stretch: -80,
+            depth: 60,
+            modifier: 8,
+            slideShadows: false,
+        },
+        speed: 800,
+        mousewheel: true,
+        modules: [EffectCoverflow, Mousewheel],
+        className: "mySwiper",
+    };
 
   return (
     <>

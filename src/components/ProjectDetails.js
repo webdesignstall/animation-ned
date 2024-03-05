@@ -148,6 +148,7 @@ function ProjectDetails() {
               </Link>
             </div>
           </div>
+
           <div ref={sectionRef} className="scroll-section-inner">
             <div className="scroll-section flex items-center h-full">
               <div className="flex gap-5 h-[100vh justify-center items-center w-[915px]">
@@ -367,6 +368,7 @@ function ProjectDetails() {
           </div>
         </div>
       </section>
+
       <section className="block md:hidden">
         <Link
           href="/projects"
