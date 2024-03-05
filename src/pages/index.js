@@ -121,7 +121,8 @@ export const getStaticProps = async () => {
                 categories: data.categories.nodes,
                 gallaries: data.websiteOptions.homePage?.gallery?.reduce((acc, curr)=>(
                      [...acc, curr?.item.node?.sourceUrl]
-                ), [])
+                ), []),
+
             }
 
         },
