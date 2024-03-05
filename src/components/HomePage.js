@@ -87,7 +87,7 @@ function HomePage() {
                 translateX: 0,
             },
             {
-                translateX: isMobile ? 0 : "-5695px", // Set translateX based on screen width
+                translateX: isMobile ? 0 : `-${totalWidth}`, // Set translateX based on screen width
                 ease: "none",
                 duration: 500,
                 scrollTrigger: {
@@ -498,18 +498,21 @@ function HomePage() {
                                   </li>
                               </ul>
                           </div>
-                          <h2 ref={homeTitle}
-                              className="homeTitle absolute bottom-0
+                          <div className='flex justify-center -mb-10'>
+                              <h2 ref={homeTitle}
+                                  className="homeTitle absolute bottom-0
                                  text-[30px] sm:text-[35px]
                                  md:text-[40px] md:leading-[40px]
                                  lg:text-[50px] lg:leading-[30.56px]
                                  xl:text-[70px]  xl:leading-[70.56px]
                                  2xl:text-[90px]
                                  text-light italic text-white text-wra whitespace-pre-wrap p-4"
-                          >
+                              >
 
-                              A1-ontwerpgroep architecten B.N.A.
-                          </h2>
+                                  A1-ontwerpgroep architecten B.N.A.
+                              </h2>
+                          </div>
+
 
                           <div className='hidden md:block'>
                               <div

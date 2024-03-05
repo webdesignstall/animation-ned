@@ -8,10 +8,10 @@ import ResponsiveProjectDetails from "@/components/ResponsiveProjectDetails";
 export default function Projects() {
   return (
     <>
-      <div className="hidden md:block ">
+      <div className="hidden lg:block ">
         <ProjectDetails />
       </div>
-      <div className="block md:hidden">
+      <div className="block lg:hidden">
         <ResponsiveProjectDetails/>
       </div>
     </>
