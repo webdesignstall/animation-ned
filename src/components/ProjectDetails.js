@@ -30,7 +30,7 @@ function ProjectDetails() {
         translateX: 0,
       },
       {
-        translateX: `-600vw`,
+        translateX: `-800vw`,
         ease: "none",
         duration: 1000,
         scrollTrigger: {
