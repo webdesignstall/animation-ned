@@ -10,18 +10,20 @@ import SplitType from 'split-type'
 import 'swiper/css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import { Rubik } from "next/font/google";
 import {useGSAP} from "@gsap/react";
 import HomeTestimonial from "@/components/HomeTestimonial";
-
+import {initializeApollo} from "@/utiles/instance";
 
 const rubik = Rubik({
   weight: "400",
   subsets: ["latin"],
 });
 
- function HomePage() {
+
+
+
+ function HomePage({data}) {
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
   const categoryImage = useRef(null);
@@ -31,16 +33,6 @@ const rubik = Rubik({
 
 
 
-
-  /*  useEffect(() => {
-        let smoother = ScrollSmoother.create({
-            content: '.scroll-section-outer',
-            smooth: 1,
-            speed: 0.2,
-            normalizeScroll: true
-        });
-
-    }, []);*/
 
 
 
@@ -60,7 +52,7 @@ const rubik = Rubik({
 
         for (let i = 0; i < sectionWrap.length; i++) {
             const offsetWidthValue = sectionWrap[i].clientWidth;
-            console.log(`Element ${i + 1} offsetWidth: ${offsetWidthValue}`);
+            // console.log(`Element ${i + 1} offsetWidth: ${offsetWidthValue}`);
             totalWidth += offsetWidthValue;
         }
 
@@ -273,18 +265,12 @@ const rubik = Rubik({
     };
 
 
+
     const imageRef = useRef(null);
 
-    const [imageSrc, setImageSrc] = useState('/img/home/home1.jpg')
+    const [imageSrc, setImageSrc] = useState(data.gallaries[0] || '')
 
-    const homeImages = [
-        "/img/home/home1.jpg",
-        "/img/home/home2.jpg",
-        "/img/home/home3.jpeg",
-        "/img/home/home4.jpg",
-        "/img/home/home5.jpg",
-        "/img/home/home6.jpeg"
-    ]; // Add more images if needed
+    const homeImages = data?.gallaries || [];
 
     useEffect(() => {
         // Define images to be used
@@ -302,7 +288,7 @@ const rubik = Rubik({
 
             setImageSrc(homeImages[currentIndex])
 
-            console.log(currentIndex)
+
         };
 
         // GSAP timeline
@@ -426,14 +412,14 @@ const rubik = Rubik({
                           <div className="absolute left-6 top-6 md:left-[60px] md:top-[40px]">
                               <Image
                                   alt={'logo'}
-                                  src={"/img/logo.png"}
+                                  src={data?.logo}
                                   height={133}
                                   width={133}
                                   className="md:object-cover block md:hidden"
                               />
                               <Image
                                   alt={'logo'}
-                                  src={"/img/logo.png"}
+                                  src={data?.logo}
                                   height={77}
                                   width={266}
                                   className="object-cover hidden md:block ham"
@@ -451,18 +437,15 @@ const rubik = Rubik({
                           <div className="absolute left-0 top-0 z-50 bg-gray-300 w-full text-center py-8 transform -translate-y-60"
                                ref={mobileMenu}>
                               <ul>
-                                  <li>
-                                      <Link href={"/projects"} className='py-2 block menu-nav-link'>Luxe villa’s</Link>
-                                  </li>
-                                  <li>
-                                      <Link href={"/projects"} className='py-2 block menu-nav-link'>Projecten</Link>
-                                  </li>
-                                  <li>
-                                      <Link href={"/projects"} className='py-2 block menu-nav-link'>Utiliteitsbouw</Link>
-                                  </li>
-                                  <li>
-                                      <Link href={"/projects"} className='py-2 block menu-nav-link'>Contact</Link>
-                                  </li>
+                                  {
+                                      data?.categories.map((cat, index)=> (
+                                          <li key={index}>
+                                              <Link href={`/${cat?.slug}`} className='py-2 block menu-nav-link'>{cat?.name}</Link>
+                                          </li>
+
+                                      ))
+                                  }
+
                               </ul>
 
                               <div className="ham2 absolute right-6 top-10 block md:hidden" onClick={menuClose}>
@@ -489,18 +472,14 @@ const rubik = Rubik({
 
                           <div className="hidden md:block absolute right-[100px] top-[50px]">
                               <ul className="font-light text-[24.94px] leading-8 text-white">
-                                  <li>
-                                      <Link href={"/projects"} className='home-nav-link'>Luxe villa’s</Link>
-                                  </li>
-                                  <li>
-                                      <Link href={"/projects"} className='home-nav-link'>Projecten</Link>
-                                  </li>
-                                  <li>
-                                      <Link href={"/projects"} className='home-nav-link'>Utiliteitsbouw</Link>
-                                  </li>
-                                  <li>
-                                      <Link href={"/projects"} className='home-nav-link'>Contact</Link>
-                                  </li>
+                                  {
+                                          data?.categories.map((cat, index)=> (
+                                              <li key={index}>
+                                                  <Link href={`/${cat?.slug}`} className='home-nav-link'>{cat?.name}</Link>
+                                              </li>
+                                          ))
+
+                                  }
                               </ul>
                           </div>
                           <div className='flex justify-center -mb-10'>
@@ -514,7 +493,7 @@ const rubik = Rubik({
                                  text-light italic text-white text-wra whitespace-pre-wrap p-4"
                               >
 
-                                  A1-ontwerpgroep architecten B.N.A.
+                                  { data?.slogan}
                               </h2>
                           </div>
 
@@ -536,146 +515,66 @@ const rubik = Rubik({
                       </div>
 
 
-                     <HomeTestimonial />
+                     <HomeTestimonial testimonial={data?.testimonial} />
                       <div className='scroll-section'>
                           <div
                               className='md:grid md:grid-cols-2 lg:flex 2xl:flex gap-5 items-center lg:h-[100vh] xl:h-[100vh]'>
-                              <div className="md:h-[75%] lg-h-[75%] xl-h-[75%] p-4" ref={categoryImageTrigger}>
-                                  <div className='overflow-hidden' style={{height: '100%'}}>
-                                      <Link href="/projects">
-                                          <Image
-                                              ref={categoryImage}
-                                              alt={'luxevil'}
-                                              src={"/img/luxevil.jpg"}
-                                              width={710}
-                                              height={780}
-                                              className="object-cover h-[416px] w-full md:w-[710px] md:h-[100%] category-image1 overflow-hidden"
-                                          />
-                                      </Link>
-                                  </div>
+                              {
+                                  data?.categories.map((cat, index)=> (
 
 
-                                  <div className="mt-4">
-                                      <p
-                                          style={{
-                                              fontSize: "14px",
-                                              fontWeight: 500,
-                                              lineHeight: "15px",
-                                              letterSpacing: "0em",
-                                              textAlign: "left",
-                                          }}
-                                      >
-                                          Luxe villa’s
-                                      </p>
-                                      <Link href="/projects">
-                                          <p
-                                              className="mt-3 underline"
-                                              style={{
-                                                  position: "relative",
-
-                                                  fontSize: "13px",
-                                                  fontStyle: "italic",
-                                                  fontWeight: 300,
-                                                  lineHeight: "15px",
-                                                  letterSpacing: "-0.3499999940395355px",
-                                                  textAlign: "left",
-                                              }}
-                                          >
-                                              bekijk project
-                                          </p>
-                                      </Link>
-                                  </div>
-                              </div>
-                              <div className="md:h-[75%] lg-h-[75%] xl-h-[75%] p-4" ref={categoryImageTrigger}>
-                                  <div className='overflow-hidden' style={{height: '100%'}}>
-                                      <Link href="/projects">
-                                          <Image
-                                              ref={categoryImage}
-                                              alt={'luxevil'}
-                                              src={"/img/utiliteitsbouw.jpg"}
-                                              width={710}
-                                              height={780}
-                                              className="object-cover h-[416px] w-full md:w-[710px] md:h-[100%] category-image2 overflow-hidden"
-                                          />
-                                      </Link>
-                                  </div>
+                                      <div className="md:h-[75%] lg-h-[75%] xl-h-[75%] p-4" ref={categoryImageTrigger}>
+                                          <div className='overflow-hidden' style={{height: '100%'}}>
+                                              <Link href={`/${cat?.slug}`}>
+                                                  <Image
+                                                      ref={categoryImage}
+                                                      alt={cat?.name}
+                                                      src={cat?.categoryImage?.image?.node?.sourceUrl}
+                                                      width={710}
+                                                      height={780}
+                                                      className="object-cover h-[416px] w-full md:w-[710px] md:h-[100%] category-image1 overflow-hidden"
+                                                  />
+                                              </Link>
+                                          </div>
 
 
-                                  <div className="mt-4">
-                                      <p
-                                          style={{
-                                              fontSize: "14px",
-                                              fontWeight: 500,
-                                              lineHeight: "15px",
-                                              letterSpacing: "0em",
-                                              textAlign: "left",
-                                          }}
-                                      >
-                                          Utiliteitsbouw
-                                      </p>
-                                      <Link href="/projects">
-                                          <p
-                                              className="mt-3 underline"
-                                              style={{
-                                                  position: "relative",
+                                          <div className="mt-4">
+                                              <p
+                                                  style={{
+                                                      fontSize: "14px",
+                                                      fontWeight: 500,
+                                                      lineHeight: "15px",
+                                                      letterSpacing: "0em",
+                                                      textAlign: "left",
+                                                  }}
+                                              >
+                                                  {cat?.name}
+                                              </p>
+                                              <Link href={`/${cat?.slug}`}>
+                                                  <p
+                                                      className="mt-3 underline"
+                                                      style={{
+                                                          position: "relative",
 
-                                                  fontSize: "13px",
-                                                  fontStyle: "italic",
-                                                  fontWeight: 300,
-                                                  lineHeight: "15px",
-                                                  letterSpacing: "-0.3499999940395355px",
-                                                  textAlign: "left",
-                                              }}
-                                          >
-                                              bekijk project
-                                          </p>
-                                      </Link>
-                                  </div>
-                              </div>
-                              <div className="md:h-[75%] lg-h-[75%] xl-h-[75%] p-4" ref={categoryImageTrigger}>
-                                  <div className='overflow-hidden' style={{height: '100%'}}>
-                                      <Link href="/projects">
-                                          <Image
-                                              ref={categoryImage}
-                                              alt={'luxevil'}
-                                              src={"/img/projecten.jpg"}
-                                              width={710}
-                                              height={780}
-                                              className="object-cover w-full h-[416px] md:w-[710px] md:h-[100%] category-image3 overflow-hidden"
-                                          />
-                                      </Link>
-                                  </div>
-                                  <div className="mt-4">
-                                      <p
-                                          style={{
-                                              fontSize: "14px",
-                                              fontWeight: 500,
-                                              lineHeight: "15px",
-                                              letterSpacing: "0em",
-                                              textAlign: "left",
-                                          }}
-                                      >
-                                          Projecten
-                                      </p>
-                                      <Link href="/projects">
-                                          <p
-                                              className="mt-3 underline"
-                                              style={{
-                                                  position: "relative",
+                                                          fontSize: "13px",
+                                                          fontStyle: "italic",
+                                                          fontWeight: 300,
+                                                          lineHeight: "15px",
+                                                          letterSpacing: "-0.3499999940395355px",
+                                                          textAlign: "left",
+                                                      }}
+                                                  >
+                                                      bekijk project
+                                                  </p>
+                                              </Link>
+                                          </div>
+                                      </div>
 
-                                                  fontSize: "13px",
-                                                  fontStyle: "italic",
-                                                  fontWeight: 300,
-                                                  lineHeight: "15px",
-                                                  letterSpacing: "-0.3499999940395355px",
-                                                  textAlign: "left",
-                                              }}
-                                          >
-                                              bekijk project
-                                          </p>
-                                      </Link>
-                                  </div>
-                              </div>
+
+                                  ))
+                              }
+
+
                           </div>
                       </div>
 
@@ -684,122 +583,48 @@ const rubik = Rubik({
                               <p
                                   className="2xl:mb-[80px] text-[50px] mb-10 md:text-[72px] font-[200] md:font-[250] leading-[39px] md:leading-[102px]"
                               >
-                                  Contact
+                                  Contacts
+                                  {data?.contactSection?.label}
                               </p>
 
-                              <div className="mb-[50px]">
-                                  <p
-                                      className={`${rubik.className} uppercase mb-4`}
-                                      style={{
-                                          fontSize: "16px",
-                                          fontWeight: 400,
-                                          lineHeight: "24px",
-                                          letterSpacing: "0em",
-                                          textAlign: "left",
-                                          color: "#93AA95",
-                                      }}
-                                  >
-                                      contact
-                                  </p>
+                              {
+                                  data.contactSection.contactRow.map((ct, index)=> (
+                                      <div key={index} className="mb-[50px]">
+                                          <p
+                                              className={`${rubik.className} uppercase mb-4`}
+                                              style={{
+                                                  fontSize: "16px",
+                                                  fontWeight: 400,
+                                                  lineHeight: "24px",
+                                                  letterSpacing: "0em",
+                                                  textAlign: "left",
+                                                  color: "#93AA95",
+                                              }}
+                                          >
+                                              {ct?.label}
+                                          </p>
 
-                                  <p
-                                      className={`${rubik.className}`}
-                                      style={{
-                                          fontSize: "16px",
-                                          fontWeight: 400,
-                                          lineHeight: "24px",
-                                          letterSpacing: "0em",
-                                          textAlign: "left",
-                                      }}
-                                  >
-                                      010-4523552
-                                  </p>
+                                          <div
+                                              className={`${rubik.className}`}
+                                              style={{
+                                                  fontSize: "16px",
+                                                  fontWeight: 400,
+                                                  lineHeight: "24px",
+                                                  letterSpacing: "0em",
+                                                  textAlign: "left",
+                                              }}
 
-                                  <p
-                                      className={`${rubik.className}`}
-                                      style={{
-                                          fontSize: "16px",
-                                          fontWeight: 400,
-                                          lineHeight: "24px",
-                                          letterSpacing: "0em",
-                                          textAlign: "left",
-                                      }}
-                                  >
-                                      info@a1-ontwerpgroep.nl
-                                  </p>
-                              </div>
+                                              dangerouslySetInnerHTML={{ __html: ct?.details }}
+                                          />
 
-                              <div className="mb-[50px]">
-                                  <p
-                                      className={`${rubik.className} uppercase mb-4`}
-                                      style={{
-                                          fontSize: "16px",
-                                          fontWeight: 400,
-                                          lineHeight: "24px",
-                                          letterSpacing: "0em",
-                                          textAlign: "left",
-                                          color: "#93AA95",
-                                      }}
-                                  >
-                                      adres
-                                  </p>
 
-                                  <p
-                                      className={`${rubik.className}`}
-                                      style={{
-                                          fontSize: "16px",
-                                          fontWeight: 400,
-                                          lineHeight: "24px",
-                                          letterSpacing: "0em",
-                                          textAlign: "left",
-                                      }}
-                                  >
-                                      Hendrik Wachterstraat 13 <br/> 3065 LD Rotterdam <br/>{" "}
-                                      Nederland
-                                  </p>
-                              </div>
+                                      </div>
 
-                              <div className="mb-[50px]">
-                                  <p
-                                      className={`${rubik.className} uppercase mb-4`}
-                                      style={{
-                                          fontSize: "16px",
-                                          fontWeight: 400,
-                                          lineHeight: "24px",
-                                          letterSpacing: "0em",
-                                          textAlign: "left",
-                                          color: "#93AA95",
-                                      }}
-                                  >
-                                      gegevens
-                                  </p>
+                                  ))
+                              }
 
-                                  <p
-                                      className={`${rubik.className}`}
-                                      style={{
-                                          fontSize: "16px",
-                                          fontWeight: 400,
-                                          lineHeight: "24px",
-                                          letterSpacing: "0em",
-                                          textAlign: "left",
-                                      }}
-                                  >
-                                      KVK-nummer: 52685063
-                                  </p>
 
-                                  <p
-                                      className={`${rubik.className}`}
-                                      style={{
-                                          fontSize: "16px",
-                                          fontWeight: 400,
-                                          lineHeight: "24px",
-                                          letterSpacing: "0em",
-                                          textAlign: "left",
-                                      }}
-                                  >
-                                      BTW-nummer: NL001470939B85
-                                  </p>
-                              </div>
+
 
                               <div className="mb-[50px]">
                                   <div className="flex gap-5">
@@ -865,3 +690,22 @@ const rubik = Rubik({
 }
 
 export default HomePage;
+
+
+export const getServerSideProps = async () => {
+    const apolloClient = initializeApollo(); // initialize apollo client
+
+    // Fetch data using Apollo client
+    const { data } = await apolloClient.query({
+        query: query,
+    });
+
+    console.log('query', data)
+
+    return {
+        props: {
+            title: data.websiteOptions.generalFields.title,
+        }
+    };
+};
+

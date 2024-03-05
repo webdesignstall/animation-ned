@@ -25,7 +25,7 @@ const Test = ({ title }) => {
 
 export default Test;
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
     const apolloClient = initializeApollo(); // initialize apollo client
 
     // Fetch data using Apollo client
@@ -33,10 +33,12 @@ export const getStaticProps = async () => {
         query: query,
     });
 
+    console.log('query', data)
+
     return {
         props: {
             title: data.websiteOptions.generalFields.title,
-        },
-        revalidate: 60, // re-generate page every 60 seconds
+
+        }
     };
 };
