@@ -23,14 +23,29 @@ function ProjectDetails() {
 
   gsap.registerPlugin(ScrollTrigger);
 
+
+
   useGSAP(() => {
+
+    const sectionWrap = document.querySelectorAll('.section');
+
+    let totalWidth = 0;
+
+    for (let i = 0; i < sectionWrap.length; i++) {
+      const offsetWidthValue = sectionWrap[i].clientWidth;
+      console.log(`Element ${i + 1} offsetWidth: ${offsetWidthValue}`);
+      totalWidth += offsetWidthValue;
+    }
+
+    console.log('Total width:', totalWidth);
+
     const scrollTween = gsap.fromTo(
       sectionRef.current,
       {
         translateX: 0,
       },
       {
-        translateX: `-800vw`,
+        translateX: `-${totalWidth}`,
         ease: "none",
         duration: 1000,
         scrollTrigger: {
@@ -150,7 +165,7 @@ function ProjectDetails() {
           </div>
 
           <div ref={sectionRef} className="scroll-section-inner">
-            <div className="scroll-section flex items-center h-full">
+            <div className="section scroll-section flex items-center h-full">
               <div className="flex gap-5 h-[100vh justify-center items-center w-[915px]">
                 <div className="mt-4 section-one">
                   <p
@@ -180,7 +195,7 @@ function ProjectDetails() {
                 </div>
               </div>
             </div>
-            <div className="mr-32">
+            <div className="section mr-32">
               <div className="h-[100vh] w-[900px]">
                 <Link href="/">
                   <Image
@@ -192,7 +207,7 @@ function ProjectDetails() {
                 </Link>
               </div>
             </div>
-            <div className="scroll-section mr-16 flex items-center h-full">
+            <div className="section scroll-section mr-16 flex items-center h-full">
               <div className="flex gap-5 items-center justify-center">
                 <div className="w-[710px]">
                   <Link href="/">
@@ -206,7 +221,7 @@ function ProjectDetails() {
                 </div>
               </div>
             </div>
-            <div className="scroll-section mr-32 flex items-center h-full">
+            <div className="section scroll-section mr-32 flex items-center h-full">
               <div className="flex gap-5 items-center justify-center">
                 <div className="w-[410px]" ref={marginLeft}>
                   <Link href="/">
@@ -221,7 +236,7 @@ function ProjectDetails() {
                 </div>
               </div>
             </div>
-            <div className="mr-[20rem]">
+            <div className="section mr-[20rem]">
               <div className="w-[1793px] h-[100vh]">
                 <Link href="/">
                   <Image
@@ -233,7 +248,7 @@ function ProjectDetails() {
                 </Link>
               </div>
             </div>
-            <div className="">
+            <div className="section ">
               <div className="h-[100vh] w-[1428px]">
                 <Link href="/">
                   <Image
@@ -245,7 +260,7 @@ function ProjectDetails() {
                 </Link>
               </div>
             </div>
-            <div className="mr-2">
+            <div className="section mr-2">
               <div className="flex items-center h-full w-[775px]">
                 <div className="" ref={marginLeft2}>
                   <Link href="/">
@@ -259,7 +274,7 @@ function ProjectDetails() {
                 </div>
               </div>
             </div>
-            <div className="mr-20">
+            <div className="section mr-20">
               <div className="h-[100vh] w-[1793px]">
                 <Link href="/">
                   <Image
@@ -272,7 +287,7 @@ function ProjectDetails() {
               </div>
             </div>
 
-            <div className="scroll-section flex items-center h-full ml-[200px] mr-1">
+            <div className="section scroll-section flex items-center h-full ml-[200px] mr-1">
               <div className="flex gap-5 items-center justify-center">
                 <div className="w-[755.34px]">
                   <Link href="/">
@@ -286,7 +301,7 @@ function ProjectDetails() {
                 </div>
               </div>
             </div>
-            <div className="scroll-section flex items-center h-full mr-32">
+            <div className="section scroll-section flex items-center h-full mr-32">
               <div className="flex gap-5 items-center justify-center">
                 <div
                   className="w-[558.92px] h-[373px]"
@@ -305,7 +320,7 @@ function ProjectDetails() {
               </div>
             </div>
 
-            <div className="mr-32">
+            <div className="section mr-32">
               <div className="h-[100vh] w-[1441px]">
                 <Link href="/">
                   <Image
@@ -318,7 +333,7 @@ function ProjectDetails() {
               </div>
             </div>
 
-            <div className="scroll-section flex items-center h-full">
+            <div className="section scroll-section flex items-center h-full">
               <div className="flex gap-5 h-[100vh justify-center items-center w-[710px]">
                 <div className="mt-4">
                   <p
