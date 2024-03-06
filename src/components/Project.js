@@ -98,7 +98,6 @@ function Project({data}) {
     const activeIndex = swiper.activeIndex;
     const activeSlideElement = swiper.slides[activeIndex];
     const activeTitle = activeSlideElement?.querySelector(".title");
-    console.log('activeTitle', activeTitle);
     if(!activeTitle){
       return activeSlideElement
     }
