@@ -56,7 +56,10 @@ export const getServerSideProps = async ({params}) => {
     return {
         props: {
            data: {
-                projectDetail: data?.projectBy || []
+                projectDetail: data?.projectBy || [],
+                projectImages: data?.projectBy?.projectFields?.images?.reduce((acc, curr)=>(
+                    [...acc, curr?.item.node?.sourceUrl]
+                ), []) || [],
            }
 
         }

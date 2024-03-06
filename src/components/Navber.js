@@ -5,21 +5,25 @@ import Link from "next/link";
 
 
 
-const Navber=({}) =>{
+const Navber=({data, categories}) =>{
+
   return (
     <div className="sticky top-0 left-0 bottom-0 bg-[#EEEEEF] border-b-2 border-[#c4c4c4] mb-5 z-50">
       <div className="hidden container mx-auto md:flex justify-between items-center my-5">
         <div className="flex gap-14">
           <Link href="/">
             <h2 className="text-[19px] italic font-[300] leading-[21px]">
-              A1-ontwerpgroep
+              {data?.logoText}
             </h2>
           </Link>
 
           <ul className="flex text-sm gap-5 text-[#4d4c4c]">
-            <Link href="/">Luxe villa’s</Link>
-            <Link href="/">Utiliteitsbouw</Link>
-            <Link href="/">Projecten</Link>
+            {
+              categories?.map((category)=>{
+               return <Link key={category?.slug} href={`/${category?.slug}`}>{category?.name}</Link>
+              })
+            }
+
           </ul>
         </div>
         <div>
@@ -31,7 +35,7 @@ const Navber=({}) =>{
           <Link href="/">
             <Image
               alt={"logo"}
-              src={"/img/responsiveLogo.png"}
+              src={data?.responsiveLogo?.node?.sourceUrl}
               height={10}
               width={150}
               className="h-24"
@@ -58,9 +62,12 @@ const Navber=({}) =>{
         </div>
         <div>
           <ul className="flex justify-center text-sm gap-5 pb-5 text-[#4d4c4c]">
-            <Link href="/">Luxe villa’s</Link>
-            <Link href="/">Utiliteitsbouw</Link>
-            <Link href="/">Projecten</Link>
+
+            {
+              categories?.map((category)=>{
+                return <Link key={category?.slug} href={`/${category?.slug}`}>{category?.name}</Link>
+              })
+            }
           </ul>
         </div>
       </div>

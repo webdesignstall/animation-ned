@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-export default function ResponsiveProjectDetails() {
+export default function ResponsiveProjectDetails({params, data}) {
   return (
     <>
       <section className='fixed top-0'>
         <Link
-          href="/projects"
+          href={`/${params?.category}`}
           style={{
             fontSize: "16px",
             fontWeight: 500,
@@ -29,121 +29,178 @@ export default function ResponsiveProjectDetails() {
             />
           </svg>
           Terug
+            
         </Link>
       </section>
 
         <div className="">
 
             <div className="mt-4 h-[60vh] flex justify-center items-center">
-                <div className='text-center'>
+                <div className='text-center' style={{maxWidth: '350px'}}>
                     <p className=''
                     >
-                        Luxe villa’s
+                        {params?.category}
                     </p>
 
                     <p
                         className="mt-10 text-[#202020] title text-6xl"
                     >
-                        project <br/> Rotterdam
+                        {data?.projectDetail?.title}
                     </p>
                 </div>
 
             </div>
 
-            <div className='mb-14'>
-                <Image
-                    src={"/img/project/22420_frame.png"}
-                    width={710}
-                    height={610}
-                    className="w-full h-auto"
-                />
-            </div>
-            <div className="mt-5 w-10/12 mx-auto mb-14">
+            {
+                data?.projectImages[0] && (
+                    <div className='mb-14'>
+                        <Image
+                            src={data?.projectImages[0]}
+                            width={710}
+                            height={610}
+                            className="w-full h-auto"
+                        />
+                    </div>
+                )
+            }
 
-                <Image
-                    src={"/img/project/22424_frame.png"}
-                    width={710}
-                    height={710}
-                    className="w-full h-auto"
-                />
+            {
 
-            </div>
-            <div className="mt-5 w-10/12 mx-auto mb-14">
+                    data?.projectImages[1] && (
+                    <div className="mt-5 w-10/12 mx-auto mb-14">
 
-                <Image
-                    src={"/img/project/22428_frame.png"}
-                    width={710}
-                    height={710}
-                    className="w-full h-auto"
-                />
+                        <Image
+                            src={data?.projectImages[1]}
+                            width={710}
+                            height={710}
+                            className="w-full h-auto"
+                        />
 
-            </div>
-            <div className="mt-5 mb-14">
+                    </div>
 
-                <Image
-                    src={"/img/project/22418_frame.png"}
-                    width={710}
-                    height={710}
-                    className="w-full h-auto"
-                />
+                )
+            }
 
-            </div>
-            <div className="mt-5 mb-14">
+            {
 
-                <Image
-                    src={"/img/project/220410_frame.png"}
-                    width={710}
-                    height={710}
-                    className="w-full h-auto"
-                />
+                data?.projectImages[2] && (
+                    <div className="mt-5 w-10/12 mx-auto mb-14">
 
-            </div>
-            <div className="mt-5 w-10/12 mx-auto mb-14">
+                        <Image
+                            src={ data?.projectImages[2]}
+                            width={710}
+                            height={710}
+                            className="w-full h-auto"
+                        />
 
-                <Image
-                    src={"/img/projectDetail/section-9.jpeg"}
-                    width={710}
-                    height={710}
-                    className="w-full h-auto"
-                />
+                    </div>
+                )
+            }
 
-            </div>
-            <div className="mt-5 mb-14">
+            {
 
-                <Image
-                    src={"/img/projectDetail/section7.jpeg"}
-                    width={710}
-                    height={710}
-                    className="w-full h-auto"
-                />
+                data?.projectImages[3] && (
+                    <div className="mt-5 mb-14">
 
-            </div>
-            <div className="mt-5 w-10/12 mx-auto mb-14">
-                <Image
-                    src={"/img/projectDetail/mobile-section-9.jpeg"}
-                    width={710}
-                    height={710}
-                    className="w-full h-auto"
-                />
-            </div>
+                        <Image
+                            src={data?.projectImages[3]}
+                            width={710}
+                            height={710}
+                            className="w-full h-auto"
+                        />
 
-            <div className="mt-5 w-10/12 mx-auto mb-14">
-                <Image
-                    src={"/img/projectDetail/section-10.jpeg"}
-                    width={710}
-                    height={710}
-                    className="w-full h-auto"
-                />
-            </div>
+                    </div>
+                )
+            }
+            {
 
-            <div className="mt-5">
-                <Image
-                    src={"/img/projectDetail/section-11.jpeg"}
-                    width={710}
-                    height={710}
-                    className="w-full h-auto"
-                />
-            </div>
+                    data?.projectImages[4] && (
+                    <div className="mt-5 mb-14">
+
+                        <Image
+                            src={ data?.projectImages[4]}
+                            width={710}
+                            height={710}
+                            className="w-full h-auto"
+                        />
+
+                    </div>
+
+                )
+            }
+            {
+
+                    data?.projectImages[5] && (
+                    <div className="mt-5 w-10/12 mx-auto mb-14">
+
+                        <Image
+                            src={data?.projectImages[5]}
+                            width={710}
+                            height={710}
+                            className="w-full h-auto"
+                        />
+
+                    </div>
+
+                )
+            }
+            {
+
+                data?.projectImages[6] && (
+                    <div className="mt-5 mb-14">
+
+                        <Image
+                            src={data?.projectImages[6]}
+                            width={710}
+                            height={710}
+                            className="w-full h-auto"
+                        />
+
+                    </div>
+                )
+            }
+            {
+
+                data?.projectImages[7] && (
+                    <div className="mt-5 w-10/12 mx-auto mb-14">
+                        <Image
+                            src={ data?.projectImages[7]}
+                            width={710}
+                            height={710}
+                            className="w-full h-auto"
+                        />
+                    </div>
+                )
+            }
+
+            {
+
+                data?.projectImages[8] && (
+                    <div className="mt-5 w-10/12 mx-auto mb-14">
+                        <Image
+                            src={data?.projectImages[8]}
+                            width={710}
+                            height={710}
+                            className="w-full h-auto"
+                        />
+                    </div>
+                )
+            }
+
+            {
+
+                    data?.projectImages[9] && (
+                    <div className="mt-5">
+                        <Image
+                            src={data?.projectImages[9]}
+                            width={710}
+                            height={710}
+                            className="w-full h-auto"
+                        />
+                    </div>
+                )
+            }
+
 
             <div className="flex gap-5 h-[60vh] justify-center items-center">
                 <div className="mt-4">
@@ -156,38 +213,25 @@ export default function ResponsiveProjectDetails() {
                             textAlign: "center",
                         }}
                     >
-                        Luxe villa’s
+                        {params?.category}
                     </p>
-                    <Link href="/">
+                    <div style={{maxWidth: '300px'}}>
                         <p
                             className="mt-10 text-[#202020]"
                             style={{
                                 position: "relative",
-
                                 fontSize: "40px",
                                 fontWeight: 500,
-                                lineHeight: "15px",
+                                lineHeight: '1.2em',
                                 letterSpacing: "-0.3499999940395355px",
                                 textAlign: "center",
-                            }}
-                        >
-                            project
-                        </p>
-                        <p
-                            className="mt-10 text-[#202020]"
-                            style={{
-                                position: "relative",
 
-                                fontSize: "40px",
-                                fontWeight: 500,
-                                lineHeight: "15px",
-                                letterSpacing: "-0.3499999940395355px",
-                                textAlign: "center",
                             }}
                         >
-                            Rotterdam
+                            {data?.projectDetail?.title}
                         </p>
-                    </Link>
+
+                    </div>
                 </div>
             </div>
         </div>

@@ -40,6 +40,30 @@ const queryFunc = (params)=>{
                       }
                     }
                   }
+                    websiteOptions {
+                        generalFields {
+                          logoText
+                            responsiveLogo{
+                                node{
+                                  sourceUrl
+                                }
+                              }
+                          copyRight {
+                            leftText
+                            rightText
+                            linkText
+                            link
+                          }
+                          categories{
+                            category{
+                              nodes{
+                                slug
+                                name
+                              }
+                            }
+                          }
+                        }
+                      }
                 }
                 `;
     return query;
@@ -50,14 +74,15 @@ export default function Projects({data}) {
       return (
         <div className='h-[100vh]'>
 
-          <Navber/>
+          <Navber data={data?.generalFields} categories={data?.categories}/>
 
             <div className='pt-14 md:h-[83vh] overflow-hidden flex justify-center'>
                 <div className='md:w-[90vw]'>
                     <Project data={data} />
                 </div>
             </div>
-          <Footer/>  
+          <Footer data={data?.generalFields}/>
+
         </div>
        
       );
@@ -78,6 +103,12 @@ export const getServerSideProps = async ({params}) => {
         props: {
             data: {
                 projects: data?.categories?.nodes[0]?.projects?.nodes || [],
+                generalFields: data?.websiteOptions?.generalFields || {},
+                categories: data.websiteOptions?.generalFields?.categories?.reduce((acc, curr) => {
+                    const { slug, name } = curr.category.nodes[0];
+                    acc.push({ slug, name });
+                    return acc;
+                }, []) || []
 
             }
 
