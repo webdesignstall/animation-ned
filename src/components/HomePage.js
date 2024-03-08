@@ -50,7 +50,7 @@ const rubik = Rubik({
 
         let totalWidth = 0;
 
-        for (let i = 0; i < sectionWrap.length; i++) {
+        for (let i = 1; i < sectionWrap.length; i++) {
             const offsetWidthValue = sectionWrap[i].clientWidth;
             // console.log(`Element ${i + 1} offsetWidth: ${offsetWidthValue}`);
             totalWidth += offsetWidthValue;
@@ -84,7 +84,7 @@ const rubik = Rubik({
                 translateX: 0,
             },
             {
-                translateX: isMobile ? 0 : `-${totalWidth}`, // Set translateX based on screen width
+                translateX: isMobile ? 0 : `-${totalWidth + 300}`, // Set translateX based on screen width
                 ease: "none",
                 duration: 500,
                 scrollTrigger: {
@@ -516,14 +516,15 @@ const rubik = Rubik({
 
 
                      <HomeTestimonial testimonial={data?.testimonial} />
+
                       <div className='scroll-section'>
                           <div
                               className='md:grid md:grid-cols-2 lg:flex 2xl:flex gap-5 items-center lg:h-[100vh] xl:h-[100vh]'>
                               {
                                   data?.categories.map((cat, index)=> (
 
-
-                                      <div className="md:h-[75%] lg-h-[75%] xl-h-[75%] p-4" ref={categoryImageTrigger}>
+                                      // md:h-[75%] lg-h-[75%] xl-h-[75%] p-4
+                                      <div className="md:h-[100%] lg-h-[85%] xl-h-[85%] pt-12 pb-28 p-4" ref={categoryImageTrigger}>
                                           <div className='overflow-hidden' style={{height: '100%'}}>
                                               <Link href={`/${cat?.slug}`}>
                                                   <Image
@@ -531,13 +532,11 @@ const rubik = Rubik({
                                                       alt={cat?.name}
                                                       src={cat?.categoryImage?.image?.node?.sourceUrl}
                                                       width={710}
-                                                      height={780}
-                                                      className="object-cover h-[416px] w-full md:w-[710px] md:h-[100%] category-image1 overflow-hidden"
+                                                      height={702}
+                                                      className="object-cover h-[416px] w-full md:w-[702px] md:h-[100%] category-image1 overflow-hidden"
                                                   />
                                               </Link>
                                           </div>
-
-
                                           <div className="mt-4">
                                               <p
                                                   style={{
