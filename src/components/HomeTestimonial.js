@@ -2,7 +2,7 @@
 const HomeTestimonial = ({testimonial}) => {
 
     return (
-        <div className="scroll-section md:w-[1463px] md:flex justify-center">
+        <div className="scroll-section md:w-[1024px] md:flex justify-center">
 
             <div
                 className="block md:flex flex-col items-center justify-around md:h-[100vh] md:w-[1263px] text-wrap px-5 py-[120px]">
@@ -15,8 +15,8 @@ const HomeTestimonial = ({testimonial}) => {
 
                     </p>
                     <p
-                        className='text-[22px] md:text-[33px] italic font-[200px] leading-[32px] md:leading-[46px] md:w-[689px] whitespace-pre-wrap text-center'
-                        style={{overflowWrap: '-moz-initial'}}
+                        className='text-[22px] md:text-[33px] italic leading-[32px] md:leading-[46px] md:w-[689px] whitespace-pre-wrap text-center'
+                        style={{overflowWrap: '-moz-initial', fontWeight: '200'}}
                     >
                         {
                             testimonial?.info
