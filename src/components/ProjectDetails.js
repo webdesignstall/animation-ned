@@ -31,7 +31,7 @@ function ProjectDetails({params, data}) {
 
     let totalWidth = 0;
 
-    for (let i = 0; i < sectionWrap.length; i++) {
+    for (let i = 1; i < sectionWrap.length; i++) {
       const offsetWidthValue = sectionWrap[i].clientWidth;
       console.log(`Element ${i + 1} offsetWidth: ${offsetWidthValue}`);
       totalWidth += offsetWidthValue;

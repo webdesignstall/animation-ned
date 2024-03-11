@@ -109,18 +109,24 @@ body {
   width: 100%;
   height: 100%;
 }
+.swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  transition-property: transform;
+  box-sizing: content-box;
+}
 
 .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  /* background: #fff; */
-
-  /* Center slide text vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* width: 900px!important; */
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition-property: transform;
 }
+
 .swiper-slide-active{
   /* width: 900px!important; */
 }
@@ -128,9 +134,93 @@ body {
 .swiper-slide img {
   display: block;
   width: 100%;
+  object-fit: cover;
+  height: 438px;
+}
+
+.slide-wrapp {
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  transition: transform .25s cubic-bezier(.25,.46,.45,.94);
+  display: flex;
+}
+
+.swiper-slide {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition-property: transform;
+}
+
+
+.swiper-slide.is-galerie-projet {
+  width: 728px!important;
+  height: 100%;
+  min-height: auto;
+}
+
+.swiper-wrapper.is-projet-galerie {
+  height: 100%;
+  max-width: 100vw;
+  align-items: center;
+  display: flex;
+}
+
+
+.swiper-slide.is-galerie-projet:not(.swiper-slide-active, .swiper-slide-duplicate-active) .slide-wrapp {
+  transform: scale(.8);
+  pointer-events: none;
+  transition-property: transform;
+  transition-duration: 600ms;
+}
+
+.swiper-slide.is-galerie-projet:not(.swiper-slide-active, .swiper-slide-duplicate-active) .category-title {
+  transform: scale(.8);
+  pointer-events: none;
+  transition-property: transform;
+  transition-duration: 600ms;
+}
+
+.swiper-slide.is-galerie-projet .slide-wrapp *:not(.projet-img-holder, .absolute-image) {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(.25, .46, .45, .94);
+}
+.swiper-slide.is-galerie-projet.swiper-slide-active .slide-wrapp *:not(.projet-img-holder, .absolute-image), .swiper-slide.is-galerie-projet.swiper-slide-duplicate-active .slide-wrapp *:not(.projet-img-holder, .absolute-image) {
+  opacity: 1;
+}
+
+.absolute-image {
+  width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
+/*.w-inline-block {
+  max-width: 100%;
+  display: inline-block;
+  height: 100%;
+}*/
+
+
+/*.swiper-slide.is-galerie-projet .slide-wrapp *:not(.projet-img-holder, .absolute-image) {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(.25, .46, .45, .94);
+}
+
+.swiper-slide.is-galerie-projet.swiper-slide-active .slide-wrapp *:not(.projet-img-holder, .absolute-image), .swiper-slide.is-galerie-projet.swiper-slide-duplicate-active .slide-wrapp *:not(.projet-img-holder, .absolute-image) {
+  opacity: 1;
+}
+
+.w-inline-block {
+  max-width: 100%;
+  display: inline-block;
+}*/
 
 .main-menu {
   list-style-type: none;
