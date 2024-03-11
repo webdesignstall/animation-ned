@@ -76,11 +76,13 @@ export default function Projects({data}) {
 
           <Navber data={data?.generalFields} categories={data?.categories}/>
 
-            <div className='pt-14 md:h-[83vh] overflow-hidden flex justify-center'>
-                <div className='md:w-[90vw]'>
+            <div className='md:h-[83vh] overflow-hidden flex justify-center'>
+                <div className='md:w-[90vw] mt-10'>
                     <Project data={data} />
                 </div>
             </div>
+
+            {/*<Project data={data} />*/}
           <Footer data={data?.generalFields}/>
 
         </div>

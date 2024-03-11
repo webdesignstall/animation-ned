@@ -8,6 +8,7 @@ import { Mousewheel, EffectCoverflow } from "swiper/modules";
 import Link from "next/link";
 import Image from "next/image";
 import {useParams} from "next/navigation";
+import {useGSAP} from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,7 +20,19 @@ function Project({data}) {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  useEffect(() => {
+  useGSAP(()=> {
+      gsap.to(swiperRef.current, {
+          scrollTrigger: {
+              trigger: swiperRef.current,
+              scrub: 2,
+              start: "top top",
+              end: 'top top',
+              pin: true
+          }
+      })
+  })
+
+  /*useEffect(() => {
     // Initialize the Swiper instance
     const swiper = swiperRef.current.swiper;
 
@@ -35,8 +48,8 @@ function Project({data}) {
           opacity: 1,
           // duration: 1,
           display: "flex",
-          scale: 1.2,
-          ease: "expo.inOut",
+          // scale: 1.1,
+          // ease: "expo.inOut",
         }
       );
     };
@@ -44,15 +57,14 @@ function Project({data}) {
     const activeSlideImage = (activeSlideElement) => {
       gsap.to(activeSlideElement, {
         // duration: 2.5,
-        scale: 1,
-        ease: "expo.inOut",
+
+        // ease: "expo.inOut",
       });
     };
     const slideImage = (slideImage) => {
       gsap.to(slideImage, {
         // duration: 2.5,
-        scale: 1,
-        ease: "expo.out",
+        // ease: "expo.out",
       });
     };
 
@@ -60,8 +72,7 @@ function Project({data}) {
       gsap.to(activeSlideElement, {
         display: "none",
         opacity: 0,
-        scale: 1,
-        ease: "expo.inOut",
+        // ease: "expo.inOut",
       });
     };
 
@@ -107,9 +118,9 @@ function Project({data}) {
     return () => {
       swiper.off("slideChange", activeSlide);
     };
-  }, []);
+  }, []);*/
 
-  const settings = {
+ /* const settings = {
     initialSlide: 2,
     effect: "coverflow",
     grabCursor: true,
@@ -118,15 +129,31 @@ function Project({data}) {
     slidesPerView: 3,
     coverflowEffect: {
       rotate: 0,
-      stretch: -80,
-      depth: 100,
+      stretch: -40,
+      depth: 0,
       modifier: 10,
       slideShadows: false,
+
     },
     speed: 800,
     mousewheel: true,
     modules: [EffectCoverflow, Mousewheel],
     className: "mySwiper",
+  };
+*/
+
+  const settings = {
+    initialSlide: 2,
+    grabCursor: true,
+    centeredSlides: true,
+    spaceBetween: 100,
+    slidesPerView: 'auto',
+    speed: 1300,
+    // duration: 100,
+    mousewheel: true,
+    modules: [Mousewheel],
+    className: "mySwiper",
+
   };
 
 
@@ -135,9 +162,9 @@ function Project({data}) {
     <>
 
       <div className="hidden xl:block">
-        <Swiper {...settings} ref={swiperRef}>
+        <Swiper {...settings} ref={swiperRef} className='is-projet-galerie'>
 
-            {
+            {/*{
                 data?.projects?.map((project )=>(
                     <SwiperSlide key={project?.id}>
                         <div className='w-[728px] xl:ml-[-175px] 2xl:ml-[-60px]'>
@@ -192,8 +219,58 @@ function Project({data}) {
                         </div>
                     </SwiperSlide>
                 ))
-            }
+            }*/}
 
+            {
+                data?.projects?.map((project )=>(
+                    <SwiperSlide  role='group' className='is-galerie-projet'  key={project?.id}>
+            <div style={{marginRight: '150px'}} className='slide-wrapp'>
+
+                    <Link href={`/${params?.category}/${project?.slug}`} className='projet-img-holder w-inline-block'>
+                      <Image
+                          alt={project?.title}
+                          src={project?.featuredImage?.node?.sourceUrl}
+                          width={900}
+                          height={780}
+                          className="absolute-image slide-image"
+                      />
+                    </Link>
+
+              <div
+                  className="mt-6 w-full flex justify-center w-inline-block category-title"
+              >
+                <div>
+                  <Link href={`/${params?.category}/${project?.slug}`}>
+                    <p
+                        style={{
+                          fontSize: "45.47px",
+                          fontWeight: 200,
+                          lineHeight: "46.58px",
+                          letterSpacing: "0em",
+                          textAlign: "center",
+                        }}
+                    >
+                      {project?.title}
+                    </p>
+                  </Link>
+
+                  <p
+                      style={{
+                        position: "relative",
+                        fontSize: "13px",
+                        fontWeight: 400,
+                        lineHeight: "42.47px",
+                        textAlign: "center",
+                      }}
+                  >
+                    bekijk project
+                  </p>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+                ))
+            }
 
         </Swiper>
       </div>
@@ -205,7 +282,7 @@ function Project({data}) {
               data?.projects?.map((project)=> (
                   <div key={project?.id} className="w-full my-4">
                       <div className="w-10/12 mx-auto">
-                        <Link href={`/${params?.category}/${project?.slug}`}>
+                        <Link href={`/${params?.category}/${project?.slug}`} className='projet-img-holder w-inline-block'>
                           <Image
                               alt={project?.title}
                               src={project?.featuredImage?.node?.sourceUrl}
@@ -215,9 +292,9 @@ function Project({data}) {
                               />
                           </Link>
                       </div>
-                      <div className="mt-6 w-10/12 mx-auto justify-center title ">
+                      <div className="mt-6 w-10/12 mx-auto justify-center">
                           <div>
-                            <Link href={`/${params?.category}/${project?.slug}`}>
+                            <Link href={`/${params?.category}/${project?.slug}`} className='w-inline-block'>
                                   <p
                                       style={{
                                           fontSize: "30px",
