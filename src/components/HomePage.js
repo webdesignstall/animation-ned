@@ -521,10 +521,10 @@ const rubik = Rubik({
                           <div
                               className='md:grid md:grid-cols-2 lg:flex 2xl:flex gap-5 items-center lg:h-[100vh] xl:h-[100vh]'>
                               {
-                                  data?.categories.map((cat, index)=> (
+                                  data?.categories?.map((cat, index)=> (
 
                                       // md:h-[75%] lg-h-[75%] xl-h-[75%] p-4
-                                      <div className="md:h-[100%] lg-h-[85%] xl-h-[85%] pt-12 pb-28 p-4" ref={categoryImageTrigger}>
+                                      <div className="md:h-[100%] lg-h-[85%] xl-h-[85%] pt-12 pb-28" ref={categoryImageTrigger}>
                                           <div className='overflow-hidden' style={{height: '100%'}}>
                                               <Link href={`/${cat?.slug}`}>
                                                   <Image

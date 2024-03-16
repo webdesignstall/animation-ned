@@ -2,7 +2,7 @@
 const HomeTestimonial = ({testimonial}) => {
 
     return (
-        <div className="scroll-section md:w-[1024px] md:flex justify-center">
+        <div className="scroll-section md:w-[1400px] md:flex justify-center">
 
             <div
                 className="block md:flex flex-col items-center justify-around md:h-[100vh] md:w-[1263px] text-wrap px-5 py-[120px]">
