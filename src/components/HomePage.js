@@ -368,6 +368,7 @@ const rubik = Rubik({
         )
     }
 
+
   return (
       <>
 
@@ -582,7 +583,6 @@ const rubik = Rubik({
                               <p
                                   className="2xl:mb-[80px] text-[50px] mb-10 md:text-[72px] font-[200] md:font-[250] leading-[39px] md:leading-[102px]"
                               >
-                                  Contacts
                                   {data?.contactSection?.label}
                               </p>
 

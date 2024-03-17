@@ -34,6 +34,7 @@ const query = gql`
         info
       }
       contactSection{
+        label
         contactRow{
           label
           details
@@ -108,7 +109,7 @@ export const getStaticProps = async () => {
         query: query,
     });
 
-    // console.log('query', data.websiteOptions.homePage?.gallery)
+    // console.log('query', data.websiteOptions.homePage?.contactSection)
 
     return {
         props: {
