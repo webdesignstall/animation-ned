@@ -32,6 +32,7 @@ const query = gql`
         name
         designation
         info
+        url
       }
       contactSection{
         label
