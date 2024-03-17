@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 const HomeTestimonial = ({testimonial}) => {
 
@@ -24,7 +25,7 @@ const HomeTestimonial = ({testimonial}) => {
 
                     </p>
                 </div>
-                <p
+                <Link href={testimonial?.url}
                     className='underline'
                     style={{
                         position: "relative",
@@ -38,7 +39,7 @@ const HomeTestimonial = ({testimonial}) => {
                 >
                     {testimonial?.designation}
 
-                </p>
+                </Link>
             </div>
 
         </div>
