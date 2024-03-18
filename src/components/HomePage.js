@@ -474,11 +474,18 @@ const rubik = Rubik({
                           <div className="hidden md:block absolute right-[100px] top-[50px]">
                               <ul className="font-light text-[24.94px] leading-8 text-white">
                                   {
-                                          data?.categories.map((cat, index)=> (
+                                          data?.mainMenu?.items?.map((item, index)=> (
                                               <li key={index}>
-                                                  <Link href={`/${cat?.slug}`} className='home-nav-link'>{cat?.name}</Link>
+                                                  <Link href={`${item?.url}`} className='home-nav-link'>{item?.label}</Link>
                                               </li>
                                           ))
+
+                                  }
+                                  {
+
+                                          <li>
+                                              <Link href={`${data?.mainMenu?.lastItem?.last_url}`} className='home-nav-link'>{data?.mainMenu?.lastItem?.last_label}</Link>
+                                          </li>
 
                                   }
                               </ul>

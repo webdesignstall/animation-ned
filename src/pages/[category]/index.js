@@ -48,6 +48,17 @@ const queryFunc = (params)=>{
                                   sourceUrl
                                 }
                               }
+                           mainMenu{
+                                items{
+                                  label
+                                  url
+                                  
+                                }
+                                lastItem{
+                                  last_label
+                                  last_url
+                                }
+                              }
                           copyRight {
                             leftText
                             rightText
