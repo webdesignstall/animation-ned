@@ -25,6 +25,17 @@ const query = gql`
           sourceUrl
         }
       }
+       mainMenu{
+        items{
+          label
+          url
+          
+        }
+        lastItem{
+          last_label
+          last_url
+        }
+      }
     }
     homePage{
       slogan
@@ -124,7 +135,7 @@ export const getStaticProps = async () => {
                 gallaries: data.websiteOptions.homePage?.gallery?.reduce((acc, curr)=>(
                      [...acc, curr?.item.node?.sourceUrl]
                 ), []),
-
+                mainMenu: data.websiteOptions?.generalFields?.mainMenu
             }
 
         },
