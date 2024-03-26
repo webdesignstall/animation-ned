@@ -83,7 +83,7 @@ const queryFunc = (params)=>{
 export default function Projects({data}) {
         const params = useParams();
       return (
-        <div className='h-[100vh]'>
+        <div className=''>
 
           <Navber data={data?.generalFields} categories={data?.categories}/>
 
