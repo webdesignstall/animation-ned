@@ -46,233 +46,226 @@ const rubik = Rubik({
 
     useGSAP(()=> {
 
-        const sectionWrap = document.querySelectorAll('.scroll-section');
+            const sectionWrap = document.querySelectorAll('.scroll-section');
 
-        let totalWidth = 0;
+            let totalWidth = 0;
 
-        for (let i = 1; i < sectionWrap.length; i++) {
-            const offsetWidthValue = sectionWrap[i].clientWidth;
-            // console.log(`Element ${i + 1} offsetWidth: ${offsetWidthValue}`);
-            totalWidth += offsetWidthValue;
-        }
+            for (let i = 1; i < sectionWrap.length; i++) {
+                const offsetWidthValue = sectionWrap[i].clientWidth;
+                // console.log(`Element ${i + 1} offsetWidth: ${offsetWidthValue}`);
+                totalWidth += offsetWidthValue;
+            }
 
 
-        /*const scrollTween =   gsap.fromTo(
-            sectionRef.current,
-            {
-                translateX: 0,
-            },
-            {
-                // translateX: "-230vw",
-                ease: "none",
-                duration: 500,
-                scrollTrigger: {
-                    trigger: triggerRef.current,
-                    start: "top top",
-                    end: "top top",
-                    scrub: 2,
-                    pin: true
+            /*const scrollTween =   gsap.fromTo(
+                sectionRef.current,
+                {
+                    translateX: 0,
                 },
-            }
-        );*/
+                {
+                    // translateX: "-230vw",
+                    ease: "none",
+                    duration: 500,
+                    scrollTrigger: {
+                        trigger: triggerRef.current,
+                        start: "top top",
+                        end: "top top",
+                        scrub: 2,
+                        pin: true
+                    },
+                }
+            );*/
 
-        const isMobile = window.innerWidth <= 961; // Adjust the breakpoint as needed
+            const isMobile = window.innerWidth <= 961; // Adjust the breakpoint as needed
 
-        const scrollTween = gsap.fromTo(
-            sectionRef.current,
-            {
-                translateX: 0,
-            },
-            {
-                translateX: isMobile ? 0 : `-${totalWidth + 300}`, // Set translateX based on screen width
-                ease: "none",
-                duration: 500,
-                scrollTrigger: {
-                    trigger: triggerRef.current,
-                    start: "top top",
-                    end: isMobile ? 'top top' : `2000 top`,
-                    scrub: 2,
-                    pin: true
+            const scrollTween = gsap.fromTo(
+                sectionRef.current,
+                {
+                    translateX: 0,
                 },
-            }
-        );
-
-
-
-        // home page title animation
-        const ourText = SplitType.create(homeTitle.current, { types: 'chars' });
-        const chars = ourText.chars
-
-
-        // home page nav link
-        const homeNav = SplitType.create('.home-nav-link', { types: 'lines' });
-        const navLinkText = homeNav.lines
-
-        gsap.fromTo(
-            chars,
-            {
-                y: 100,
-                opacity: 0
-            },
-            {
-                y: 0,
-                opacity: 1,
-                stagger: 0.05,
-                duration: 2,
-                ease: 'power2',
-                delay: 1
-
-            }
-        )
-
-        gsap.fromTo(
-            navLinkText,
-            {
-                y: 100,
-                opacity: 0
-            },
-            {
-                y: 0,
-                opacity: 1,
-                stagger: 0.05,
-                duration: 2,
-                ease: 'power4.out',
-                delay: 1.5
-
-            }
-        )
-
-        /*gsap.to('.loader1', {
-            y: '-100%',
-            duration: 4,
-            ease: 'power4.inOut',
-            onStart: ()=>{
-                gsap.fromTo(
-                    chars,
-                    {
-                        y: 100,
-                        opacity: 0
+                {
+                    translateX: isMobile ? 0 : `-${totalWidth + 300}`, // Set translateX based on screen width
+                    ease: "none",
+                    duration: 500,
+                    scrollTrigger: {
+                        trigger: triggerRef.current,
+                        start: "top top",
+                        end: isMobile ? 'top top' : `2000 top`,
+                        scrub: 2,
+                        pin: true
                     },
-                    {
-                        y: 0,
-                        opacity: 1,
-                        stagger: 0.05,
-                        duration: 2,
-                        ease: 'power2',
-                        delay: 1
-
-                    }
-                )
-            }
-        });
-        gsap.to('.loader2', {
-            y: '-100%',
-            duration: 4,
-            ease: 'power4.inOut',
-            delay: 0.2
-
-        });
-        gsap.to('.loader3', {
-            y: '-100%',
-            duration: 4,
-            ease: 'power4.inOut',
-            delay: 0.3,
-            onStart: ()=>{
-                gsap.fromTo(
-                    navLinkText,
-                    {
-                        y: 100,
-                        opacity: 0
-                    },
-                    {
-                        y: 0,
-                        opacity: 1,
-                        stagger: 0.05,
-                        duration: 2,
-                        ease: 'power4.out',
-                        delay: 2.2
-
-                    }
-                )
-            }
-
-        });*/
+                }
+            );
 
 
-
-        // home page background animation
-        gsap.fromTo('.home1bg', {
-            scale: 1.5
-        }, {
-            scale: 1,
-            duration: 2,
-            delay: 1,
-            ease: 'power2.inOut',
-
-        })
-
-        gsap.fromTo('.home1bg', {
-            x: 0
-        }, {
-            x: 300, // Adjust the value based on your desired parallax effect
-            ease: 'none',
-            overflow: 'hidden',
-            width: '100%',
-            duration: 1,
-            scrollTrigger: {
-                trigger: '.bg-section',
-                scrub: 1,
-                pin: true,
-                containerAnimation: scrollTween,
-                toggleActions: 'restart none reverse none'
-            }
-        });
+            // home page title animation
+            const ourText = SplitType.create(homeTitle.current, {types: 'chars'});
+            const chars = ourText.chars
 
 
+            // home page nav link
+            const homeNav = SplitType.create('.home-nav-link', {types: 'lines'});
+            const navLinkText = homeNav.lines
+
+            gsap.fromTo(
+                chars,
+                {
+                    y: 100,
+                    opacity: 0
+                },
+                {
+                    y: 0,
+                    opacity: 1,
+                    stagger: 0.05,
+                    duration: 2,
+                    ease: 'power2',
+                    delay: 1
+
+                }
+            )
+
+            gsap.fromTo(
+                navLinkText,
+                {
+                    y: 100,
+                    opacity: 0
+                },
+                {
+                    y: 0,
+                    opacity: 1,
+                    stagger: 0.05,
+                    duration: 2,
+                    ease: 'power4.out',
+                    delay: 1.5
+
+                }
+            )
+
+            /*gsap.to('.loader1', {
+                y: '-100%',
+                duration: 4,
+                ease: 'power4.inOut',
+                onStart: ()=>{
+                    gsap.fromTo(
+                        chars,
+                        {
+                            y: 100,
+                            opacity: 0
+                        },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            stagger: 0.05,
+                            duration: 2,
+                            ease: 'power2',
+                            delay: 1
+
+                        }
+                    )
+                }
+            });
+            gsap.to('.loader2', {
+                y: '-100%',
+                duration: 4,
+                ease: 'power4.inOut',
+                delay: 0.2
+
+            });
+            gsap.to('.loader3', {
+                y: '-100%',
+                duration: 4,
+                ease: 'power4.inOut',
+                delay: 0.3,
+                onStart: ()=>{
+                    gsap.fromTo(
+                        navLinkText,
+                        {
+                            y: 100,
+                            opacity: 0
+                        },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            stagger: 0.05,
+                            duration: 2,
+                            ease: 'power4.out',
+                            delay: 2.2
+
+                        }
+                    )
+                }
+
+            });*/
 
 
-        const categoryImageAnimation = (target)=> {
-            gsap.fromTo(target, {
-                scale: 1.5,
+            // home page background animation
+            gsap.fromTo('.home1bg', {
+                scale: 1.5
             }, {
                 scale: 1,
                 duration: 2,
+                delay: 1,
+                ease: 'power2.inOut',
+
+            })
+
+            gsap.fromTo('.home1bg', {
+                x: 0
+            }, {
+                x: 300, // Adjust the value based on your desired parallax effect
+                ease: 'none',
+                overflow: 'hidden',
+                width: '100%',
+                duration: 1,
                 scrollTrigger: {
-                    trigger: target,
+                    trigger: '.bg-section',
+                    scrub: 1,
+                    pin: true,
                     containerAnimation: scrollTween,
-                },
-                ease: "power4.inOut"
+                    toggleActions: 'restart none reverse none'
+                }
             });
+
+
+            const categoryImageAnimation = (target) => {
+                gsap.fromTo(target, {
+                    scale: 1.5,
+                }, {
+                    scale: 1,
+                    duration: 2,
+                    scrollTrigger: {
+                        trigger: target,
+                        containerAnimation: scrollTween,
+                    },
+                    ease: "power4.inOut"
+                });
+            }
+
+            categoryImageAnimation('.category-image1')
+            categoryImageAnimation('.category-image2')
+            categoryImageAnimation('.category-image3')
+
         }
+    )
 
-        categoryImageAnimation('.category-image1')
-        categoryImageAnimation('.category-image2')
-        categoryImageAnimation('.category-image3')
-
-
-
-
-    })
-
-    const settings = {
-        dots: true,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 1000,
-        pauseOnHover: true
-    };
+     const settings = {
+         dots: true,
+         infinite: true,
+         slidesToShow: 1,
+         slidesToScroll: 1,
+         autoplay: true,
+         autoplaySpeed: 1000,
+         pauseOnHover: true
+     };
 
 
+     const imageRef = useRef(null);
 
-    const imageRef = useRef(null);
+     const [imageSrc, setImageSrc] = useState(data.gallaries[0] || '')
 
-    const [imageSrc, setImageSrc] = useState(data.gallaries[0] || '')
+     const homeImages = data?.gallaries || [];
 
-    const homeImages = data?.gallaries || [];
-
-    useEffect(() => {
+     useEffect(() => {
         // Define images to be used
 
 
@@ -533,15 +526,15 @@ const rubik = Rubik({
 
                                       // md:h-[75%] lg-h-[75%] xl-h-[75%] p-4
                                       <div className="md:h-[100%] lg-h-[85%] xl-h-[85%] pt-12 pb-28" ref={categoryImageTrigger}>
-                                          <div className='overflow-hidden' style={{height: '100%'}}>
-                                              <Link href={`/${cat?.slug}`}>
+                                          <div className='overflow-hidden category-image-wrap' style={{height: '100%'}}>
+                                              <Link href={`/${cat?.slug}`} className='image-zoom-container'>
                                                   <Image
                                                       ref={categoryImage}
                                                       alt={cat?.name}
                                                       src={cat?.categoryImage?.image?.node?.sourceUrl}
                                                       width={710}
                                                       height={702}
-                                                      className="object-cover h-[416px] w-full md:w-[702px] md:h-[100%] category-image1 overflow-hidden"
+                                                      className="object-cover h-[416px] w-full md:w-[702px] md:h-[100%] category-image1 overflow-hidden zoom-image"
                                                   />
                                               </Link>
                                           </div>
@@ -557,9 +550,9 @@ const rubik = Rubik({
                                               >
                                                   {cat?.name}
                                               </p>
-                                              <Link href={`/${cat?.slug}`}>
-                                                  <p
-                                                      className="mt-3 underline"
+                                              <Link href={`/${cat?.slug}`} className='js-work-link'>
+                                                  <span
+                                                      className="mt-3 link-underline link-underline-black"
                                                       style={{
                                                           position: "relative",
 
@@ -572,7 +565,7 @@ const rubik = Rubik({
                                                       }}
                                                   >
                                                       bekijk project
-                                                  </p>
+                                                  </span>
                                               </Link>
                                           </div>
                                       </div>
