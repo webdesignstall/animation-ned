@@ -21,7 +21,8 @@ const Navber=({data, categories}) =>{
             {
 
                 data?.mainMenu.items?.map((item)=>{
-                  return <Link key={item?.url} href={`${item?.url}`}>{item?.label}</Link>
+                  return <Link className="link-underline link-underline-black"
+                                   key={item?.url} href={`${item?.url}`}>{item?.label}</Link>
                 })
 
             }
