@@ -68,7 +68,7 @@ const HomeTestimonial = ({testimonial}) => {
 
                     </p>
                 </div>
-                <Link href={testimonial?.url}
+                <Link href={`/bekijk-alle-projecten`}
                     className='underline'
                     style={{
                         position: "relative",
