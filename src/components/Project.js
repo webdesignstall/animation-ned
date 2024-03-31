@@ -222,52 +222,52 @@ function Project({data}) {
 
             {
                 data?.projects?.map((project )=>(
-                    <SwiperSlide  role='group' className='is-galerie-projet'  key={project?.id}>
-            <div style={{marginRight: '150px'}} className='slide-wrapp'>
+                    <SwiperSlide role='group' className='is-galerie-projet'  key={project?.id}>
+                        <div style={{marginRight: '150px'}} className='slide-wrapp'>
 
-                    <Link href={`/${project?.categories?.nodes[0]?.slug}/${project?.slug}`} className='projet-img-holder w-inline-block'>
-                      <Image
-                          alt={project?.title}
-                          src={project?.featuredImage?.node?.sourceUrl}
-                          width={900}
-                          height={780}
-                          className="absolute-image slide-image"
-                      />
-                    </Link>
+                            <Link href={`/${params?.category}/${project?.slug}`} className='projet-img-holder w-inline-block'>
+                              <Image
+                                  alt={project?.title}
+                                  src={project?.featuredImage?.node?.sourceUrl}
+                                  width={900}
+                                  height={780}
+                                  className="absolute-image slide-image"
+                              />
+                            </Link>
 
-              <div
-                  className="mt-6 w-full flex justify-center w-inline-block category-title"
-              >
-                <div>
-                    <Link href={`/${project?.categories?.nodes[0]?.slug}/${project?.slug}`}>
-                    <p
-                        style={{
-                          fontSize: "45.47px",
-                          fontWeight: 200,
-                          lineHeight: "46.58px",
-                          letterSpacing: "0em",
-                          textAlign: "center",
-                        }}
-                    >
-                      {project?.title}
-                    </p>
-                  </Link>
+                          <div
+                              className="mt-6 w-full flex justify-center w-inline-block category-title"
+                          >
+                            <div>
+                              <Link href={`/${params?.category}/${project?.slug}`}>
+                                <p
+                                    style={{
+                                      fontSize: "45.47px",
+                                      fontWeight: 200,
+                                      lineHeight: "46.58px",
+                                      letterSpacing: "0em",
+                                      textAlign: "center",
+                                    }}
+                                >
+                                  {project?.title}
+                                </p>
+                              </Link>
 
-                  <p
-                      style={{
-                        position: "relative",
-                        fontSize: "13px",
-                        fontWeight: 400,
-                        lineHeight: "42.47px",
-                        textAlign: "center",
-                      }}
-                  >
-                    bekijk project
-                  </p>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
+                              <p
+                                  style={{
+                                    position: "relative",
+                                    fontSize: "13px",
+                                    fontWeight: 400,
+                                    lineHeight: "42.47px",
+                                    textAlign: "center",
+                                  }}
+                              >
+                                bekijk project
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                    </SwiperSlide>
                 ))
             }
 

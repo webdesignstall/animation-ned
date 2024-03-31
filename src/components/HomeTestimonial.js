@@ -68,8 +68,9 @@ const HomeTestimonial = ({testimonial}) => {
 
                     </p>
                 </div>
+
                 <Link href={`/bekijk-alle-projecten`}
-                    className='underline'
+                    className='link-underline link-underline-black'
                     style={{
                         position: "relative",
                         fontSize: "13px",
@@ -83,6 +84,7 @@ const HomeTestimonial = ({testimonial}) => {
                     {testimonial?.designation}
 
                 </Link>
+
             </div>
 
         </div>

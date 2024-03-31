@@ -291,24 +291,50 @@ nav {
 }
 
 
-.link-underline {
+.link-underline, .link-underline div {
   border-bottom-width: 0;
   background-image: linear-gradient(transparent, transparent), linear-gradient(#fff, #fff);
-  background-size: 0 2px;
+  background-size: 0 1.5px;
   background-position: 0 100%;
   background-repeat: no-repeat;
   transition: background-size .5s ease-in-out;
 }
 
-.link-underline-black {
+.link-underline-black, .link-underline div {
   margin-top: 5px;
   background-image: linear-gradient(transparent, transparent), linear-gradient(#000000, #000000)
 }
 
-.link-underline:hover {
-  background-size: 100% 2px;
+.link-underline:hover, .link-underline div:hover {
+  background-size: 100% 1.5px;
   background-position: 0 100%;
 }
+
+
+
+.link-underline2 div {
+  border-bottom-width: 0;
+  background-image: linear-gradient(transparent, transparent), linear-gradient(#fff, #fff);
+  background-size: 0 1.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size .5s ease-in-out;
+}
+
+.link-underline2 div {
+  margin-top: 5px;
+  background-image: linear-gradient(transparent, transparent), linear-gradient(#ffffff, #ffffff)
+}
+
+.link-underline2 div:hover {
+  background-size: 100% 1.5px;
+  background-position: 0 100%;
+}
+
+
+
+
+
 
 /* CSS media query for screens with a maximum width of 768 pixels */
 @media only screen and (max-width: 961px) {
