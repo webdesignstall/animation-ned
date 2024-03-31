@@ -13,6 +13,14 @@ const queryFunc = (params)=>{
                   projectBy(uri: "${params?.slug}") {
                     id,
                     title,
+                    slug
+                    categories{
+                        nodes{
+                          id
+                          slug
+                          name
+                        }
+                     }
                     projectFields{
                       images{
                         item{

@@ -113,6 +113,7 @@ function ProjectDetails({params, data}) {
     };
   }, []);
 
+
   return (
     <>
       <section
@@ -167,7 +168,8 @@ function ProjectDetails({params, data}) {
                       textAlign: "center",
                     }}
                   >
-                    {params?.category}
+                    {params?.category || data?.categories?.nodes[0]?.name}
+
                   </p>
                     <div style={{maxWidth: '700px', overflow: "hidden"}}>
 
