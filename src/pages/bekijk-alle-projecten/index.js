@@ -13,23 +13,26 @@ const queryFunc = (params)=>{
 
     const query = gql`
                 {
-                  categories(where: { slug: "${params?.category}" }) {
-                    
-                    nodes {
-                      projects {
-                        nodes {
-                          id
-                          title
-                          slug
+                   projects{
+                        nodes{
+                          id,
+                          title,
+                           slug
+                          categories{
+                            nodes{
+                              id
+                              slug
+                              name
+                            }
+                          }
                           featuredImage {
                             node {
                               sourceUrl
                             }
-                          }                         
+                          }
+        
                         }
                       }
-                    }
-                  }
                     websiteOptions {
                         generalFields {
                           logoText
@@ -71,11 +74,12 @@ const queryFunc = (params)=>{
 }
 
 export default function Projects({data}) {
-        const params = useParams();
-      return (
+    const params = useParams();
+    return (
         <div className=''>
 
-          <Navber data={data?.generalFields} categories={data?.categories}/>
+            <Navber data={data?.generalFields} categories={data?.categories}/>
+
 
             <div className='md:h-[83vh] overflow-hidden flex justify-center'>
                 <div className='md:w-[90vw] mt-10'>
@@ -84,11 +88,11 @@ export default function Projects({data}) {
             </div>
 
             {/*<Project data={data} />*/}
-          <Footer data={data?.generalFields}/>
+            <Footer data={data?.generalFields}/>
 
         </div>
-       
-      );
+
+    );
 }
 
 
@@ -102,10 +106,11 @@ export const getServerSideProps = async ({params}) => {
     });
 
 
+
     return {
         props: {
             data: {
-                projects: data?.categories?.nodes[0]?.projects?.nodes || [],
+                projects: data?.projects?.nodes || [],
                 generalFields: data?.websiteOptions?.generalFields || {},
                 categories: data.websiteOptions?.generalFields?.categories?.reduce((acc, curr) => {
                     const { slug, name } = curr.category.nodes[0];

@@ -156,7 +156,6 @@ function Project({data}) {
 
   };
 
-
   return (
 
     <>
@@ -226,7 +225,7 @@ function Project({data}) {
                     <SwiperSlide  role='group' className='is-galerie-projet'  key={project?.id}>
             <div style={{marginRight: '150px'}} className='slide-wrapp'>
 
-                    <Link href={`/${params?.category}/${project?.slug}`} className='projet-img-holder w-inline-block'>
+                    <Link href={`/${project?.categories?.nodes[0]?.slug}/${project?.slug}`} className='projet-img-holder w-inline-block'>
                       <Image
                           alt={project?.title}
                           src={project?.featuredImage?.node?.sourceUrl}
@@ -240,7 +239,7 @@ function Project({data}) {
                   className="mt-6 w-full flex justify-center w-inline-block category-title"
               >
                 <div>
-                  <Link href={`/${params?.category}/${project?.slug}`}>
+                    <Link href={`/${project?.categories?.nodes[0]?.slug}/${project?.slug}`}>
                     <p
                         style={{
                           fontSize: "45.47px",
@@ -282,7 +281,7 @@ function Project({data}) {
               data?.projects?.map((project)=> (
                   <div key={project?.id} className="w-full my-4">
                       <div className="w-10/12 mx-auto">
-                        <Link href={`/${params?.category}/${project?.slug}`} className='projet-img-holder w-inline-block'>
+                          <Link href={`/${project?.categories?.nodes[0]?.slug}/${project?.slug}`} className='projet-img-holder w-inline-block'>
                           <Image
                               alt={project?.title}
                               src={project?.featuredImage?.node?.sourceUrl}
@@ -294,7 +293,7 @@ function Project({data}) {
                       </div>
                       <div className="mt-6 w-10/12 mx-auto justify-center">
                           <div>
-                            <Link href={`/${params?.category}/${project?.slug}`} className='w-inline-block'>
+                              <Link href={`/${project?.categories?.nodes[0]?.slug}/${project?.slug}`} className='w-inline-block'>
                                   <p
                                       style={{
                                           fontSize: "30px",
