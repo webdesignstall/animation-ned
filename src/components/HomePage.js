@@ -273,8 +273,6 @@ const rubik = Rubik({
 
         const changeImage = () => {
             // Update the image source
-
-
             // Increment the index for the next image
             currentIndex = (currentIndex + 1) % homeImages.length;
             // imageRef.current.src = homeImages[currentIndex];
@@ -288,8 +286,12 @@ const rubik = Rubik({
         const timeline = gsap.timeline({ repeat: -1});
 
         // Add the image change animation to the timeline
-        timeline.to(imageRef.current, { opacity: 0.5, duration: 1, delay: 6, scale:1, onComplete: changeImage })
-            .to(imageRef.current, { scale: 1, duration: 1, opacity: 1, ease: 'power1' });
+        /*timeline.to(imageRef.current, { opacity: 0.5, duration: 1, delay: 6, scale:1, onComplete: changeImage })
+            .to(imageRef.current, { scale: 1, duration: 1, opacity: 1, ease: 'power1' });*/
+
+         timeline.to(imageRef.current, { opacity: 0.7, duration: 1, delay: 6, scale: 1, onComplete: changeImage, ease: 'power1.inOut' })
+             .set(imageRef.current, { src: () => imageSrc })
+             .to(imageRef.current, { opacity: 1, duration: 1, scale: 1, ease: 'power3.inOut' });
 
 
         // Cleanup on component unmount
