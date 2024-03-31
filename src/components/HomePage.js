@@ -434,7 +434,7 @@ const rubik = Rubik({
                                   {
                                       data?.categories.map((cat, index)=> (
                                           <li key={index}>
-                                              <Link href={`/${cat?.slug}`} className='py-2 block menu-nav-link'>{cat?.name}</Link>
+                                              <Link href={`/${cat?.slug}`} className='py-2 block menu-nav-link link-underline link-underline-black'>{cat?.name}</Link>
                                           </li>
 
                                       ))
@@ -469,7 +469,7 @@ const rubik = Rubik({
                                   {
                                           data?.mainMenu?.items?.map((item, index)=> (
                                               <li key={index}>
-                                                  <Link href={`${item?.url}`} className='home-nav-link'>{item?.label}</Link>
+                                                  <Link href={`${item?.url}`} className='home-nav-link link-underline2 link-underline-black2'>{item?.label}</Link>
                                               </li>
                                           ))
 
@@ -477,7 +477,7 @@ const rubik = Rubik({
                                   {
 
                                           <li>
-                                              <Link href={`${data?.mainMenu?.lastItem?.last_url}`} className='home-nav-link'>{data?.mainMenu?.lastItem?.last_label}</Link>
+                                              <a href={`#contact`} className='home-nav-link link-underline2 link-underline-black2'>{data?.mainMenu?.lastItem?.last_label}</a>
                                           </li>
 
                                   }
@@ -525,7 +525,7 @@ const rubik = Rubik({
                                   data?.categories?.map((cat, index)=> (
 
                                       // md:h-[75%] lg-h-[75%] xl-h-[75%] p-4
-                                      <div className="md:h-[100%] lg-h-[85%] xl-h-[85%] pt-12 pb-28" ref={categoryImageTrigger}>
+                                      <div className="md:h-[100%] lg-h-[85%] xl-h-[85%] pt-12 pb-28 px-5" ref={categoryImageTrigger}>
                                           <div className='overflow-hidden category-image-wrap' style={{height: '100%'}}>
                                               <Link href={`/${cat?.slug}`} className='image-zoom-container'>
                                                   <Image
@@ -578,7 +578,7 @@ const rubik = Rubik({
                           </div>
                       </div>
 
-                      <div className="scroll-section border-t-2 px-6 py-8 lg:flex items-center">
+                      <div className="scroll-section border-t-2 px-6 py-8 lg:flex items-center" id='contact'>
                           <div className="md:ml-[100px]">
                               <p
                                   className="2xl:mb-[80px] text-[50px] mb-10 md:text-[72px] font-[200] md:font-[250] leading-[39px] md:leading-[102px]"
