@@ -307,6 +307,7 @@ const rubik = Rubik({
 
     const menuOpen = ()=> {
         gsap.to(mobileMenu.current, {
+            height: '100vh',
             translateY: 0,
             duration: 1,
             opacity: 1,
@@ -320,7 +321,7 @@ const rubik = Rubik({
         gsap.fromTo(
             navLinkText,
             {
-                y: 80,
+                y: 800,
                 opacity: 0
             },
             {
@@ -337,7 +338,7 @@ const rubik = Rubik({
     }
     const menuClose = ()=> {
         gsap.to(mobileMenu.current, {
-            translateY: -250,
+            translateY: -800,
             duration: 1,
             opacity: 1,
             ease: 'expo.inOut',
@@ -460,7 +461,6 @@ const rubik = Rubik({
                                   </svg>
 
                               </div>
-
                           </div>
 
 
@@ -525,7 +525,7 @@ const rubik = Rubik({
                                   data?.categories?.map((cat, index)=> (
 
                                       // md:h-[75%] lg-h-[75%] xl-h-[75%] p-4
-                                      <div className="md:h-[100%] lg-h-[85%] xl-h-[85%] pt-12 px-5" ref={categoryImageTrigger}>
+                                      <div className="md:h-[100%] lg-h-[85%] xl-h-[85%] pt-12 lg:pb-28 px-5" ref={categoryImageTrigger}>
                                           <div className='overflow-hidden category-image-wrap' style={{height: '100%'}}>
                                               <Link href={`/${cat?.slug}`} className='image-zoom-container'>
                                                   <Image
