@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SplitType from 'split-type'
 // import { ScrollSmoother } from "gsap-trial/dist/ScrollSmoother";
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
 import 'swiper/css';
 import "slick-carousel/slick/slick.css";
@@ -14,6 +15,7 @@ import { Rubik } from "next/font/google";
 import {useGSAP} from "@gsap/react";
 import HomeTestimonial from "@/components/HomeTestimonial";
 import {initializeApollo} from "@/utiles/instance";
+
 
 const rubik = Rubik({
   weight: "400",
@@ -29,6 +31,7 @@ const rubik = Rubik({
   const categoryImageTrigger = useRef(null);
 
     gsap.registerPlugin(ScrollTrigger);
+     gsap.registerPlugin(ScrollToPlugin)
 
     const homeTitle = useRef();
     const mobileMenu = useRef();
@@ -407,6 +410,20 @@ const rubik = Rubik({
              ease: "power2.inOut" // You can change easing as per your preference
          });*/
 
+         const sectionWrap = document.querySelectorAll('.scroll-section');
+
+         let totalWidth = 0;
+
+         for (let i = 1; i < sectionWrap.length; i++) {
+             const offsetWidthValue = sectionWrap[i].clientWidth;
+             // console.log(`Element ${i + 1} offsetWidth: ${offsetWidthValue}`);
+             totalWidth += offsetWidthValue;
+         }
+
+         gsap.to(window, {
+             scrollTo: {y: totalWidth, autoKill: false }
+         })
+
          console.log(contactRef.current)
      };
 
@@ -548,7 +565,7 @@ const rubik = Rubik({
 
                                       <li>
                                           <span onClick={scrollToContact}
-                                                className='home-nav-link link-underline2 link-underline-black2'>{data?.mainMenu?.lastItem?.last_label}</span>
+                                                className='home-nav-link link-underline2 link-underline-black2 cursor-pointer'>{data?.mainMenu?.lastItem?.last_label}</span>
                                       </li>
 
                                   }
