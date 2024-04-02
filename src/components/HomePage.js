@@ -22,25 +22,17 @@ const rubik = Rubik({
 
 
 
-
  function HomePage({data}) {
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
   const categoryImage = useRef(null);
   const categoryImageTrigger = useRef(null);
 
-  gsap.registerPlugin(ScrollTrigger);
-
-
-
-
-
+    gsap.registerPlugin(ScrollTrigger);
 
     const homeTitle = useRef();
     const mobileMenu = useRef();
-
-
-
+    const contactRef = useRef(null);
 
 
 
@@ -265,7 +257,7 @@ const rubik = Rubik({
 
      const homeImages = data?.gallaries || [];
 
-     useEffect(() => {
+     /*useEffect(() => {
         // Define images to be used
 
 
@@ -284,21 +276,64 @@ const rubik = Rubik({
 
         // GSAP timeline
         const timeline = gsap.timeline({ repeat: -1});
+         const fade = 5; // fade time
 
         // Add the image change animation to the timeline
-        /*timeline.to(imageRef.current, { opacity: 0.5, duration: 1, delay: 6, scale:1, onComplete: changeImage })
-            .to(imageRef.current, { scale: 1, duration: 1, opacity: 1, ease: 'power1' });*/
+        /!*timeline.to(imageRef.current, { opacity: 0.5, duration: 1, delay: 6, scale:1, onComplete: changeImage })
+            .to(imageRef.current, { scale: 1, duration: 1, opacity: 1, ease: 'power1' });*!/
 
-         timeline.to(imageRef.current, { opacity: 0.7, duration: 1, delay: 6, scale: 1, onComplete: changeImage, ease: 'power1.inOut' })
+      /!*   timeline.to(imageRef.current, { opacity: 0.7, duration: 1, delay: 6, scale: 1, onComplete: changeImage, ease: 'power1.inOut' })
              .set(imageRef.current, { src: () => imageSrc })
-             .to(imageRef.current, { opacity: 1, duration: 1, scale: 1, ease: 'power3.inOut' });
+             .to(imageRef.current, { opacity: 1, duration: 1, scale: 1, ease: 'power3.inOut' });*!/
+
+         timeline.to(imageRef.current, { autoAlpha: 0, duration: fade, onComplete: changeImage })
+             .set(imageRef.current, { src: () => imageSrc })
+             .to(imageRef.current, { autoAlpha:1, duration:fade }, 0);
 
 
         // Cleanup on component unmount
         return () => {
             timeline.kill(); // Kill the GSAP timeline to prevent memory leaks
         };
-    }, []);
+    }, []);*/
+
+
+     useEffect(() => {
+         gsap.set('.motiv img',{xPercent:0, yPercent:0})
+
+         const imgs = gsap.utils.toArray(".bg-section .motiv");
+         const next = 10; // time to change
+         const fade = 1; // fade time
+
+
+
+//only for the first
+         gsap.set(imgs[0], {autoAlpha:1})
+
+         /*let split = new SplitText('.motiv01 h1', {type:"chars"}),
+             chars = split.chars;
+         gsap.from(chars, {autoAlpha:0, x: -10, duration:0.3, ease: 'Power2.in', stagger:0.1, delay:1});*/
+
+// ====================
+         function crossfade(){
+
+            /* split = new SplitText(imgs[1], {type:"chars"});
+             chars = split.chars;*/
+
+             const action = gsap.timeline()
+                 .to(imgs[0], {autoAlpha:0, duration:fade})
+                 .to(imgs[1], {autoAlpha:1, duration:fade},0)
+
+               /*  .from(chars, {autoAlpha:0, x: -10, duration:0.3, ease: 'Power2.in', stagger:0.1}, 1);*/
+
+             imgs.push( imgs.shift() );
+             // start endless run
+             gsap.delayedCall(next, crossfade);
+         }
+
+// start the crossfade after next = 3 sec
+         gsap.delayedCall(next, crossfade);
+     }, []);
 
 
     useEffect(() => {
@@ -365,6 +400,17 @@ const rubik = Rubik({
     }
 
 
+     const scrollToContact = () => {
+         /*gsap.to(window, {
+             duration: 1,
+             scrollTo: { y: contactRef.current.offsetTop, autoKill: false },
+             ease: "power2.inOut" // You can change easing as per your preference
+         });*/
+
+         console.log(contactRef.current)
+     };
+
+
   return (
       <>
 
@@ -387,7 +433,7 @@ const rubik = Rubik({
 
                       <div className="scroll-section relative overflow-hidden bg-section">
 
-                          <div className='h-[695px] md:h-full md:w-[100vw]'>
+                          {/*<div className='h-[695px] md:h-full md:w-[100vw]'>
                               <Image
                                   src={imageSrc}
                                   alt={'home image'}
@@ -396,7 +442,26 @@ const rubik = Rubik({
                                   width={1048}
                                   className="object-cover home1bg h-full w-[100vw]"
                               />
-                          </div>
+                          </div>*/}
+
+
+                              {
+                                  data.gallaries?.map((image, index) => (
+
+                                          <div className={`h-[695px] md:h-full md:w-[100vw] motiv`}>
+                                              <Image
+                                                  src={image}
+                                                  alt={'home image'}
+                                                  ref={imageRef}
+                                                  height={941}
+                                                  width={1048}
+                                                  className="object-cover home1bg h-full w-[100vw]"
+                                              />
+                                          </div>
+
+
+                                  ))
+                              }
 
 
                           <div
@@ -431,13 +496,15 @@ const rubik = Rubik({
                               </svg>
                           </div>
 
-                          <div className="absolute left-0 top-0 z-50 bg-gray-300 w-full text-center py-8 transform -translate-y-60"
-                               ref={mobileMenu}>
+                          <div
+                              className="absolute left-0 top-0 z-50 bg-gray-300 w-full text-center py-8 transform -translate-y-60"
+                              ref={mobileMenu}>
                               <ul>
                                   {
-                                      data?.categories.map((cat, index)=> (
+                                      data?.categories.map((cat, index) => (
                                           <li key={index}>
-                                              <Link href={`/${cat?.slug}`} className='py-2 block menu-nav-link link-underline link-underline-black'>{cat?.name}</Link>
+                                              <Link href={`/${cat?.slug}`}
+                                                    className='py-2 block menu-nav-link link-underline link-underline-black'>{cat?.name}</Link>
                                           </li>
 
                                       ))
@@ -469,18 +536,20 @@ const rubik = Rubik({
                           <div className="hidden md:block absolute right-[100px] top-[50px]">
                               <ul className="font-light text-[24.94px] leading-8 text-white">
                                   {
-                                          data?.mainMenu?.items?.map((item, index)=> (
-                                              <li key={index}>
-                                                  <Link href={`${item?.url}`} className='home-nav-link link-underline2 link-underline-black2'>{item?.label}</Link>
-                                              </li>
-                                          ))
+                                      data?.mainMenu?.items?.map((item, index) => (
+                                          <li key={index}>
+                                              <Link href={`${item?.url}`}
+                                                    className='home-nav-link link-underline2 link-underline-black2'>{item?.label}</Link>
+                                          </li>
+                                      ))
 
                                   }
                                   {
 
-                                          <li>
-                                              <a href={`#contact`} className='home-nav-link link-underline2 link-underline-black2'>{data?.mainMenu?.lastItem?.last_label}</a>
-                                          </li>
+                                      <li>
+                                          <span onClick={scrollToContact}
+                                                className='home-nav-link link-underline2 link-underline-black2'>{data?.mainMenu?.lastItem?.last_label}</span>
+                                      </li>
 
                                   }
                               </ul>
@@ -496,7 +565,7 @@ const rubik = Rubik({
                                  text-light italic text-white text-wra whitespace-pre-wrap p-4"
                               >
 
-                                  { data?.slogan}
+                                  {data?.slogan}
                               </h2>
                           </div>
 
@@ -518,13 +587,13 @@ const rubik = Rubik({
                       </div>
 
 
-                     <HomeTestimonial testimonial={data?.testimonial} />
+                      <HomeTestimonial testimonial={data?.testimonial}/>
 
                       <div className='scroll-section'>
                           <div
                               className='md:grid md:grid-cols-2 lg:flex 2xl:flex gap-5 items-center lg:h-[100vh] xl:h-[100vh]'>
                               {
-                                  data?.categories?.map((cat, index)=> (
+                                  data?.categories?.map((cat, index) => (
 
                                       // md:h-[75%] lg-h-[75%] xl-h-[75%] p-4
                                       <div className="md:h-[100%] lg-h-[85%] xl-h-[85%] pt-12 lg:pb-28 px-5" ref={categoryImageTrigger}>
@@ -579,7 +648,7 @@ const rubik = Rubik({
                           </div>
                       </div>
 
-                      <div className="scroll-section border-t-2 px-6 py-8 lg:flex items-center mt-10 lg:mt-0" id='contact'>
+                      <div className="scroll-section border-t-2 px-6 py-8 lg:flex items-center mt-10 lg:mt-0" ref={contactRef}>
                           <div className="md:ml-[100px]">
                               <p
                                   className="2xl:mb-[80px] text-[50px] mb-10 md:text-[72px] font-[200] md:font-[250] leading-[39px] md:leading-[102px]"
