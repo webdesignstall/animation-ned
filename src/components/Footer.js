@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Footer({data}) {
   return (
-    <div className="bg-[#EEEEEF] lg:border-t-2 border-[#c4c4c4] px-16 pt-6">
-      <div className="px-16 text-center md:text-left md:flex justify-between items-center text-sm md:text-xl md:p-0">
+    <div className="bg-[#EEEEEF] lg:border-t-2 border-[#c4c4c4] md:px-16 pt-6">
+      <div className="md:px-16 text-center md:text-left md:flex justify-between items-center text-sm md:text-xl md:p-0">
         <div>
          <h1 style={{fontWeight: 500, fontSize: 14.1}}>{
              data?.copyRight?.leftText
