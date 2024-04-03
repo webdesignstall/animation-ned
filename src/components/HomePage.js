@@ -305,7 +305,7 @@ const rubik = Rubik({
          gsap.set('.motiv img',{xPercent:0, yPercent:0})
 
          const imgs = gsap.utils.toArray("#imgContainer .motiv");
-         const next = 10; // time to change
+         const next = 6; // time to change
          const fade = 1; // fade time
 
 
