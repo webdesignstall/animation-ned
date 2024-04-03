@@ -304,7 +304,7 @@ const rubik = Rubik({
      useEffect(() => {
          gsap.set('.motiv img',{xPercent:0, yPercent:0})
 
-         const imgs = gsap.utils.toArray(".bg-section .motiv");
+         const imgs = gsap.utils.toArray("#imgContainer .motiv");
          const next = 10; // time to change
          const fade = 1; // fade time
 
@@ -448,7 +448,7 @@ const rubik = Rubik({
               <div ref={triggerRef} className='scroll-wrap'>
                   <div ref={sectionRef} className="scroll-section-inner">
 
-                      <div className="scroll-section relative overflow-hidden bg-section">
+                      <div className="scroll-section relative overflow-hidden bg-section" style={{width: '100vw'}}>
 
                           {/*<div className='h-[695px] md:h-full md:w-[100vw]'>
                               <Image
@@ -461,7 +461,7 @@ const rubik = Rubik({
                               />
                           </div>*/}
 
-
+                          {/*
                               {
                                   data.gallaries?.map((image, index) => (
 
@@ -478,7 +478,41 @@ const rubik = Rubik({
 
 
                                   ))
+                              }*/}
+
+                          <div id="imgContainer">
+
+
+                              {
+                                  data.gallaries?.map((image, index) => (
+
+                                          /*<div className={`h-[695px] md:h-full md:w-[100vw] motiv`}>
+                                              <Image
+                                                  src={image}
+                                                  alt={'home image'}
+                                                  ref={imageRef}
+                                                  height={941}
+                                                  width={1048}
+                                                  className="object-cover home1bg h-full w-[100vw]"
+                                              />
+                                          </div>*/
+
+                                  <div className="motiv motiv01">
+                                      {/*<img src={image}/>*/}
+                                      <Image
+                                          src={image}
+                                          alt={'home image'}
+                                          ref={imageRef}
+                                          height={941}
+                                          width={1048}
+                                          className="object-cover home1bg"
+                                      />
+                                  </div>
+
+
+                                  ))
                               }
+                          </div>
 
 
                           <div
@@ -521,11 +555,16 @@ const rubik = Rubik({
                                       data?.categories.map((cat, index) => (
                                           <li key={index}>
                                               <Link href={`/${cat?.slug}`}
-                                                    className='py-2 block menu-nav-link link-underline link-underline-black'>{cat?.name}</Link>
+                                                    className='py-2 block menu-nav-link link-underline2 link-underline-black2'>{cat?.name}</Link>
                                           </li>
 
                                       ))
                                   }
+
+                                  <li>
+                                      <Link href={`#contact`}
+                                            className='py-2 block menu-nav-link link-underline2 link-underline-black2'>Contact</Link>
+                                  </li>
 
                               </ul>
 
@@ -565,7 +604,7 @@ const rubik = Rubik({
 
                                       <li>
                                           <span onClick={scrollToContact}
-                                                className='home-nav-link link-underline2 link-underline-black2 cursor-pointer'>{data?.mainMenu?.lastItem?.last_label}</span>
+                                                className='home-nav-link link-underline2 link-underline-black2 cursor-pointer'>Contact</span>
                                       </li>
 
                                   }
@@ -665,7 +704,7 @@ const rubik = Rubik({
                           </div>
                       </div>
 
-                      <div className="scroll-section border-t-2 px-6 py-8 lg:flex items-center mt-10 lg:mt-0" ref={contactRef}>
+                      <div className="scroll-section border-t-2 px-6 py-8 lg:flex items-center mt-10 lg:mt-0" ref={contactRef} id='contact'>
                           <div className="md:ml-[100px]">
                               <p
                                   className="2xl:mb-[80px] text-[50px] mb-10 md:text-[72px] font-[200] md:font-[250] leading-[39px] md:leading-[102px]"
