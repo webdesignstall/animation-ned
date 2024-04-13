@@ -8,7 +8,7 @@ const HomeTestimonial = ({testimonial}) => {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    useGSAP(()=> {
+  /*  useGSAP(()=> {
 
         const testimonialWrap = document.querySelector('.testimonial-wrap')
         const testimonialInfo = document.querySelector('.testimornial-info')
@@ -43,7 +43,7 @@ const HomeTestimonial = ({testimonial}) => {
 
 
 
-    })
+    })*/
 
     return (
         <div className="scroll-section md:w-[1400px] md:flex justify-center border-b-2">

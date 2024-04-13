@@ -109,7 +109,7 @@ const rubik = Rubik({
                     opacity: 0
                 },
                 {
-                    y: 0,
+                    y: -20,
                     opacity: 1,
                     stagger: 0.05,
                     duration: 2,
@@ -555,7 +555,7 @@ const rubik = Rubik({
                                       data?.categories.map((cat, index) => (
                                           <li key={index}>
                                               <Link href={`/${cat?.slug}`}
-                                                    className='py-2 block menu-nav-link link-underline2 link-underline-black2'>{cat?.name}</Link>
+                                                    className='py-2 inline-block menu-nav-link link-underline2 link-underline-black2'>{cat?.name}</Link>
                                           </li>
 
                                       ))
@@ -595,7 +595,7 @@ const rubik = Rubik({
                                       data?.mainMenu?.items?.map((item, index) => (
                                           <li key={index}>
                                               <Link href={`${item?.url}`}
-                                                    className='home-nav-link link-underline2 link-underline-black2'>{item?.label}</Link>
+                                                    className='home-nav-link inline-block link-underline2 link-underline-black2'>{item?.label}</Link>
                                           </li>
                                       ))
 
@@ -604,7 +604,7 @@ const rubik = Rubik({
 
                                       <li>
                                           <span onClick={scrollToContact}
-                                                className='home-nav-link link-underline2 link-underline-black2 cursor-pointer'>Contact</span>
+                                                className='home-nav-link inline-block link-underline2 link-underline-black2 cursor-pointer'>Contact</span>
                                       </li>
 
                                   }
