@@ -71,7 +71,7 @@ const queryFunc = (params)=>{
 }
 
 export default function Projects({data}) {
-        const params = useParams();
+
       return (
        <>
 
@@ -82,6 +82,7 @@ export default function Projects({data}) {
                    <Project data={data} />
                </div>
            </div>
+
 
            {/*<Project data={data} />*/}
            <Footer data={data?.generalFields}/>
