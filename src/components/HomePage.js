@@ -515,28 +515,28 @@ const rubik = Rubik({
                               {
                                   data.gallaries?.map((image, index) => (
 
-                                          /*<div className={`h-[695px] md:h-full md:w-[100vw] motiv`}>
-                                              <Image
-                                                  src={image}
-                                                  alt={'home image'}
-                                                  ref={imageRef}
-                                                  height={941}
-                                                  width={1048}
-                                                  className="object-cover home1bg h-full w-[100vw]"
-                                              />
-                                          </div>*/
+                                      /*<div className={`h-[695px] md:h-full md:w-[100vw] motiv`}>
+                                          <Image
+                                              src={image}
+                                              alt={'home image'}
+                                              ref={imageRef}
+                                              height={941}
+                                              width={1048}
+                                              className="object-cover home1bg h-full w-[100vw]"
+                                          />
+                                      </div>*/
 
-                                  <div className="motiv motiv01">
-                                      {/*<img src={image}/>*/}
-                                      <Image
-                                          src={image}
-                                          alt={'home image'}
-                                          ref={imageRef}
-                                          height={941}
-                                          width={1048}
-                                          className="object-cover home1bg"
-                                      />
-                                  </div>
+                                      <div className="motiv motiv01">
+                                          {/*<img src={image}/>*/}
+                                          <Image
+                                              src={image}
+                                              alt={'home image'}
+                                              ref={imageRef}
+                                              height={941}
+                                              width={1048}
+                                              className="object-cover home1bg"
+                                          />
+                                      </div>
 
 
                                   ))
@@ -648,7 +648,7 @@ const rubik = Rubik({
                                  xl:text-[70px]  xl:leading-[70.56px]
                                  2xl:text-[102px]
                                  italic text-wrap whitespace-pre-wrap p-4 md:mr-14"
-                                  style={{ color: '#FFFFFFD9', fontWeight: 300}}
+                                  style={{color: '#FFFFFFD9', fontWeight: 300}}
                               >
 
                                   {data?.slogan}
@@ -675,14 +675,15 @@ const rubik = Rubik({
 
                       <HomeTestimonial testimonial={data?.testimonial}/>
 
-                      <div className='scroll-section'>
+                      {/*<div className='scroll-section'>
                           <div
                               className='md:grid md:grid-cols-2 lg:flex 2xl:flex gap-5 items-center lg:h-[100vh] xl:h-[100vh]'>
                               {
                                   data?.categories?.map((cat, index) => (
 
                                       // md:h-[75%] lg-h-[75%] xl-h-[75%] p-4
-                                      <div className="md:h-[100%] lg-h-[85%] xl-h-[85%] pt-12 lg:pb-28 px-5" ref={categoryImageTrigger}>
+                                      <div className="md:h-[100%] lg-h-[85%] xl-h-[85%] pt-12 lg:pb-28 px-5"
+                                           ref={categoryImageTrigger}>
                                           <div className='overflow-hidden category-image-wrap' style={{height: '100%'}}>
                                               <Link href={`/${cat?.slug}`} className='image-zoom-container'>
                                                   <Image
@@ -732,9 +733,71 @@ const rubik = Rubik({
 
 
                           </div>
+                      </div>*/}
+
+
+                      <div className='scroll-section'>
+                          <div
+                              className='flex flex-wrap md:flex-row gap-5 md:h-[100%] lg-h-[85%] xl-h-[85%] pt-10 lg:pb-20 px-5 items-center'>
+                              {
+                                  data?.categories?.map((cat, index) => (
+
+                                      // md:h-[75%] lg-h-[75%] xl-h-[75%] p-4
+                                      <div className="w-full lg:w-[25rem] xl:w-[41rem] xl:min-w-[41rem] h-full"
+                                           ref={categoryImageTrigger}>
+                                          <div className='overflow-hidden category-image-wrap' style={{height: '100%'}}>
+                                              <Link href={`/${cat?.slug}`} className='image-zoom-container'>
+                                                  <Image
+                                                      ref={categoryImage}
+                                                      alt={cat?.name}
+                                                      src={cat?.categoryImage?.image?.node?.sourceUrl}
+                                                      width={710}
+                                                      height={702}
+                                                      className="object-cover h-[416px] w-full md:h-[100%] category-image1 overflow-hidden zoom-image"
+                                                  />
+                                              </Link>
+                                          </div>
+                                          <div className="mt-4">
+                                              <p
+                                                  style={{
+                                                      fontSize: "14px",
+                                                      fontWeight: 500,
+                                                      lineHeight: "15px",
+                                                      letterSpacing: "0em",
+                                                      textAlign: "left",
+                                                  }}
+                                              >
+                                                  {cat?.name}
+                                              </p>
+                                              <Link href={`/${cat?.slug}`} className='js-work-link'>
+                                                  <span
+                                                      className="mt-3 link-underline link-underline-black"
+                                                      style={{
+                                                          position: "relative",
+
+                                                          fontSize: "13px",
+                                                          fontStyle: "italic",
+                                                          fontWeight: 300,
+                                                          lineHeight: "15px",
+                                                          letterSpacing: "-0.3499999940395355px",
+                                                          textAlign: "left",
+                                                      }}
+                                                  >
+                                                      bekijk project
+                                                  </span>
+                                              </Link>
+                                          </div>
+                                      </div>
+
+                                  ))
+                              }
+
+
+                          </div>
                       </div>
 
-                      <div className="scroll-section border-t-2 px-6 py-8 lg:flex items-center mt-10 lg:mt-0" ref={contactRef} id='contact'>
+                      <div className="scroll-section border-t-2 px-6 py-8 lg:flex items-center mt-10 lg:mt-0"
+                           ref={contactRef} id='contact'>
                           <div className="md:ml-[100px]">
                               <p
                                   className="2xl:mb-[80px] text-[50px] mb-10 md:text-[72px] font-[200] md:font-[250] leading-[39px] md:leading-[102px]"
@@ -743,7 +806,7 @@ const rubik = Rubik({
                               </p>
 
                               {
-                                  data.contactSection.contactRow.map((ct, index)=> (
+                                  data.contactSection.contactRow.map((ct, index) => (
                                       <div key={index} className="mb-[50px]">
                                           <p
                                               className={`${rubik.className} uppercase mb-4`}
@@ -769,7 +832,7 @@ const rubik = Rubik({
                                                   textAlign: "left",
                                               }}
 
-                                              dangerouslySetInnerHTML={{ __html: ct?.details }}
+                                              dangerouslySetInnerHTML={{__html: ct?.details}}
                                           />
 
 
@@ -779,14 +842,13 @@ const rubik = Rubik({
                               }
 
 
-
-
                               <div className="mb-[50px]">
                                   <div className="flex gap-5">
                                       {
-                                          data?.contactSection?.socialMedia?.map((item, index)=>(
+                                          data?.contactSection?.socialMedia?.map((item, index) => (
                                               <a key={index} target={'_blank'} href={item?.link}>
-                                                <Image src={item?.icon?.node?.sourceUrl} alt={item?.link} width={'40'} height={'40'} objectFit={'cover'} />
+                                                  <Image src={item?.icon?.node?.sourceUrl} alt={item?.link} width={'40'}
+                                                         height={'40'} objectFit={'cover'}/>
                                               </a>
 
                                           ))
@@ -801,7 +863,7 @@ const rubik = Rubik({
           </section>
       </>
   );
-}
+ }
 
 export default HomePage;
 
@@ -810,7 +872,7 @@ export const getServerSideProps = async () => {
     const apolloClient = initializeApollo(); // initialize apollo client
 
     // Fetch data using Apollo client
-    const { data } = await apolloClient.query({
+    const {data} = await apolloClient.query({
         query: query,
     });
 
