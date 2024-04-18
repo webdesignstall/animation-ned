@@ -15,6 +15,7 @@ import { Rubik } from "next/font/google";
 import {useGSAP} from "@gsap/react";
 import HomeTestimonial from "@/components/HomeTestimonial";
 import {initializeApollo} from "@/utiles/instance";
+import {useRouter} from "next/router";
 
 
 const rubik = Rubik({
@@ -427,6 +428,34 @@ const rubik = Rubik({
          console.log(contactRef.current)
      };
 
+     const router = useRouter();
+     const { contactSection } = router.query;
+
+     console.log('contactSection', contactSection)
+
+
+     useEffect(() => {
+
+         if (contactSection !== undefined ){
+             const sectionWrap = document.querySelectorAll('.scroll-section');
+
+             let totalWidth = 0;
+
+             for (let i = 1; i < sectionWrap.length; i++) {
+                 const offsetWidthValue = sectionWrap[i].clientWidth;
+                 // console.log(`Element ${i + 1} offsetWidth: ${offsetWidthValue}`);
+                 totalWidth += offsetWidthValue;
+             }
+
+             gsap.to(window, {
+                 scrollTo: { y: totalWidth, autoKill: false }
+             })
+         }
+
+
+
+     }, [contactSection]);
+
 
   return (
       <>
@@ -613,12 +642,13 @@ const rubik = Rubik({
                           <div className='flex justify-center -mb-10'>
                               <h2 ref={homeTitle}
                                   className="homeTitle absolute bottom-0
-                                 text-[30px] sm:text-[35px]
+                                 text-[42px] sm:text-[40px]
                                  md:text-[40px] md:leading-[40px]
-                                 lg:text-[50px] lg:leading-[30.56px]
+                                 lg:text-[60px] lg:leading-[30.56px]
                                  xl:text-[70px]  xl:leading-[70.56px]
-                                 2xl:text-[90px]
-                                 text-light italic text-white text-wra whitespace-pre-wrap p-4"
+                                 2xl:text-[102px]
+                                 italic text-wrap whitespace-pre-wrap p-4 md:mr-14"
+                                  style={{ color: '#FFFFFFD9', fontWeight: 300}}
                               >
 
                                   {data?.slogan}

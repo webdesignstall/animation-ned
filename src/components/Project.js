@@ -142,8 +142,10 @@ function Project({data}) {
   };
 */
 
+    const initialSlideIndex = Math.round( data?.projects?.length / 2 ) - 1
+
   const settings = {
-    initialSlide: 2,
+    initialSlide: initialSlideIndex,
     grabCursor: true,
     centeredSlides: true,
     spaceBetween: 100,
@@ -160,7 +162,7 @@ function Project({data}) {
 
     <>
 
-      <div className="hidden xl:block">
+      <div className="hidden lg:block">
         <Swiper {...settings} ref={swiperRef} className='is-projet-galerie'>
 
             {/*{
@@ -276,11 +278,11 @@ function Project({data}) {
       </div>
 
         {/*For mobile */}
-      <section className="block xl:hidden bg-[#eeeeef]">
+      <section className="block lg:hidden bg-[#eeeeef]">
 
           {
               data?.projects?.map((project)=> (
-                  <div key={project?.id} className="w-full my-4">
+                  <div key={project?.id} className="w-full mt-4">
                       <div className="w-10/12 mx-auto">
                           <Link href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`} className='projet-img-holder w-inline-block'>
                           <Image
@@ -321,7 +323,7 @@ function Project({data}) {
                               </p>
                           </div>
                       </div>
-                      <div className="w-full border-b-2 border-[#c5c5c5]"></div>
+                      <div className="w-full border-b-[1.02px] border-[#00000026]"></div>
                   </div>
 
               ))
