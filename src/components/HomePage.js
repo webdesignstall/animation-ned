@@ -807,7 +807,7 @@ const rubik = Rubik({
                            ref={contactRef} id='contact'>
                           <div className="md:ml-[100px]">
                               <p
-                                  className="2xl:mb-[80px] text-[50px] mb-10 md:text-[72px] font-[200] md:font-[250] leading-[39px] md:leading-[102px]"
+                                  className=" 2xl:mb-[80px] text-[50px] mb-10 md:text-[72px] font-[200] md:font-[250] leading-[39px] md:leading-[102px]"
                               >
                                   {data?.contactSection?.label}
                               </p>
@@ -867,10 +867,16 @@ const rubik = Rubik({
 
                   </div>
               </div>
+
+              <div className='md:hidden'>
+                  <Footer data={data?.generalFields}/>
+              </div>
+
+
           </section>
 
 
-          <Footer data={data?.generalFields}/>
+
 
       </>
   );
