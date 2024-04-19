@@ -310,6 +310,11 @@ nav {
   background-position: 0 100%;
 }
 
+.link-underline-black.active {
+  background-size: 100% 1px;
+  background-position: 0 100%;
+}
+
 
 
 .link-underline2 div {
@@ -364,6 +369,12 @@ nav {
   top: 0%;
   height: 100%;
   width: 100%;
+}
+
+
+.project-mobile-nav div {
+  text-align: left!important;
+  z-index: 999!important;
 }
 
 

@@ -16,6 +16,8 @@ import {useGSAP} from "@gsap/react";
 import HomeTestimonial from "@/components/HomeTestimonial";
 import {initializeApollo} from "@/utiles/instance";
 import {useRouter} from "next/router";
+import Footer from "@/components/Footer";
+import {gql} from "@apollo/client";
 
 
 const rubik = Rubik({
@@ -568,6 +570,8 @@ const rubik = Rubik({
                               />
                           </div>
 
+                          {/*Responsive Mobile menu*/}
+
                           <div className="absolute right-6 top-10 block md:hidden" onClick={menuOpen}>
                               <svg width="28" height="9" viewBox="0 0 28 9" fill="none"
                                    xmlns="http://www.w3.org/2000/svg">
@@ -616,6 +620,9 @@ const rubik = Rubik({
 
                               </div>
                           </div>
+
+                          {/*End Responsive Mobile menu*/}
+
 
 
                           <div className="hidden md:block absolute right-[100px] top-[50px]">
@@ -861,6 +868,10 @@ const rubik = Rubik({
                   </div>
               </div>
           </section>
+
+
+          <Footer data={data?.generalFields}/>
+
       </>
   );
  }
@@ -868,12 +879,77 @@ const rubik = Rubik({
 export default HomePage;
 
 
+const queryFunc = (params)=>{
+
+    const query = gql`
+                {
+                   projects{
+                        nodes{
+                          id,
+                          title,
+                           slug
+                          categories{
+                            nodes{
+                              id
+                              slug
+                              name
+                            }
+                          }
+                          featuredImage {
+                            node {
+                              sourceUrl
+                            }
+                          }
+        
+                        }
+                      }
+                    websiteOptions {
+                        generalFields {
+                          logoText
+                            responsiveLogo{
+                                node{
+                                  sourceUrl
+                                }
+                              }
+                           mainMenu{
+                                items{
+                                  label
+                                  url
+                                  
+                                }
+                                lastItem{
+                                  last_label
+                                  last_url
+                                }
+                              }
+                          copyRight {
+                            leftText
+                            rightText
+                            linkText
+                            link
+                          }
+                          categories{
+                            category{
+                              nodes{
+                                slug
+                                name
+                              }
+                            }
+                          }
+                        }
+                      }
+                }
+                `;
+    return query;
+}
+
+
 export const getServerSideProps = async () => {
     const apolloClient = initializeApollo(); // initialize apollo client
 
     // Fetch data using Apollo client
     const {data} = await apolloClient.query({
-        query: query,
+        query: queryFunc('hello'),
     });
 
     console.log('query', data)
@@ -881,6 +957,7 @@ export const getServerSideProps = async () => {
     return {
         props: {
             title: data.websiteOptions.generalFields.title,
+            generalFields: data?.websiteOptions?.generalFields || {},
         }
     };
 };
