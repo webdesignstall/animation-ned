@@ -25,6 +25,12 @@ const query = gql`
           sourceUrl
         }
       }
+      copyRight {
+        leftText
+        rightText
+        linkText
+        link
+      }
        mainMenu{
         items{
           label
@@ -135,7 +141,8 @@ export const getStaticProps = async () => {
                 gallaries: data.websiteOptions.homePage?.gallery?.reduce((acc, curr)=>(
                      [...acc, curr?.item.node?.sourceUrl]
                 ), []),
-                mainMenu: data.websiteOptions?.generalFields?.mainMenu
+                mainMenu: data.websiteOptions?.generalFields?.mainMenu,
+                generalFields: data.websiteOptions?.generalFields
             }
 
         },
