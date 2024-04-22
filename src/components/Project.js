@@ -162,10 +162,11 @@ function Project({data}) {
 
     <>
 
-      <div className="hidden lg:block">
-        <Swiper {...settings} ref={swiperRef} className='is-projet-galerie'>
+        <div className="hidden lg:block">
 
-            {/*{
+            <Swiper {...settings} ref={swiperRef} className='is-projet-galerie'>
+
+                {/*{
                 data?.projects?.map((project )=>(
                     <SwiperSlide key={project?.id}>
                         <div className='w-[728px] xl:ml-[-175px] 2xl:ml-[-60px]'>
@@ -222,26 +223,27 @@ function Project({data}) {
                 ))
             }*/}
 
-            {
-                data?.projects?.map((project )=>(
-                    <SwiperSlide role='group' className='is-galerie-projet'  key={project?.id}>
-                        <div style={{marginRight: '150px'}} className='slide-wrapp'>
-                            <Link href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`}
-                                  className='projet-img-holder w-inline-block'>
-                                <Image
-                                    alt={project?.title}
-                                    src={project?.featuredImage?.node?.sourceUrl}
-                                    width={900}
-                                    height={780}
-                                    className="absolute-image slide-image"
-                                />
-                            </Link>
+                {
+                    data?.projects?.map((project) => (
+                        <SwiperSlide role='group' className='is-galerie-projet py-4' key={project?.id}>
+                            <div style={{marginRight: '150px'}} className='slide-wrapp'>
+                                <Link
+                                    href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`}
+                                    className='projet-img-holder w-inline-block'>
+                                    <Image
+                                        alt={project?.title}
+                                        src={project?.featuredImage?.node?.sourceUrl}
+                                        width={900}
+                                        height={780}
+                                        className="absolute-image slide-image"
+                                    />
+                                </Link>
 
-                            <div
-                                className="mt-6 w-full flex justify-center w-inline-block category-title"
-                            >
-                                <div className=''>
-                                    <Link className=''
+                                <div
+                                    className="mt-6 w-full flex justify-center w-inline-block category-title"
+                                >
+                                <div className='flex flex-col items-center'>
+                                    <Link className='block'
                                           href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`}>
 
                                         <p
@@ -258,27 +260,32 @@ function Project({data}) {
                                         </p>
                                     </Link>
 
-                                    <p
-                                        className=' project-link'
-                                        style={{
-                                            fontSize: "13px",
-                                            fontWeight: 400,
-                                            lineHeight: "42.47px",
-                                            textAlign: "center",
-                                            cursor: 'pointer'
-                                        }}
-                                    >
-                                        bekijk project
-                                    </p>
+                                    <Link
+                                        className='project-link'
+                                        href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`}>
+                                        <p
+                                            className=' inline-block '
+                                            style={{
+                                                fontSize: "13px",
+                                                fontWeight: 400,
+                                                // lineHeight: "42.47px",
+                                                textAlign: "center",
+                                                cursor: 'pointer'
+                                            }}
+                                        >
+                                            bekijk project
+                                        </p>
+                                    </Link>
+
+                                </div>
                                 </div>
                             </div>
-                        </div>
-                    </SwiperSlide>
-                ))
-            }
+                        </SwiperSlide>
+                    ))
+                }
 
-        </Swiper>
-      </div>
+            </Swiper>
+        </div>
 
         {/*For mobile */}
         <section className="block lg:hidden bg-[#eeeeef]">
@@ -289,10 +296,10 @@ function Project({data}) {
                         <div className="w-10/12 mx-auto">
                             <Link href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`}
                                   className='projet-img-holder w-inline-block'>
-                            <Image
-                              alt={project?.title}
-                              src={project?.featuredImage?.node?.sourceUrl}
-                                  width={900}
+                                <Image
+                                    alt={project?.title}
+                                    src={project?.featuredImage?.node?.sourceUrl}
+                                    width={900}
                                   height={780}
                                   className="w-[100%] slide-image"
                               />
