@@ -40,6 +40,8 @@ const rubik = Rubik({
     const mobileMenu = useRef();
     const contactRef = useRef(null);
 
+    // console.log(data)
+
 
 
     useGSAP(()=> {
@@ -863,19 +865,17 @@ const rubik = Rubik({
                                   </div>
                               </div>
                           </div>
+
+                          <div className='md:hidden'>
+                              <Footer data={data?.generalFields}/>
+                          </div>
                       </div>
 
                   </div>
               </div>
 
-              <div className='md:hidden'>
-                  <Footer data={data?.generalFields}/>
-              </div>
-
 
           </section>
-
-
 
 
       </>
