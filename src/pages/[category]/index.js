@@ -30,14 +30,14 @@ const queryFunc = (params)=>{
                       }
                     }
                   }
-                    websiteOptions {
+                    websiteOptions {                    
                         generalFields {
                           logoText
                             responsiveLogo{
                                 node{
                                   sourceUrl
                                 }
-                              }
+                            }
                            mainMenu{
                                 items{
                                   label
@@ -48,7 +48,7 @@ const queryFunc = (params)=>{
                                   last_label
                                   last_url
                                 }
-                              }
+                           }
                           copyRight {
                             leftText
                             rightText
@@ -62,9 +62,41 @@ const queryFunc = (params)=>{
                                 name
                               }
                             }
-                          }
+                          }                          
                         }
-                      }
+                        
+                        homePage{
+      slogan
+      testimonial{
+        name
+        designation
+        info
+        url
+      }
+      contactSection{
+        label
+        contactRow{
+          label
+          details
+        }
+        socialMedia{
+          icon{
+            node{
+              sourceUrl
+            }
+          }
+          link
+        }
+      }
+      gallery{
+        item{
+          node{
+            sourceUrl
+          }
+        }
+      }  
+    }
+                    }
                 }
                 `;
     return query;
@@ -75,7 +107,7 @@ export default function Projects({data}) {
       return (
        <>
 
-           <Navber data={data?.generalFields} categories={data?.categories}/>
+           <Navber data={data} categories={data?.categories}/>
 
            <div className='lg:h-[83vh] overflow-hidden flex justify-center items-center'>
                <div className='lg:w-[90vw]'>
@@ -104,6 +136,7 @@ export const getServerSideProps = async ({params}) => {
     return {
         props: {
             data: {
+                contactSection: data.websiteOptions.homePage.contactSection,
                 projects: data?.categories?.nodes[0]?.projects?.nodes || [],
                 generalFields: data?.websiteOptions?.generalFields || {},
                 categories: data.websiteOptions?.generalFields?.categories?.reduce((acc, curr) => {

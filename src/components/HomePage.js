@@ -18,6 +18,9 @@ import {initializeApollo} from "@/utiles/instance";
 import {useRouter} from "next/router";
 import Footer from "@/components/Footer";
 import {gql} from "@apollo/client";
+import Navber from "@/components/Navber";
+import MobileNav from "@/components/MobileNav";
+import SocialLinks from "@/components/SocialLinks";
 
 
 const rubik = Rubik({
@@ -39,8 +42,6 @@ const rubik = Rubik({
     const homeTitle = useRef();
     const mobileMenu = useRef();
     const contactRef = useRef(null);
-
-    // console.log(data)
 
 
 
@@ -440,7 +441,7 @@ const rubik = Rubik({
 
      useEffect(() => {
 
-         if (contactSection !== undefined ){
+         if (contactSection !== undefined && contactSection !== '#contact' ){
              const sectionWrap = document.querySelectorAll('.scroll-section');
 
              let totalWidth = 0;
@@ -454,6 +455,8 @@ const rubik = Rubik({
              gsap.to(window, {
                  scrollTo: { y: totalWidth, autoKill: false }
              })
+         }else if (contactSection === '#contact'){
+             window.location.href = '#contact'
          }
 
 
@@ -574,15 +577,15 @@ const rubik = Rubik({
 
                           {/*Responsive Mobile menu*/}
 
-                          <div className="absolute right-6 top-10 block md:hidden" onClick={menuOpen}>
+                          {/*<div className="absolute right-6 top-10 block md:hidden" onClick={menuOpen}>
                               <svg width="28" height="9" viewBox="0 0 28 9" fill="none"
                                    xmlns="http://www.w3.org/2000/svg">
                                   <path d="M27.3489 6.54053V8.16986H11.0569V6.54053H27.3489Z" fill="white"/>
                                   <path d="M27.3689 0.817383V2.44671H0.487152V0.817383H27.3689Z" fill="white"/>
                               </svg>
-                          </div>
+                          </div>*/}
 
-                          <div
+                          {/*<div
                               className="absolute left-0 top-0 z-50 bg-gray-300 w-full text-center py-8 transform -translate-y-60"
                               ref={mobileMenu}>
                               <ul>
@@ -621,10 +624,111 @@ const rubik = Rubik({
                                   </svg>
 
                               </div>
-                          </div>
+                          </div>*/}
+
 
                           {/*End Responsive Mobile menu*/}
 
+
+                          {/*Mobile menu*/}
+
+                          {/*<div
+                              className="absolute left-0 top-0 z-50 bg-[#EEEEEF] w-full text-center pb-8 transform -translate-y-[800px]"
+                              ref={mobileMenu}
+                          >
+
+                              <div className='flex flex-col justify-between h-full'>
+
+                                  <div>
+                                      <div className='flex justify-between items-center px-5'>
+
+                                          <Link href="/">
+                                              <Image
+                                                  alt={"logo"}
+                                                  src={data?.logo}
+                                                  height={200}
+                                                  width={200}
+                                                  className="py-5"
+                                              />
+                                          </Link>
+
+                                          <div className="ham2 block md:hidden" onClick={menuClose}>
+
+                                              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
+                                                   viewBox="0,0,256,256">
+                                                  <g fill="gray" fillRule="nonzero" stroke="none" strokeWidth="1"
+                                                     strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10"
+                                                     strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none"
+                                                     fontSize="none" textAnchor="none" style={{
+                                                      mixBlendMode: 'normal'
+                                                  }}>
+                                                      <g transform="scale(4,4)">
+                                                          <path
+                                                              d="M12,8l-4,4l16.66602,20l-16.66602,20l4,4l20,-16.66602l20,16.66602l4,-4l-16.66602,-20l16.66602,-20l-4,-4l-20,16.66602z"></path>
+                                                      </g>
+                                                  </g>
+                                              </svg>
+                                          </div>
+                                      </div>
+
+
+                                      <ul className='ml-8 mt-8' style={{fontSize: '40px', zIndex: 999, fontWeight: '300'}}>
+                                          {
+                                              data?.mainMenu.items?.map((item) => (
+                                                  <li style={{textAlign: 'left!important'}}>
+                                                      <Link
+                                                          style={{textAlign: 'left!important'}}
+                                                          className={` menu-nav-link project-mobile-nav`}
+                                                          key={item?.url} href={`${item?.url}`}>{item?.label}</Link>
+                                                  </li>
+                                              ))
+                                          }
+
+                                          <li>
+                                               <Link href={`#contact`}
+                          className='block menu-nav-link link-underline2 link-underline-black2 project-mobile-nav'>Contact</Link>
+                                              <p onClick={goToContactSection} className='menu-nav-link text-left'
+                                                 style={{cursor: 'pointer'}}>Contact</p>
+                                          </li>
+
+                                      </ul>
+
+
+                                  </div>
+
+
+                                  <div className='text-left ml-6 '>
+                                      <p className='menu-nav-link'>
+                                          <a href="tel:010-4523552">010-4523552</a>
+                                      </p>
+                                      <p className='menu-nav-link'>
+                                          <a href="mailto:info@a1-ontwerpgroep.nl">info@a1-ontwerpgroep.nl</a>
+                                      </p>
+
+                                      <div className='mt-5 flex ' style={{
+                                          fontSize: '18px',
+                                          fontWeight: '500',
+                                          lineHeight: '24px',
+                                          textAlign: 'left',
+                                          color: 'rgb(133 133 133)'
+
+                                      }}>
+                                          <span className='mr-4 menu-nav-link'>Instagram</span>
+                                          <span className='mr-4 menu-nav-link'>Facebook</span>
+                                          <span className='menu-nav-link'>Linkedin</span>
+                                      </div>
+
+
+                                  </div>
+
+                              </div>
+
+
+                          </div>*/}
+
+                          {/*End Mobile menu*/}
+
+                          <MobileNav data={data} isHomeMenu={true} socialLinks={data?.contactSection?.socialMedia}/>
 
 
                           <div className="hidden md:block absolute right-[100px] top-[50px]">
@@ -648,6 +752,8 @@ const rubik = Rubik({
                                   }
                               </ul>
                           </div>
+
+
                           <div className='flex justify-center -mb-10'>
                               <h2 ref={homeTitle}
                                   className="homeTitle absolute bottom-0
@@ -851,19 +957,11 @@ const rubik = Rubik({
                               }
 
 
-                              <div className="mb-[50px]">
-                                  <div className="flex gap-5">
-                                      {
-                                          data?.contactSection?.socialMedia?.map((item, index) => (
-                                              <a key={index} target={'_blank'} href={item?.link}>
-                                                  <Image src={item?.icon?.node?.sourceUrl} alt={item?.link} width={'40'}
-                                                         height={'40'} objectFit={'cover'}/>
-                                              </a>
-
-                                          ))
-                                      }
-                                  </div>
+                              <div className='mb-[50px]'>
+                                  <SocialLinks socialLinks={data?.contactSection?.socialMedia}/>
                               </div>
+
+
                           </div>
 
                           <div className='md:hidden'>
@@ -911,13 +1009,13 @@ const queryFunc = (params)=>{
                       }
                     websiteOptions {
                         generalFields {
-                          logoText
-                            responsiveLogo{
+                          logoText                                
+                          responsiveLogo{
                                 node{
                                   sourceUrl
                                 }
                               }
-                           mainMenu{
+                          mainMenu{
                                 items{
                                   label
                                   url
@@ -962,8 +1060,11 @@ export const getServerSideProps = async () => {
 
     return {
         props: {
-            title: data.websiteOptions.generalFields.title,
-            generalFields: data?.websiteOptions?.generalFields || {},
+            data: {
+                title: data.websiteOptions.generalFields.title,
+                generalFields: data?.websiteOptions?.generalFields || {},
+            }
+
         }
     };
 };
