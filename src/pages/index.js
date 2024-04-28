@@ -20,6 +20,11 @@ const query = gql`
   websiteOptions {
     generalFields{
       title
+      responsiveLogo{
+        node{
+          sourceUrl
+        }
+      }
       logo{
         node{
           sourceUrl
@@ -31,11 +36,10 @@ const query = gql`
         linkText
         link
       }
-       mainMenu{
+      mainMenu{
         items{
           label
-          url
-          
+          url          
         }
         lastItem{
           last_label
@@ -66,14 +70,13 @@ const query = gql`
           link
         }
       }
-    gallery{
+      gallery{
         item{
           node{
             sourceUrl
           }
         }
-      }
-  
+      }  
     }
   }
   categories{
@@ -142,7 +145,12 @@ export const getStaticProps = async () => {
                      [...acc, curr?.item.node?.sourceUrl]
                 ), []),
                 mainMenu: data.websiteOptions?.generalFields?.mainMenu,
-                generalFields: data.websiteOptions?.generalFields
+                generalFields: data.websiteOptions?.generalFields,
+                responsiveLogo: {
+                    node: {
+                        sourceUrl: data?.websiteOptions?.generalFields?.responsiveLogo?.node?.sourceUrl
+                    }
+                }
             }
 
         },
