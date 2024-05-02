@@ -22,6 +22,8 @@ import Navber from "@/components/Navber";
 import MobileNav from "@/components/MobileNav";
 import SocialLinks from "@/components/SocialLinks";
 
+import Lenis from 'lenis';
+
 
 const rubik = Rubik({
   weight: "400",
@@ -91,12 +93,29 @@ const rubik = Rubik({
                     scrollTrigger: {
                         trigger: triggerRef.current,
                         start: "top top",
-                        end: isMobile ? 'top top' : `2000 top`,
-                        scrub: 2,
+                        end: isMobile ? 'top top' : `20000 top`,
+                        scrub: 1,
                         pin: true
                     },
                 }
             );
+
+
+        const lenis = new Lenis({
+            smooth: true
+        })
+
+        lenis.on('scroll', (e) => {
+            console.log(e)
+        })
+
+        lenis.on('scroll', ScrollTrigger.update)
+
+        gsap.ticker.add((time)=>{
+            lenis.raf(time * 1000)
+        })
+
+        gsap.ticker.lagSmoothing(0)
 
 
             // home page title animation

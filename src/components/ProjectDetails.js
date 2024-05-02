@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { Rubik } from "next/font/google";
 import { useGSAP } from "@gsap/react";
+import Lenis from "lenis";
 // import {ScrollSmoother} from "gsap-trial/dist/ScrollSmoother";
 
 const rubik = Rubik({
@@ -47,16 +48,32 @@ function ProjectDetails({params, data}) {
       {
         translateX: `-${totalWidth}`,
         ease: "none",
-        duration: 1000,
+        duration: 500,
         scrollTrigger: {
           trigger: triggerRef.current,
           start: "top top",
-          end: "3000 top",
-          scrub: 2,
+          end: "20000 top",
+          scrub: 1,
           pin: true,
         },
       }
     );
+
+      const lenis = new Lenis({
+          smooth: true
+      })
+
+      lenis.on('scroll', (e) => {
+          console.log(e)
+      })
+
+      lenis.on('scroll', ScrollTrigger.update)
+
+      gsap.ticker.add((time)=>{
+          lenis.raf(time * 1000)
+      })
+
+      gsap.ticker.lagSmoothing(0)
 
     gsap.fromTo(
       ".section-one",
