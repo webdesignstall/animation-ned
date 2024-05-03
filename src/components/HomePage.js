@@ -42,6 +42,27 @@ const rubik = Rubik({
     const contactRef = useRef(null);
 
 
+     useEffect(() => {
+
+         if (window.innerHeight > 768){
+
+             console.log(window.innerHeight)
+
+             const lenis = new Lenis({
+                 smooth: true
+             })
+
+             lenis.on('scroll', ScrollTrigger.update)
+
+             gsap.ticker.add((time)=>{
+                 lenis.raf(time * 1000)
+             })
+
+             gsap.ticker.lagSmoothing(0)
+         }
+     }, []);
+
+
     useGSAP(()=> {
 
             const sectionWrap = document.querySelectorAll('.scroll-section');
@@ -75,21 +96,7 @@ const rubik = Rubik({
             );
 
 
-        const lenis = new Lenis({
-            smooth: true
-        })
 
-        lenis.on('scroll', (e) => {
-            console.log(e)
-        })
-
-        lenis.on('scroll', ScrollTrigger.update)
-
-        gsap.ticker.add((time)=>{
-            lenis.raf(time * 1000)
-        })
-
-        gsap.ticker.lagSmoothing(0)
 
 
             // home page title animation

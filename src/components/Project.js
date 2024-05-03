@@ -18,6 +18,7 @@ function Project({data}) {
   const params = useParams();
 
 
+
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(()=> {
@@ -31,116 +32,6 @@ function Project({data}) {
           }
       })
   })
-
-  /*useEffect(() => {
-    // Initialize the Swiper instance
-    const swiper = swiperRef.current.swiper;
-
-    // Function to animate the active slide with GSAP
-    const activeSlide = (activeSlideElement) => {
-      gsap.fromTo(
-        activeSlideElement,
-        {
-          scale: 0,
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          // duration: 1,
-          display: "flex",
-          // scale: 1.1,
-          // ease: "expo.inOut",
-        }
-      );
-    };
-
-    const activeSlideImage = (activeSlideElement) => {
-      gsap.to(activeSlideElement, {
-        // duration: 2.5,
-
-        // ease: "expo.inOut",
-      });
-    };
-    const slideImage = (slideImage) => {
-      gsap.to(slideImage, {
-        // duration: 2.5,
-        // ease: "expo.out",
-      });
-    };
-
-    const previousSlide = (activeSlideElement) => {
-      gsap.to(activeSlideElement, {
-        display: "none",
-        opacity: 0,
-        // ease: "expo.inOut",
-      });
-    };
-
-    // Attach the event handler to the Swiper instance
-    swiper.on("slideChange", (element) => {
-      const activeSlideIndex = swiper.realIndex;
-      const previousSlideIndex = swiper.previousIndex;
-      const nextSlideIndex = activeSlideIndex + 1;
-
-      const activeSlideElement = swiper.slides[activeSlideIndex];
-      const previousSlideElement = swiper.slides[previousSlideIndex];
-      const nextSlideElement = swiper.slides[nextSlideIndex];
-
-      const activeTitle = activeSlideElement?.querySelector(".title");
-      const previousTitle = previousSlideElement?.querySelector(".title");
-
-      const previousImage = previousSlideElement?.querySelector(".slide-image");
-      const activeImage = activeSlideElement?.querySelector(".slide-image");
-
-      activeSlideImage(activeImage);
-
-      activeSlide(activeTitle);
-      previousSlide(previousTitle);
-
-      slideImage(previousImage);
-
-      if (nextSlideElement) {
-        const nextTitle = nextSlideElement?.querySelector(".title");
-        const nextImage = nextSlideElement?.querySelector(".slide-image");
-        slideImage(nextImage);
-      }
-    });
-
-    const activeIndex = swiper.activeIndex;
-    const activeSlideElement = swiper.slides[activeIndex];
-    const activeTitle = activeSlideElement?.querySelector(".title");
-    if(!activeTitle){
-      return activeSlideElement
-    }
-    activeTitle.style.display = "flex";
-
-    // Cleanup the event listener when the component unmounts
-    return () => {
-      swiper.off("slideChange", activeSlide);
-    };
-  }, []);*/
-
- /* const settings = {
-    initialSlide: 2,
-    effect: "coverflow",
-    grabCursor: true,
-    centeredSlides: true,
-    spaceBetween: 0,
-    slidesPerView: 3,
-    coverflowEffect: {
-      rotate: 0,
-      stretch: -40,
-      depth: 0,
-      modifier: 10,
-      slideShadows: false,
-
-    },
-    speed: 800,
-    mousewheel: true,
-    modules: [EffectCoverflow, Mousewheel],
-    className: "mySwiper",
-  };
-*/
 
     const initialSlideIndex = Math.round( data?.projects?.length / 2 ) - 1
 
@@ -158,7 +49,11 @@ function Project({data}) {
 
   };
 
-  return (
+
+
+
+
+    return (
 
     <>
 
