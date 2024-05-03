@@ -93,7 +93,7 @@ const rubik = Rubik({
                     scrollTrigger: {
                         trigger: triggerRef.current,
                         start: "top top",
-                        end: isMobile ? 'top top' : `12000 top`,
+                        end: isMobile ? 'top top' : `9000 top`,
                         scrub: 1,
                         pin: true
                     },

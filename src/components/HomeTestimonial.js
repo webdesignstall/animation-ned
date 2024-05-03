@@ -46,10 +46,10 @@ const HomeTestimonial = ({testimonial}) => {
     })*/
 
     return (
-        <div className="scroll-section md:w-[1400px] md:flex justify-center border-b-2">
+        <div className="scroll-section md:w-[1400px] md:flex justify-center border-b-2" style={{zIndex: 999, background: '#eeeeef'}}>
 
             <div
-                className="block md:flex flex-col items-center justify-around md:h-[100vh] md:w-[1263px] text-wrap px-5 py-[120px] testimonial-wrap">
+                className="block md:flex flex-col items-center justify-around md:h-[100vh] md:w-[1263px] text-wrap px-5 py-[120px] testimonial-wrap" style={{width: '100%'}}>
 
                 <div className='py-16 text-center'>
                     <p
