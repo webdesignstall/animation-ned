@@ -52,7 +52,7 @@ function ProjectDetails({params, data}) {
         scrollTrigger: {
           trigger: triggerRef.current,
           start: "top top",
-          end: "20000 top",
+          end: "8000 top",
           scrub: 1,
           pin: true,
         },
