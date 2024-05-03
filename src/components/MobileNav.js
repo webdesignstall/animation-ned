@@ -178,7 +178,7 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
                         </div>
 
 
-                        <div className='text-left ml-6 '>
+                        <div className='text-left ml-6 pb-6'>
 
                             {
                                 data?.contactSection?.contactRow?.length && <div className='mb-5'
