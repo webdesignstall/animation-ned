@@ -20,6 +20,7 @@ const query = gql`
   websiteOptions {
     generalFields{
       title
+      homePageScrollSpeed
       responsiveLogo{
         node{
           sourceUrl

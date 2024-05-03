@@ -47,6 +47,8 @@ const rubik = Rubik({
 
 
 
+
+
     useGSAP(()=> {
 
             const sectionWrap = document.querySelectorAll('.scroll-section');
@@ -93,7 +95,7 @@ const rubik = Rubik({
                     scrollTrigger: {
                         trigger: triggerRef.current,
                         start: "top top",
-                        end: isMobile ? 'top top' : `9000 top`,
+                        end: isMobile ? 'top top' : `${data?.generalFields?.homePageScrollSpeed || 9000} top`,
                         scrub: 1,
                         pin: true
                     },
