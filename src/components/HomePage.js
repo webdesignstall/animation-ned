@@ -93,7 +93,7 @@ const rubik = Rubik({
                     scrollTrigger: {
                         trigger: triggerRef.current,
                         start: "top top",
-                        end: isMobile ? 'top top' : `20000 top`,
+                        end: isMobile ? 'top top' : `12000 top`,
                         scrub: 1,
                         pin: true
                     },
@@ -372,11 +372,12 @@ const rubik = Rubik({
 
     const menuOpen = ()=> {
         gsap.to(mobileMenu.current, {
-            height: '100vh',
+            height: '96vh',
             translateY: 0,
             duration: 1,
             opacity: 1,
             ease: 'expo.inOut',
+            overflow: 'hidden'
         })
 
         // home page nav link
@@ -454,8 +455,6 @@ const rubik = Rubik({
 
      const router = useRouter();
      const { contactSection } = router.query;
-
-     console.log('contactSection', contactSection)
 
 
      useEffect(() => {
