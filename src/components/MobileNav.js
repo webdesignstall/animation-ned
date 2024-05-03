@@ -14,6 +14,9 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
     const router = useRouter();
 
     const menuOpen = ()=> {
+        document.body.style.overflow = 'hidden';
+        document.body.style.width = '100%';
+        document.body.style.height = '100%';
 
         gsap.to(mobileMenu.current, {
             height: '100vh',
@@ -47,6 +50,11 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
     }
 
     const menuClose = ()=> {
+
+        document.body.style.overflow = 'auto';
+        document.body.style.width = 'auto';
+        document.body.style.height = 'auto';
+
         gsap.to(mobileMenu.current, {
             translateY: -900,
             duration: 1,
