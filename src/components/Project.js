@@ -50,6 +50,43 @@ function Project({data}) {
   };
 
 
+    useEffect(() => {
+        const handleResize = () => {
+
+            if (window.innerHeight < 700) {
+                const element = document.querySelector('.swiper-wrapper');
+                element.style.scale = 0.7;
+            }
+            if (window.innerHeight < 500) {
+                const element = document.querySelector('.swiper-wrapper');
+                element.style.scale = 0.6;
+            }
+
+            if (window.innerHeight > 700) {
+                const element = document.querySelector('.swiper-wrapper');
+                element.style.scale = 1;
+            }
+        };
+
+        // Add event listener for window resize
+        window.addEventListener('resize', handleResize);
+
+        // Remove event listener when the component unmounts
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+
+    }, []);
+
+    useEffect(() => {
+        if (window.innerHeight < 700) {
+            const element = document.querySelector('.swiper-wrapper');
+            element.style.scale = 0.7;
+        }
+    }, []);
+
+
+
 
 
 

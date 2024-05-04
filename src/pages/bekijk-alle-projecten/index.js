@@ -78,7 +78,7 @@ export default function Projects({data}) {
     return (
         <div className=''>
 
-            <Navber data={data?.generalFields} categories={data?.categories}/>
+            <Navber data={data} categories={data?.categories}/>
 
 
             <div className='md:h-[83vh] overflow-hidden flex justify-center items-center'>
