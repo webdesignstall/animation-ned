@@ -241,17 +241,18 @@ const rubik = Rubik({
 
      const scrollToContact = () => {
 
-         const sectionWrap = document.querySelectorAll('.scroll-section');
+        /* const sectionWrap = document.querySelectorAll('.scroll-section');
 
          let totalWidth = 0;
 
-         for (let i = 1; i < sectionWrap.length; i++) {
+         for (let i = 0; i < sectionWrap.length; i++) {
+             // debugger
              const offsetWidthValue = sectionWrap[i].clientWidth;
              totalWidth += offsetWidthValue;
-         }
+         }*/
 
          gsap.to(window, {
-             scrollTo: {y: totalWidth, autoKill: false }
+             scrollTo: {y: 9000, autoKill: false }
          })
      };
 
@@ -273,7 +274,7 @@ const rubik = Rubik({
              }
 
              gsap.to(window, {
-                 scrollTo: { y: totalWidth, autoKill: false }
+                 scrollTo: { y: `${data?.generalFields?.homePageScrollSpeed || totalWidth}` , autoKill: false }
              })
          }else if (contactSection === '#contact'){
              window.location.href = '#contact'
@@ -401,8 +402,9 @@ const rubik = Rubik({
 
                       </div>
 
-
+                      <div className="scroll-section md:w-[1400px] md:flex justify-center border-b-2" style={{zIndex: 999, background: '#eeeeef'}}>
                       <HomeTestimonial testimonial={data?.testimonial}/>
+                      </div>
 
 
                       <div className='scroll-section'>
@@ -501,7 +503,7 @@ const rubik = Rubik({
                                                   textAlign: "left",
                                               }}
 
-                                              dangerouslySetInnerHTML={{__html: ct?.details}}
+                                              dangerouslySetInnerHTML={{__html: ct?.homePageContactDetails}}
                                           />
 
 
@@ -512,7 +514,20 @@ const rubik = Rubik({
 
 
                               <div className='mb-[50px]'>
-                                  <SocialLinks socialLinks={data?.contactSection?.socialMedia}/>
+                                  {/*<SocialLinks socialLinks={data?.contactSection?.socialMedia}/>*/}
+
+                                  <div className="flex gap-5">
+                                      {
+                                          data?.contactSection?.socialMedia?.map((item, index) => (
+                                              <a key={index} target={'_blank'} href={item?.link}
+                                                 className=''>
+                                                  <Image src={item?.icon?.node?.sourceUrl} alt={item?.link} width={'40'}
+                                                         height={'40'} objectFit={'cover'}/>
+                                              </a>
+
+                                          ))
+                                      }
+                                  </div>
                               </div>
 
 
@@ -537,7 +552,7 @@ const rubik = Rubik({
 export default HomePage;
 
 
-const queryFunc = (params)=>{
+const queryFunc = (params) => {
 
     const query = gql`
                 {
