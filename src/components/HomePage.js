@@ -287,6 +287,8 @@ const rubik = Rubik({
   return (
       <>
 
+          <MobileNav data={data} isHomeMenu={true} socialLinks={data?.contactSection?.socialMedia}/>
+
           <section className="scroll-section-outer">
               <div ref={triggerRef} className='scroll-wrap'>
                   <div ref={sectionRef} className="scroll-section-inner">
@@ -340,7 +342,7 @@ const rubik = Rubik({
                               />
                           </div>
 
-                          <MobileNav data={data} isHomeMenu={true} socialLinks={data?.contactSection?.socialMedia}/>
+
 
 
                           <div className="hidden md:block absolute right-[100px] top-[50px]">
