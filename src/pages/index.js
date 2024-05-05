@@ -61,6 +61,7 @@ const query = gql`
         contactRow{
           label
           details
+          homePageContactDetails
         }
         socialMedia{
           icon{
