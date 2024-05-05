@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import {gsap} from "gsap";
@@ -12,11 +12,14 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
     const mobileMenu = useRef();
     const pathname = usePathname();
     const router = useRouter();
+    const [isOpen, setOpen] = useState(true)
 
     const menuOpen = ()=> {
         document.body.style.overflow = 'hidden';
         document.body.style.width = '100%';
         document.body.style.height = '100%';
+
+        setOpen(false)
 
         gsap.to(mobileMenu.current, {
             height: '100vh',
@@ -54,6 +57,8 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
         document.body.style.overflow = 'auto';
         document.body.style.width = 'auto';
         document.body.style.height = 'auto';
+
+        setOpen(true)
 
         gsap.to(mobileMenu.current, {
             translateY: -900,
@@ -106,19 +111,25 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
                 }
 
 
+                {
+                    isOpen &&
+                    <div className="absolute right-6 top-10 block md:hidden cursor-pointer" style={{zIndex: 999}}
+                         onClick={menuOpen}>
+                        <svg width="28" height="9" viewBox="0 0 28 9" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M27.3489 6.54053V8.16986H11.0569V6.54053H27.3489Z"
+                                  fill={isHomeMenu ? 'white' : 'black'}/>
+                            <path d="M27.3689 0.817383V2.44671H0.487152V0.817383H27.3689Z"
+                                  fill={isHomeMenu ? 'white' : 'black'}/>
+                        </svg>
+                    </div>
+                }
 
-                <div className="absolute right-6 top-10 block md:hidden cursor-pointer" onClick={menuOpen}>
-                    <svg width="28" height="9" viewBox="0 0 28 9" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M27.3489 6.54053V8.16986H11.0569V6.54053H27.3489Z" fill={isHomeMenu ? 'white': 'black'}/>
-                        <path d="M27.3689 0.817383V2.44671H0.487152V0.817383H27.3689Z" fill={isHomeMenu ? 'white': 'black'}/>
-                    </svg>
-                </div>
 
                 {/*Mobile menu*/}
 
                 <div
-                    className="absolute left-0 top-0 z-50 bg-[#EEEEEF] w-full text-center py-8 transform -translate-y-[800px]"
+                    className="fixed left-0 top-0 z-50 bg-[#EEEEEF] w-full text-center py-8 transform -translate-y-[800px]"
                     ref={mobileMenu}
                 >
 
@@ -127,7 +138,7 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
                         <div>
                             <div className='flex justify-between items-center px-5'>
 
-                                <Link href="/">
+                                <Link onClick={() => menuClose()} href="/">
                                     <Image
                                         alt={"logo"}
                                         src={data?.generalFields?.responsiveLogo?.node?.sourceUrl}
@@ -160,7 +171,7 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
                             <ul className='ml-8 mt-8' style={{fontSize: '40px', zIndex: 999, fontWeight: '300'}}>
                                 {
                                     data?.generalFields?.mainMenu?.items?.map((item) => (
-                                        <li style={{textAlign: 'left!important'}}>
+                                        <li style={{textAlign: 'left!important'}} onClick={() => menuClose()}>
                                             <Link
                                                 style={{textAlign: 'left!important'}}
                                                 className={` menu-nav-link project-mobile-nav ${'/' + item?.url?.split('/')[item?.url?.split('/')?.length - 1] === pathname ? 'italic text-[#556555]' : ''}`}
@@ -169,7 +180,7 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
                                     ))
                                 }
 
-                                <li>
+                                <li onClick={() => menuClose()}>
                                     {
                                         isHomeMenu ? <Link href={`#contact`}
                                                            className='menu-nav-link text-left'>Contact</Link>
