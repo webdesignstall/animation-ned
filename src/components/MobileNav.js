@@ -165,7 +165,7 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
                         </div>
                     </div>
 
-                    <div className='flex flex-col justify-around h-full'>
+                    <div className='flex flex-col justify-around gap-2 h-full'>
 
                         <div>
 
@@ -198,7 +198,7 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
                         </div>
 
 
-                        <div className='text-left ml-6 pb-6 contact'>
+                        <div className='text-left ml-6 pb-12 contact'>
 
                             {
                                 data?.contactSection?.contactRow?.length && <div className='mb-5'
