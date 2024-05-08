@@ -134,39 +134,40 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
                     ref={mobileMenu}
                 >
 
-                    <div className='flex flex-col justify-between h-full'>
+                    <div className='flex justify-between items-center px-5'>
+
+                        <Link onClick={() => menuClose()} href="/">
+                            <Image
+                                alt={"logo"}
+                                src={data?.generalFields?.responsiveLogo?.node?.sourceUrl}
+                                height={133}
+                                width={133}
+                                className="py-5"
+                            />
+                        </Link>
+
+                        <div className="ham2 block md:hidden" onClick={menuClose}>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
+                                 viewBox="0,0,256,256">
+                                <g fill="gray" fillRule="nonzero" stroke="none" strokeWidth="1"
+                                   strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10"
+                                   strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none"
+                                   fontSize="none" textAnchor="none" style={{
+                                    mixBlendMode: 'normal'
+                                }}>
+                                    <g transform="scale(4,4)">
+                                        <path
+                                            d="M12,8l-4,4l16.66602,20l-16.66602,20l4,4l20,-16.66602l20,16.66602l4,-4l-16.66602,-20l16.66602,-20l-4,-4l-20,16.66602z"></path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div className='flex flex-col justify-around h-full'>
 
                         <div>
-                            <div className='flex justify-between items-center px-5'>
-
-                                <Link onClick={() => menuClose()} href="/">
-                                    <Image
-                                        alt={"logo"}
-                                        src={data?.generalFields?.responsiveLogo?.node?.sourceUrl}
-                                        height={133}
-                                        width={133}
-                                        className="py-5"
-                                    />
-                                </Link>
-
-                                <div className="ham2 block md:hidden" onClick={menuClose}>
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
-                                         viewBox="0,0,256,256">
-                                        <g fill="gray" fillRule="nonzero" stroke="none" strokeWidth="1"
-                                           strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10"
-                                           strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none"
-                                           fontSize="none" textAnchor="none" style={{
-                                            mixBlendMode: 'normal'
-                                        }}>
-                                            <g transform="scale(4,4)">
-                                                <path
-                                                    d="M12,8l-4,4l16.66602,20l-16.66602,20l4,4l20,-16.66602l20,16.66602l4,-4l-16.66602,-20l16.66602,-20l-4,-4l-20,16.66602z"></path>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </div>
-                            </div>
 
 
                             <ul className='ml-8 mt-8' style={{fontSize: '40px', zIndex: 999, fontWeight: '300'}}>
@@ -191,7 +192,6 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
 
 
                                 </li>
-
                             </ul>
 
 
