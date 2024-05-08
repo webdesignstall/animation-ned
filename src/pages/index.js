@@ -132,8 +132,6 @@ export const getStaticProps = async () => {
         query: query,
     });
 
-    // console.log('query', data.websiteOptions.homePage?.contactSection)
-
     return {
         props: {
             data: {

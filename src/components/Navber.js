@@ -28,20 +28,11 @@ const Navber=({data, categories}) =>{
   const pathname = usePathname();
 
 
-  console.log('pathname', data)
-
-
-
-
-
   return (
     <div className="sticky top-0 left-0 bottom-0 bg-[#EEEEEF] border-b-[1.02px]  border-[#00000026] z-50">
       <div className="hidden mx-auto px-16 md:flex justify-between items-center my-5">
         <div className="flex gap-14">
           <Link href="/">
-           {/* <h2 className="text-[19px] italic font-[300] leading-[21px]">
-              {data?.logoText}
-            </h2>*/}
 
             <Image
                 alt={'logo'}
@@ -56,7 +47,7 @@ const Navber=({data, categories}) =>{
             {
 
                 data?.generalFields?.mainMenu?.items?.map((item)=>{
-                  return <Link  className={`link-underline link-underline-black ${ '/'+ item?.url?.split('/')[item?.url?.split('/')?.length - 1] === pathname ? 'active' : ''}`}
+                  return <Link  className={`sm:mt-0 lg:mt-3 link-underline link-underline-black ${ '/'+ item?.url?.split('/')[item?.url?.split('/')?.length - 1] === pathname ? 'active' : ''}`}
                                    key={item?.url} href={`${item?.url}`}>{item?.label}</Link>
                 })
 
