@@ -96,16 +96,16 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
 
     return (
         <>
-            <div className="flex items-center justify-between border-b-[1.02px] border-[#00000026] mx-5">
+            <div className="flex items-center justify-between border-b-[1.02px] border-[#00000026]">
 
                 {
                     !isHomeMenu && <Link href="/">
                         <Image
                             alt={"logo"}
                             src={data?.generalFields?.responsiveLogo?.node?.sourceUrl}
-                            height={31}
-                            width={200}
-                            className="py-5"
+                            height={133}
+                            width={133}
+                            className="py-5 pl-6"
                         />
                     </Link>
                 }
@@ -113,7 +113,7 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
 
                 {
                     isOpen &&
-                    <div className="absolute right-6 top-10 block md:hidden cursor-pointer" style={{zIndex: 999}}
+                    <div className="absolute right-6 top-6 block md:hidden cursor-pointer" style={{zIndex: 999}}
                          onClick={menuOpen}>
                         <svg width="28" height="9" viewBox="0 0 28 9" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -142,8 +142,8 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
                                     <Image
                                         alt={"logo"}
                                         src={data?.generalFields?.responsiveLogo?.node?.sourceUrl}
-                                        height={200}
-                                        width={200}
+                                        height={133}
+                                        width={133}
                                         className="py-5"
                                     />
                                 </Link>
