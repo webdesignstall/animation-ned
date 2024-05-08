@@ -105,11 +105,11 @@ const queryFunc = (params)=>{
 export default function Projects({data}) {
 
       return (
-       <>
+       <div className='flex flex-col justify-between h-[100vh]'>
 
            <Navber data={data} categories={data?.categories}/>
 
-           <div className='h-[80vh] 2xl:h-[83vh] overflow-hidden flex justify-center items-center'>
+           <div className='overflow-hidden flex justify-center items-center'>
                <div className='lg:w-[90vw]'>
                    <Project data={data} />
                </div>
@@ -118,7 +118,7 @@ export default function Projects({data}) {
 
            {/*<Project data={data} />*/}
            <Footer data={data?.generalFields}/>
-       </>
+       </div>
       );
 }
 
