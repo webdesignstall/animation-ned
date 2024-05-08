@@ -74,6 +74,7 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
         gsap.to(
             navLinkText,
             {
+
                 y: 100,
                 opacity: 0,
                 stagger: 0.05,
@@ -113,7 +114,7 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
 
                 {
                     isOpen &&
-                    <div className="absolute right-6 top-6 block md:hidden cursor-pointer" style={{zIndex: 999}}
+                    <div className="absolute right-6 top-8 block md:hidden cursor-pointer" style={{zIndex: 999}}
                          onClick={menuOpen}>
                         <svg width="28" height="9" viewBox="0 0 28 9" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -197,7 +198,7 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
                         </div>
 
 
-                        <div className='text-left ml-6 pb-6'>
+                        <div className='text-left ml-6 pb-6 contact'>
 
                             {
                                 data?.contactSection?.contactRow?.length && <div className='mb-5'

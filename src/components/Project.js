@@ -54,6 +54,7 @@ function Project({data}) {
         const handleResize = () => {
 
             if (window.innerHeight < 700) {
+
                 const element = document.querySelector('.swiper-wrapper');
                 element.style.scale = 0.7;
             }
@@ -79,16 +80,12 @@ function Project({data}) {
     }, []);
 
     useEffect(() => {
-        if (window.innerHeight < 700) {
+
+        if (window.innerHeight < 764) {
             const element = document.querySelector('.swiper-wrapper');
-            element.style.scale = 0.7;
+            element.style.scale = 0.8;
         }
     }, []);
-
-
-
-
-
 
     return (
 
@@ -198,7 +195,7 @@ function Project({data}) {
                                         <p
                                             className=' inline-block '
                                             style={{
-                                                fontSize: "13px",
+                                                fontSize: "14px",
                                                 fontWeight: 400,
                                                 // lineHeight: "42.47px",
                                                 textAlign: "center",

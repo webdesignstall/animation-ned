@@ -33,11 +33,9 @@ export const getServerSideProps = async () => {
         query: query,
     });
 
-    console.log('query', data)
-
     return {
         props: {
-            title: data.websiteOptions.generalFields.title,
+            title: data?.websiteOptions?.generalFields?.title,
 
         }
     };

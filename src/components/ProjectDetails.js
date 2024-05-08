@@ -34,11 +34,10 @@ function ProjectDetails({params, data}) {
 
     for (let i = 1; i < sectionWrap.length; i++) {
       const offsetWidthValue = sectionWrap[i].clientWidth;
-      console.log(`Element ${i + 1} offsetWidth: ${offsetWidthValue}`);
+
       totalWidth += offsetWidthValue;
     }
 
-    console.log('Total width:', totalWidth);
 
     const scrollTween = gsap.fromTo(
       sectionRef.current,
@@ -64,7 +63,6 @@ function ProjectDetails({params, data}) {
       })
 
       lenis.on('scroll', (e) => {
-          console.log(e)
       })
 
       lenis.on('scroll', ScrollTrigger.update)
