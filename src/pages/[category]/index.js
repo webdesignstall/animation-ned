@@ -105,7 +105,7 @@ const queryFunc = (params)=>{
 export default function Projects({data}) {
 
       return (
-       <div className='flex flex-col justify-between h-[100vh]'>
+       <div className='lg:flex lg:flex-col lg:justify-between h-[100vh]'>
 
            <Navber data={data} categories={data?.categories}/>
 
