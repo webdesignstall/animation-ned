@@ -303,6 +303,7 @@ nav {
   background-position: 0 100%;
   background-repeat: no-repeat;
   transition: background-size .5s ease-in-out;
+  display: inline-block;
 }
 
 .link-underline-black, .link-underline div {
