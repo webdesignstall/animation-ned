@@ -3,7 +3,7 @@ module.exports = {
         {
             name: 'animation fronted',
             script: 'npm run start',
-            port: 3000,
+            port: 11300,
         },
     ],
 };
