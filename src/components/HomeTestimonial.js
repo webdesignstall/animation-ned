@@ -51,9 +51,10 @@ const HomeTestimonial = ({testimonial}) => {
             <div
                 className="block md:flex flex-col items-center justify-around md:h-[100vh] md:w-[1263px] text-wrap px-5 py-[120px] testimonial-wrap" style={{width: '100%'}}>
 
-                <div className='py-16 text-center'>
+                <div className='text-center flex flex-col justify-between h-[100%] gap-14 lg:gap-0'>
+
                     <p
-                        className="text-[16px] mb-10 font-[500] leading-[15px] text-center"
+                        className="text-[16px] font-[500] leading-[15px] text-center"
                     >
                         {testimonial?.name}
 
@@ -67,25 +68,26 @@ const HomeTestimonial = ({testimonial}) => {
                         }
 
                     </p>
-                </div>
-                <div className='text-center'>
-                    <Link href={`/bekijk-alle-projecten`}
-                          className='link-underline link-underline-black'
-                          style={{
-                              position: "relative",
-                              fontSize: "13px",
-                              fontStyle: "italic",
-                              fontWeight: 300,
-                              lineHeight: "15px",
-                              letterSpacing: "-0.3499999940395355px",
-                              textAlign: "center",
-                          }}
-                    >
-                        {testimonial?.designation}
 
-                    </Link>
-                </div>
+                    <div className='text-center'>
+                        <Link href={`/bekijk-alle-projecten`}
+                              className='link-underline link-underline-black'
+                              style={{
+                                  position: "relative",
+                                  fontSize: "13px",
+                                  fontStyle: "italic",
+                                  fontWeight: 300,
+                                  lineHeight: "15px",
+                                  letterSpacing: "-0.3499999940395355px",
+                                  textAlign: "center",
+                              }}
+                        >
+                            {testimonial?.designation}
 
+                        </Link>
+                    </div>
+
+                </div>
 
 
             </div>

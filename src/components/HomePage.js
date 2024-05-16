@@ -342,8 +342,6 @@ const rubik = Rubik({
                           </div>
 
 
-
-
                           <div className="hidden md:block absolute right-[100px] top-[50px]">
                               <ul className="font-light text-[24.94px] leading-8 text-white">
                                   {
@@ -400,8 +398,9 @@ const rubik = Rubik({
 
                       </div>
 
-                      <div className="scroll-section md:w-[1400px] md:flex justify-center border-b-2" style={{zIndex: 999, background: '#eeeeef'}}>
-                      <HomeTestimonial testimonial={data?.testimonial}/>
+                      <div className="scroll-section md:w-[1400px] md:flex justify-center border-b-2"
+                           style={{zIndex: 999, background: '#eeeeef'}}>
+                          <HomeTestimonial testimonial={data?.testimonial}/>
                       </div>
 
 
@@ -465,18 +464,19 @@ const rubik = Rubik({
                           </div>
                       </div>
 
-                      <div className="scroll-section border-t-2 px-6 py-8 lg:flex items-center mt-10 lg:mt-0"
+                       <div className="scroll-section flex flex-col justify-center h-[100%] md:ml-[100px] py-20"
                            ref={contactRef} id='contact'>
-                          <div className="md:ml-[100px]">
+                          <div className="flex flex-col justify-between h-[100%]">
                               <p
-                                  className=" 2xl:mb-[80px] text-[50px] mb-10 md:text-[72px] font-[200] md:font-[250] leading-[39px] md:leading-[102px]"
+
+                                  style={{fontSize: '71px', fontWeight: '200'}}
                               >
                                   {data?.contactSection?.label}
                               </p>
 
                               {
                                   data.contactSection.contactRow.map((ct, index) => (
-                                      <div key={index} className="mb-[50px]">
+                                      <div key={index} className="">
                                           <p
                                               className={`${rubik.className} uppercase mb-4`}
                                               style={{
@@ -510,11 +510,10 @@ const rubik = Rubik({
                                   ))
                               }
 
+                              <div className=''>
+                                  <SocialLinks socialLinks={data?.contactSection?.socialMedia}/>
 
-                              <div className='mb-[50px]'>
-                                  {/*<SocialLinks socialLinks={data?.contactSection?.socialMedia}/>*/}
-
-                                  <div className="flex gap-5">
+                                  {/*<div className="flex gap-5">
                                       {
                                           data?.contactSection?.socialMedia?.map((item, index) => (
                                               <a key={index} target={'_blank'} href={item?.link}
@@ -525,9 +524,8 @@ const rubik = Rubik({
 
                                           ))
                                       }
-                                  </div>
+                                  </div>*/}
                               </div>
-
 
                           </div>
 

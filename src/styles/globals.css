@@ -408,8 +408,13 @@ nav {
   border-bottom: 1px solid gray;
 }*/
 
-
-
+.category-page .pin-spacer{
+  height: auto!important;
+}
+.category-page .is-projet-galerie{
+  height: auto!important;
+  max-height: max-content!important;
+}
 
 
 /* CSS media query for screens with a maximum width of 768 pixels */

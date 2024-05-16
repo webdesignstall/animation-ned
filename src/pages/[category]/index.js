@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import {gql} from "@apollo/client";
 import {initializeApollo} from "@/utiles/instance";
 import {useParams} from "next/navigation";
-
+import {useEffect, useState} from "react";
 
 
 const queryFunc = (params)=>{
@@ -104,20 +104,40 @@ const queryFunc = (params)=>{
 
 export default function Projects({data}) {
 
-      return (
-       <div className='lg:flex lg:flex-col lg:justify-between h-[100vh]'>
+    const [projects, setProjects] = useState(data);
 
-           <Navber data={data} categories={data?.categories}/>
+    const params = useParams();
+
+    // Watch for changes in params
+    useEffect(() => {
+        // Filter projects based on the category in params
+        if (params?.category && data?.length) {
+            const filteredProjects = data.filter(project => project.category === params.category);
+            setProjects(filteredProjects);
+        } else {
+            // If no category is specified, show all projects
+            setProjects(data);
+        }
+    }, [params?.category, data]);
+
+
+
+      return (
+       <div className='category-page flex flex-wrap justify-stretch lg:flex lg:flex-col lg:justify-between h-[100vh]'>
+
+           <Navber data={projects} categories={data?.categories}/>
 
            <div className='overflow-hidden flex justify-center items-center'>
                <div className='lg:w-[90vw]'>
-                   <Project data={data} />
+                   <Project data={projects} />
                </div>
            </div>
 
+           <div className='self-end w-[100%] border-t-[1.02px] border-[#00000026]'>
+               <Footer data={data?.generalFields}/>
+           </div>
 
-           {/*<Project data={data} />*/}
-           <Footer data={data?.generalFields}/>
+
        </div>
       );
 }
