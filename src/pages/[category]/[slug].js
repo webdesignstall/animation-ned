@@ -5,6 +5,7 @@ import ResponsiveProjectDetails from "@/components/ResponsiveProjectDetails";
 import {initializeApollo} from "@/utiles/instance";
 import {gql} from "@apollo/client";
 import {useParams} from "next/navigation";
+import {useEffect} from "react";
 
 const queryFunc = (params)=>{
 
@@ -38,6 +39,8 @@ const queryFunc = (params)=>{
 
 const  ProjectDetail =({data})=> {
     const params = useParams();
+
+
   return (
     <>
       <div className="hidden lg:block ">

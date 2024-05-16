@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -17,7 +17,7 @@ function Project({data}) {
 
   const params = useParams();
 
-
+    const [projects, setProjects] = useState([]);
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -46,7 +46,6 @@ function Project({data}) {
     mousewheel: true,
     modules: [Mousewheel],
     className: "mySwiper",
-
   };
 
 
@@ -77,7 +76,7 @@ function Project({data}) {
             window.removeEventListener('resize', handleResize);
         };
 
-    }, []);
+    }, );
 
     useEffect(() => {
 
@@ -85,77 +84,26 @@ function Project({data}) {
             const element = document.querySelector('.swiper-wrapper');
             element.style.scale = 0.8;
         }
-    }, []);
+    });
+
+
+    useEffect(() => {
+
+    }, [data?.projects?.length, params?.category])
+
 
     return (
 
     <>
 
-        <div className="hidden lg:block">
+        <div className="hidden lg:block" style={{height: '100%!important'}}>
 
-            <Swiper {...settings} ref={swiperRef} className='is-projet-galerie'>
-
-                {/*{
-                data?.projects?.map((project )=>(
-                    <SwiperSlide key={project?.id}>
-                        <div className='w-[728px] xl:ml-[-175px] 2xl:ml-[-60px]'>
-                            <div className="h-[437px]">
-                                <div className="h-full">
-                                    <div className="h-full">
-                                        <Link href={`/${params?.category}/${project?.slug}`}>
-                                            <Image
-                                                alt={project?.title}
-                                                src={project?.featuredImage?.node?.sourceUrl}
-                                                width={900}
-                                                height={780}
-                                                className="w-[100%] h-[100%] slide-image"
-                                            />
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                className="hide mt-6 w-full justify-center title "
-                                style={{display: "none"}}
-                            >
-                                <div>
-                                  <Link href={`/${params?.category}/${project?.slug}`}>
-                                        <p
-                                            style={{
-                                                fontSize: "45.47px",
-                                                fontWeight: 200,
-                                                lineHeight: "46.58px",
-                                                letterSpacing: "0em",
-                                                textAlign: "center",
-                                            }}
-                                        >
-                                            {project?.title}
-                                        </p>
-                                    </Link>
-
-                                    <p
-                                        style={{
-                                            position: "relative",
-                                            fontSize: "13px",
-                                            fontWeight: 400,
-                                            lineHeight: "42.47px",
-                                            textAlign: "center",
-                                        }}
-                                    >
-                                        bekijk project
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                ))
-            }*/}
+            <Swiper {...settings} ref={swiperRef} className='is-projet-galerie' style={{height: '100%!important'}}>
 
                 {
-                    data?.projects?.map((project) => (
-                        <SwiperSlide role='group' className='is-galerie-projet py-4' key={project?.id}>
-                            <div style={{marginRight: '150px'}} className='slide-wrapp'>
+                   data?.projects?.map((project, index) => (
+                        <SwiperSlide role='group' className='is-galerie-projet py-4' style={{height: '100%!important'}} key={index}>
+                            <div style={{marginRight: '150px', height: '100%!important'}} className='slide-wrapp'>
                                 <Link
                                     href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`}
                                     className='projet-img-holder w-inline-block'>
@@ -220,57 +168,60 @@ function Project({data}) {
         <section className="block lg:hidden bg-[#eeeeef]">
 
             {
-                data?.projects?.map((project) => (
-                    <div key={project?.id} className="w-full mt-4">
-                        <div className="w-10/12 mx-auto">
-                            <Link href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`}
-                                  className='projet-img-holder w-inline-block'>
-                                <Image
-                                    alt={project?.title}
-                                    src={project?.featuredImage?.node?.sourceUrl}
-                                    width={900}
-                                  height={780}
-                                  className="w-[100%] slide-image"
-                              />
-                          </Link>
-                      </div>
-                      <div className="mt-6 w-10/12 mx-auto justify-center">
-                          <div>
-                              <Link href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`} className='w-inline-block'>
-                                  <p
-                                      style={{
-                                          fontSize: "30px",
-                                          fontWeight: 200,
-                                          lineHeight: "46.58px",
-                                          letterSpacing: "0em",
-                                          textAlign: "center",
-                                      }}
-                                  >
-                                    {project?.title}
-                                  </p>
-                              </Link>
+                data?.projects?.map((project, index) => (
+                    <div className='' key={project?.id}>
+                        <div className="w-full mt-4">
+                            <div className="w-10/12 mx-auto">
+                                <Link href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`} className='projet-img-holder w-inline-block'>
+                                    <Image
+                                        alt={project?.title}
+                                        src={project?.featuredImage?.node?.sourceUrl}
+                                        width={900}
+                                        height={780}
+                                        className="w-[100%] slide-image"
+                                    />
+                                </Link>
+                            </div>
+                            <div className="mt-6 w-10/12 mx-auto justify-center">
+                                <div>
+                                    <Link href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`} className='w-inline-block'>
+                                        <p
+                                            style={{
+                                                fontSize: "30px",
+                                                fontWeight: 200,
+                                                lineHeight: "46.58px",
+                                                letterSpacing: "0em",
+                                                textAlign: "center",
+                                            }}
+                                        >
+                                            {project?.title}
+                                        </p>
+                                    </Link>
 
-                              <p
-                                  style={{
-                                      position: "relative",
-                                      fontSize: "13px",
-                                      fontWeight: 400,
-                                      lineHeight: "42.47px",
-                                      textAlign: "center",
-                                  }}
-                              >
-                                  bekijk project
-                              </p>
-                          </div>
-                      </div>
-                      <div className="w-full border-b-[1.02px] border-[#00000026]"></div>
-                  </div>
+                                    <p
+                                        style={{
+                                            position: "relative",
+                                            fontSize: "13px",
+                                            fontWeight: 400,
+                                            lineHeight: "42.47px",
+                                            textAlign: "center",
+                                        }}
+                                    >
+                                        bekijk project
+                                    </p>
+                                </div>
+                            </div>
+                            {index !== data.projects.length - 1 && (
+                                <div className="w-full border-b-[1.02px] border-[#00000026]"></div>
+                            )}
+                        </div>
+                    </div>
+                ))
+            }
 
-              ))
-          }
 
 
-      </section>
+        </section>
     </>
   );
 }
