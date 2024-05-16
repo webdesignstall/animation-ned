@@ -410,6 +410,8 @@ nav {
 
 
 
+
+
 /* CSS media query for screens with a maximum width of 768 pixels */
 @media only screen and (max-width: 961px) {
   .scroll-section-inner {
@@ -430,6 +432,17 @@ nav {
 
   .pin-spacer{
     height: auto!important;
+  }
+}
+
+@media only screen and (min-width: 962px) {
+  .scroll-wrap{
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    transform: translate(0px, 0px) !important;
   }
 }
 
