@@ -4,7 +4,7 @@ export default function Footer({data}) {
   return (
 
 
-      <div className='lg:border-t-[2px] lg:border-[#00000026]'>
+      <div className=''>
 
          {/* <div className="bg-[#EEEEEF] lg:border-t-2 border-[#c4c4c4]">
               <div

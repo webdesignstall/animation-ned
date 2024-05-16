@@ -3,9 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import {usePathname} from "next/navigation";
-import {gsap} from "gsap";
-import SplitType from "split-type";
-import {useRef} from "react";
 import MobileNav from "@/components/MobileNav";
 
 
@@ -30,7 +27,7 @@ const Navber=({data, categories}) =>{
 
   return (
     <div className="sticky top-0 left-0 bottom-0 bg-[#EEEEEF]  z-50 w-[100%]">
-      <div className="hidden mx-auto px-16 md:flex justify-between items-center my-5">
+      <div className="hidden mx-auto px-16 md:flex justify-between items-center my-5 border-b-[1.02px]  border-[#00000026] pb-4">
         <div className="flex gap-14">
           <Link href="/">
 
@@ -43,7 +40,7 @@ const Navber=({data, categories}) =>{
             />
           </Link>
 
-          {/*<ul className="flex text-sm gap-5 text-[#4d4c4c]">
+          <ul className="flex text-sm gap-5 text-[#4d4c4c]">
             {
 
                 data?.generalFields?.mainMenu?.items?.map((item)=>{
@@ -53,13 +50,13 @@ const Navber=({data, categories}) =>{
 
             }
 
-          </ul>*/}
+          </ul>
 
-          <ul className="flex text-sm gap-5 text-[#4d4c4c] ">
+          {/*<ul className="flex text-sm gap-5 text-[#4d4c4c] ">
               <Link className={`sm:mt-0 lg:mt-3 link-underline link-underline-black ${ '/luxe-villas' === pathname ? 'active' : ''}`} href='/luxe-villas'>luxe-villas</Link>
               <Link className={`sm:mt-0 lg:mt-3 link-underline link-underline-black ${ '/projecten' === pathname ? 'active' : ''}`} href='/projecten'>projecten</Link>
               <Link className={`sm:mt-0 lg:mt-3 link-underline link-underline-black ${ '/utiliteitsbouw' === pathname ? 'active' : ''}`} href='/utiliteitsbouw'>utiliteitsbouw</Link>
-          </ul>
+          </ul>*/}
         </div>
         <div>
           {/*<Link href={data?.mainMenu?.lastItem?.last_url}>{data?.mainMenu?.lastItem?.last_label}</Link>*/}
