@@ -9,8 +9,8 @@ const SocialLinks = ({ socialLinks = [] }) => {
                     {
                         socialLinks?.map((item, index) => (
                             <a key={index} target={'_blank'} href={item?.link} className='menu-nav-link'>
-                                <Image src={item?.icon?.node?.sourceUrl} alt={item?.link} width={'40'}
-                                       height={'40'} objectFit={'cover'}/>
+                                <Image src={item?.icon?.node?.sourceUrl} alt={item?.link} width={'30'}
+                                       height={'30'} objectFit={'cover'}/>
                             </a>
 
                         ))

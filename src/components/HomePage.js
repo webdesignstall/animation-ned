@@ -411,7 +411,7 @@ const rubik = Rubik({
                                   data?.categories?.map((cat, index) => (
 
                                       // md:h-[75%] lg-h-[75%] xl-h-[75%] p-4
-                                      <div className="w-full lg:w-[25rem] xl:w-[41rem] xl:min-w-[41rem] h-full"
+                                      <div className="w-[35rem] lg:w-[25rem] xl:w-[38rem] xl:min-w-[41rem] h-full"
                                            ref={categoryImageTrigger}>
                                           <div className='overflow-hidden category-image-wrap' style={{height: '100%'}}>
                                               <Link href={`/${cat?.slug}`} className='image-zoom-container'>
@@ -464,7 +464,7 @@ const rubik = Rubik({
                           </div>
                       </div>
 
-                       <div className="scroll-section flex flex-col justify-center h-[100%] md:ml-[100px] mt-10 md:mt-0 md:py-20 mx-10"
+                       <div className="scroll-section flex flex-col justify-center h-[100%] md:ml-[100px] mt-10 md:mt-0 pb-20 pt-10 mx-10"
                            ref={contactRef} id='contact'>
                           <div className="flex flex-col justify-between h-[100%]">
                               <p
@@ -480,7 +480,7 @@ const rubik = Rubik({
                                           <p
                                               className={`${rubik.className} uppercase mb-4`}
                                               style={{
-                                                  fontSize: "16px",
+                                                  fontSize: "12px",
                                                   fontWeight: 400,
                                                   lineHeight: "24px",
                                                   letterSpacing: "0em",
@@ -494,7 +494,7 @@ const rubik = Rubik({
                                           <div
                                               className={`${rubik.className}`}
                                               style={{
-                                                  fontSize: "16px",
+                                                  fontSize: "14px",
                                                   fontWeight: 400,
                                                   lineHeight: "24px",
                                                   letterSpacing: "0em",

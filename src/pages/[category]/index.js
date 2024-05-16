@@ -106,7 +106,7 @@ export default function Projects({data}) {
 
     const [projects, setProjects] = useState(data);
 
-    const params = useParams();
+    /*const params = useParams();
 
     // Watch for changes in params
     useEffect(() => {
@@ -118,18 +118,18 @@ export default function Projects({data}) {
             // If no category is specified, show all projects
             setProjects(data);
         }
-    }, [params?.category, data]);
+    });*/
 
 
 
       return (
-       <div className='category-page flex flex-wrap justify-stretch lg:flex lg:flex-col lg:justify-between h-[100vh]'>
+       <div className='category-page flex flex-wrap justify-stretch lg:flex lg:flex-wrap lg:justify-between h-[100vh]'>
 
-           <Navber data={projects} categories={data?.categories}/>
+           <Navber data={data} categories={data?.categories}/>
 
            <div className='overflow-hidden flex justify-center items-center'>
                <div className='lg:w-[90vw]'>
-                   <Project data={projects} />
+                   <Project data={data} />
                </div>
            </div>
 

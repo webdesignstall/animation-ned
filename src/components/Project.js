@@ -52,6 +52,8 @@ function Project({data}) {
     useEffect(() => {
         const handleResize = () => {
 
+            console.log(window.innerHeight)
+
             if (window.innerHeight < 700) {
 
                 const element = document.querySelector('.swiper-wrapper');
@@ -76,7 +78,7 @@ function Project({data}) {
             window.removeEventListener('resize', handleResize);
         };
 
-    }, );
+    }, []);
 
     useEffect(() => {
 
@@ -84,12 +86,10 @@ function Project({data}) {
             const element = document.querySelector('.swiper-wrapper');
             element.style.scale = 0.8;
         }
-    });
+    }, []);
 
 
-    useEffect(() => {
 
-    }, [data?.projects?.length, params?.category])
 
 
     return (
@@ -97,6 +97,7 @@ function Project({data}) {
     <>
 
         <div className="hidden lg:block" style={{height: '100%!important'}}>
+
 
             <Swiper {...settings} ref={swiperRef} className='is-projet-galerie' style={{height: '100%!important'}}>
 
@@ -119,42 +120,41 @@ function Project({data}) {
                                 <div
                                     className="mt-6 w-full flex justify-center w-inline-block category-title"
                                 >
-                                <div className='flex flex-col items-center'>
-                                    <Link className='block'
-                                          href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`}>
+                                    <div className='flex flex-col items-center'>
+                                        <Link className='block'
+                                              href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`}>
 
-                                        <p
-                                            className=''
-                                            style={{
-                                                fontSize: "45.47px",
-                                                fontWeight: 200,
-                                                lineHeight: "46.58px",
-                                                letterSpacing: "0em",
-                                                textAlign: "center",
-                                            }}
-                                        >
-                                            {project?.title}
-                                        </p>
-                                    </Link>
+                                            <p
+                                                className=''
+                                                style={{
+                                                    fontSize: "45.47px",
+                                                    fontWeight: 200,
+                                                    lineHeight: "46.58px",
+                                                    letterSpacing: "0em",
+                                                    textAlign: "center",
+                                                }}
+                                            >
+                                                {project?.title}
+                                            </p>
+                                        </Link>
 
-                                    <Link
-                                        className='project-link'
-                                        href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`}>
-                                        <p
-                                            className=' inline-block '
-                                            style={{
-                                                fontSize: "14px",
-                                                fontWeight: 400,
-                                                // lineHeight: "42.47px",
-                                                textAlign: "center",
-                                                cursor: 'pointer'
-                                            }}
-                                        >
-                                            bekijk project
-                                        </p>
-                                    </Link>
-
-                                </div>
+                                        <Link
+                                            className='project-link'
+                                            href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`}>
+                                            <p
+                                                className=' inline-block '
+                                                style={{
+                                                    fontSize: "14px",
+                                                    fontWeight: 400,
+                                                    // lineHeight: "42.47px",
+                                                    textAlign: "center",
+                                                    cursor: 'pointer'
+                                                }}
+                                            >
+                                                bekijk project
+                                            </p>
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </SwiperSlide>
