@@ -464,7 +464,7 @@ const rubik = Rubik({
                           </div>
                       </div>
 
-                       <div className="scroll-section flex flex-col justify-center h-[100%] md:ml-[100px] py-20"
+                       <div className="scroll-section flex flex-col justify-center h-[100%] md:ml-[100px] mt-10 md:mt-0 md:py-20 mx-10"
                            ref={contactRef} id='contact'>
                           <div className="flex flex-col justify-between h-[100%]">
                               <p
@@ -510,7 +510,7 @@ const rubik = Rubik({
                                   ))
                               }
 
-                              <div className=''>
+                              <div className='mt-4 md:mt-0'>
                                   <SocialLinks socialLinks={data?.contactSection?.socialMedia}/>
 
                                   {/*<div className="flex gap-5">
@@ -529,7 +529,7 @@ const rubik = Rubik({
 
                           </div>
 
-                          <div className='md:hidden'>
+                          <div className='md:hidden mt-4 '>
                               <Footer data={data?.generalFields}/>
                           </div>
                       </div>
