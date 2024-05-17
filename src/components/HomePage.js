@@ -464,7 +464,7 @@ const rubik = Rubik({
                           </div>
                       </div>
 
-                       <div className="scroll-section flex flex-col justify-center h-[100%] md:ml-[100px] mt-10 md:mt-0 pb-20 pt-10 mx-10"
+                       <div className="scroll-section flex flex-col justify-center h-[100%] md:ml-[100px] mt-10 md:mt-0 pb-20 pt-20 mx-10"
                            ref={contactRef} id='contact'>
                           <div className="flex flex-col justify-between h-[100%]">
                               <p
@@ -480,7 +480,7 @@ const rubik = Rubik({
                                           <p
                                               className={`${rubik.className} uppercase mb-4`}
                                               style={{
-                                                  fontSize: "12px",
+                                                  fontSize: "16px",
                                                   fontWeight: 400,
                                                   lineHeight: "24px",
                                                   letterSpacing: "0em",
