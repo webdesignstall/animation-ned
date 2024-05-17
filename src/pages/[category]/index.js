@@ -127,7 +127,7 @@ export default function Projects({data}) {
 
            <Navber data={data} categories={data?.categories}/>
 
-           <div className='overflow-hidden flex justify-center items-center'>
+           <div className='overflow-hidden flex justify-center items-center w-[100%]'>
                <div className='lg:w-[90vw]'>
                    <Project data={data} />
                </div>
