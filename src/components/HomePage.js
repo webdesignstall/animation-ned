@@ -464,19 +464,20 @@ const rubik = Rubik({
                           </div>
                       </div>
 
-                       <div className="scroll-section flex flex-col justify-center h-[100%] md:ml-[100px] mt-10 md:mt-0 pb-20 pt-20 mx-10"
+                       <div className="scroll-section flex flex-col justify-center h-[100%] md:ml-[100px] md:pb-[150px]  md:pt-0 border-t-[2px] md:border-t-0 mt-10 border-[#00000026]"
                            ref={contactRef} id='contact'>
-                          <div className="flex flex-col justify-between h-[100%]">
+                          <div className="flex flex-col justify-between h-[100%] gap-10 md:gap-2 pt-4  mx-10">
                               <p
+                                  className='text-[31px] md:text-[71px] mt-12 md:mt-0'
 
-                                  style={{fontSize: '71px', fontWeight: '200'}}
+                                  style={{fontWeight: '200'}}
                               >
                                   {data?.contactSection?.label}
                               </p>
 
                               {
                                   data.contactSection.contactRow.map((ct, index) => (
-                                      <div key={index} className="">
+                                      <div key={index} className="mb-4 md:mb-0">
                                           <p
                                               className={`${rubik.className} uppercase mb-4`}
                                               style={{
