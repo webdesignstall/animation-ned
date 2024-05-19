@@ -464,54 +464,58 @@ const rubik = Rubik({
                           </div>
                       </div>
 
-                       <div className="scroll-section flex flex-col justify-center h-[100%] md:ml-[100px] md:pb-[150px]  md:pt-0 border-t-[2px] md:border-t-0 mt-10 border-[#00000026]"
-                           ref={contactRef} id='contact'>
-                          <div className="flex flex-col justify-between h-[100%] gap-10 md:gap-2 pt-4  mx-10">
+                      <div
+                          className="scroll-section flex flex-col justify-center h-[100%] md:ml-[100px] md:pb-[150px]  md:pt-0 border-t-[2px] md:border-t-0 mt-10 border-[#00000026]"
+                          ref={contactRef} id='contact'>
+                          <div className="flex flex-col justify-center">
                               <p
-                                  className='text-[31px] md:text-[71px] mt-12 md:mt-0'
+                                  className='text-[31px] md:text-[71px] mt-12 md:mt-0 mb-[5.6rem]'
 
                                   style={{fontWeight: '200'}}
                               >
                                   {data?.contactSection?.label}
                               </p>
 
-                              {
-                                  data.contactSection.contactRow.map((ct, index) => (
-                                      <div key={index} className="mb-4 md:mb-0">
-                                          <p
-                                              className={`${rubik.className} uppercase mb-4`}
-                                              style={{
-                                                  fontSize: "16px",
-                                                  fontWeight: 400,
-                                                  lineHeight: "24px",
-                                                  letterSpacing: "0em",
-                                                  textAlign: "left",
-                                                  color: "#93AA95",
-                                              }}
-                                          >
-                                              {ct?.label}
-                                          </p>
-
-                                          <div
-                                              className={`${rubik.className}`}
-                                              style={{
-                                                  fontSize: "14px",
-                                                  fontWeight: 400,
-                                                  lineHeight: "24px",
-                                                  letterSpacing: "0em",
-                                                  textAlign: "left",
-                                              }}
-
-                                              dangerouslySetInnerHTML={{__html: ct?.homePageContactDetails}}
-                                          />
+                              <div className={'flex flex-col justify-center gap-[3.43rem]'}>
 
 
-                                      </div>
+                                  {
+                                      data.contactSection?.contactRow?.map((ct, index) => (
+                                          <div key={index}>
+                                              <p
+                                                  className={`${rubik.className} uppercase mb-[1.125rem]`}
+                                                  style={{
+                                                      fontSize: "16px",
+                                                      fontWeight: 400,
+                                                      lineHeight: "1.3em",
+                                                      letterSpacing: "0em",
+                                                      textAlign: "left",
+                                                      color: "#93AA95",
+                                                  }}
+                                              >
+                                                  {ct?.label}
+                                              </p>
 
-                                  ))
-                              }
+                                              <div
+                                                  className={`${rubik.className}`}
+                                                  style={{
+                                                      fontSize: "14px",
+                                                      fontWeight: 400,
+                                                      lineHeight: "1.5rem",
+                                                      letterSpacing: "0em",
+                                                      textAlign: "left",
+                                                  }}
 
-                              <div className='mt-4 md:mt-0'>
+                                                  dangerouslySetInnerHTML={{__html: ct?.homePageContactDetails}}
+                                              />
+
+
+                                          </div>
+
+                                      ))
+                                  }
+                              </div>
+                              <div className='mt-[6.25rem]'>
                                   <SocialLinks socialLinks={data?.contactSection?.socialMedia}/>
 
                                   {/*<div className="flex gap-5">
@@ -530,15 +534,16 @@ const rubik = Rubik({
 
                           </div>
 
-                          <div className='md:hidden mt-4 '>
-                              <Footer data={data?.generalFields}/>
-                          </div>
+
                       </div>
 
                   </div>
+
               </div>
 
 
+
+              <Footer homeDeskop={true} data={data?.generalFields}/>
           </section>
 
 
