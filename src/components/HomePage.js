@@ -467,16 +467,15 @@ const rubik = Rubik({
                       <div
                           className="scroll-section flex flex-col justify-center h-[100%] md:ml-[100px] md:pb-[150px]  md:pt-0 border-t-[2px] md:border-t-0 mt-10 border-[#00000026]"
                           ref={contactRef} id='contact'>
-                          <div className="flex flex-col justify-center">
+                          <div className="flex mx-[2rem] md:mx-0 mt-[4.2rem] md:mt-0 flex-col justify-center gap-[3rem] md:gap-0">
                               <p
                                   className='text-[31px] md:text-[71px] mb-[2.4rem] min-[1600px]:mb-[5.6rem]'
-
                                   style={{fontWeight: '200'}}
                               >
                                   {data?.contactSection?.label}
                               </p>
 
-                              <div className={'flex flex-col justify-center gap-[1.75rem] 2xl:gap-[3.43rem]'}>
+                              <div className={'flex flex-col justify-center gap-[3.1rem] md:gap-[1.9rem] min-[1600px]:gap-[3.43rem]'}>
 
 
                                   {
@@ -515,7 +514,7 @@ const rubik = Rubik({
                                       ))
                                   }
                               </div>
-                              <div className='md:mt-[2.9rem] min-[1600px]:mt-[6.25rem]'>
+                              <div className='my-[3.38rem] md:mt-[2.9rem] min-[1600px]:mt-[6.25rem]'>
                                   <SocialLinks socialLinks={data?.contactSection?.socialMedia}/>
                               </div>
 
