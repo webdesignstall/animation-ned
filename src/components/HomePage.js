@@ -469,14 +469,14 @@ const rubik = Rubik({
                           ref={contactRef} id='contact'>
                           <div className="flex flex-col justify-center">
                               <p
-                                  className='text-[31px] md:text-[71px] mt-12 md:mt-0 mb-[5.6rem]'
+                                  className='text-[31px] md:text-[71px] mb-[3.44rem] 2xl:mb-[5.6rem]'
 
                                   style={{fontWeight: '200'}}
                               >
                                   {data?.contactSection?.label}
                               </p>
 
-                              <div className={'flex flex-col justify-center gap-[3.43rem]'}>
+                              <div className={'flex flex-col justify-center gap-[2rem] 2xl:gap-[3.43rem]'}>
 
 
                                   {
@@ -515,7 +515,7 @@ const rubik = Rubik({
                                       ))
                                   }
                               </div>
-                              <div className='mt-[6.25rem]'>
+                              <div className='md:mt-[3.75rem] 2xl:mt-[6.25rem]'>
                                   <SocialLinks socialLinks={data?.contactSection?.socialMedia}/>
 
                                   {/*<div className="flex gap-5">
