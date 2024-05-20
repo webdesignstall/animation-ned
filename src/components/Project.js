@@ -49,43 +49,26 @@ function Project({data}) {
   };
 
 
-    useEffect(() => {
-        const handleResize = () => {
+    const handleResize = () => {
+        const element = document.querySelector('.swiper-wrapper');
+        const elementImg = document.querySelectorAll('.swiper-wrapper img');
+        console.log('innerHeight', window.innerHeight);
+        if (window.innerHeight <= 768) {
+            element.style.scale = .9;
+            elementImg.forEach(img => {
+                img.style.height = '320px';
+            });
 
-            console.log(window.innerHeight)
-
-            if (window.innerHeight < 700) {
-
-                const element = document.querySelector('.swiper-wrapper');
-                element.style.scale = 0.7;
-            }
-            if (window.innerHeight < 500) {
-                const element = document.querySelector('.swiper-wrapper');
-                element.style.scale = 0.6;
-            }
-
-            if (window.innerHeight > 700) {
-                const element = document.querySelector('.swiper-wrapper');
-                element.style.scale = 1;
-            }
-        };
-
-        // Add event listener for window resize
-        window.addEventListener('resize', handleResize);
-
-        // Remove event listener when the component unmounts
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-
-    }, []);
-
-    useEffect(() => {
-
-        if (window.innerHeight < 764) {
-            const element = document.querySelector('.swiper-wrapper');
-            element.style.scale = 0.8;
         }
+
+        if (window.innerHeight >= 769) {
+            element.style.scale = 1;
+        }
+    };
+
+
+    useEffect(() => {
+            handleResize();
     }, []);
 
 
