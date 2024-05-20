@@ -469,21 +469,21 @@ const rubik = Rubik({
                           ref={contactRef} id='contact'>
                           <div className="flex flex-col justify-center">
                               <p
-                                  className='text-[31px] md:text-[71px] mb-[3.44rem] 2xl:mb-[5.6rem]'
+                                  className='text-[31px] md:text-[71px] mb-[2.4rem] min-[1600px]:mb-[5.6rem]'
 
                                   style={{fontWeight: '200'}}
                               >
                                   {data?.contactSection?.label}
                               </p>
 
-                              <div className={'flex flex-col justify-center gap-[2rem] 2xl:gap-[3.43rem]'}>
+                              <div className={'flex flex-col justify-center gap-[1.75rem] 2xl:gap-[3.43rem]'}>
 
 
                                   {
                                       data.contactSection?.contactRow?.map((ct, index) => (
                                           <div key={index}>
                                               <p
-                                                  className={`${rubik.className} uppercase mb-[1.125rem]`}
+                                                  className={`${rubik.className} uppercase mb-[.4rem] min-[1600px]:mb-[1.125rem]`}
                                                   style={{
                                                       fontSize: "16px",
                                                       fontWeight: 400,
@@ -515,21 +515,8 @@ const rubik = Rubik({
                                       ))
                                   }
                               </div>
-                              <div className='md:mt-[3.75rem] 2xl:mt-[6.25rem]'>
+                              <div className='md:mt-[2.9rem] min-[1600px]:mt-[6.25rem]'>
                                   <SocialLinks socialLinks={data?.contactSection?.socialMedia}/>
-
-                                  {/*<div className="flex gap-5">
-                                      {
-                                          data?.contactSection?.socialMedia?.map((item, index) => (
-                                              <a key={index} target={'_blank'} href={item?.link}
-                                                 className=''>
-                                                  <Image src={item?.icon?.node?.sourceUrl} alt={item?.link} width={'40'}
-                                                         height={'40'} objectFit={'cover'}/>
-                                              </a>
-
-                                          ))
-                                      }
-                                  </div>*/}
                               </div>
 
                           </div>
