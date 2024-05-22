@@ -56,7 +56,14 @@ function Project({data}) {
         if (window.innerHeight <= 768) {
             element.style.scale = .9;
             elementImg.forEach(img => {
-                img.style.height = '320px';
+                img.style.height = '310px';
+            });
+
+        }
+        if (window.innerHeight <= 600) {
+            element.style.scale = .95;
+            elementImg.forEach(img => {
+                img.style.height = '220px';
             });
 
         }
