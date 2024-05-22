@@ -52,11 +52,11 @@ const Navber=({data, categories}) =>{
 
           </ul>
 
-          {/*<ul className="flex text-sm gap-5 text-[#4d4c4c] ">
-              <Link className={`sm:mt-0 lg:mt-3 link-underline link-underline-black ${ '/luxe-villas' === pathname ? 'active' : ''}`} href='/luxe-villas'>luxe-villas</Link>
-              <Link className={`sm:mt-0 lg:mt-3 link-underline link-underline-black ${ '/projecten' === pathname ? 'active' : ''}`} href='/projecten'>projecten</Link>
-              <Link className={`sm:mt-0 lg:mt-3 link-underline link-underline-black ${ '/utiliteitsbouw' === pathname ? 'active' : ''}`} href='/utiliteitsbouw'>utiliteitsbouw</Link>
-          </ul>*/}
+          {/*<ul className="flex text-sm gap-5 text-[#4d4c4c] ">*/}
+          {/*    <Link className={`sm:mt-0 lg:mt-3 link-underline link-underline-black ${ '/luxe-villas' === pathname ? 'active' : ''}`} href='/luxe-villas'>luxe-villas</Link>*/}
+          {/*    <Link className={`sm:mt-0 lg:mt-3 link-underline link-underline-black ${ '/projecten' === pathname ? 'active' : ''}`} href='/projecten'>projecten</Link>*/}
+          {/*    <Link className={`sm:mt-0 lg:mt-3 link-underline link-underline-black ${ '/utiliteitsbouw' === pathname ? 'active' : ''}`} href='/utiliteitsbouw'>utiliteitsbouw</Link>*/}
+          {/*</ul>*/}
         </div>
         <div>
           {/*<Link href={data?.mainMenu?.lastItem?.last_url}>{data?.mainMenu?.lastItem?.last_label}</Link>*/}
