@@ -465,17 +465,17 @@ const rubik = Rubik({
                       </div>
 
                       <div
-                          className="scroll-section flex flex-col justify-center h-[100%] md:ml-[100px] md:pb-[150px]  md:pt-0 border-t-[2px] md:border-t-0 mt-10 border-[#00000026]"
+                          className="scroll-section flex flex-col justify-center h-[100%] md:ml-[100px] md:pb-[100px] min-[1400px]:pd-[150px] md:pt-0 border-t-[2px] md:border-t-0 mt-10 border-[#00000026]"
                           ref={contactRef} id='contact'>
                           <div className="flex mx-[2rem] md:mx-0 mt-[4.2rem] md:mt-0 flex-col justify-center gap-[3rem] md:gap-0">
                               <p
-                                  className='text-[31px] md:text-[71px] mb-[2.4rem] min-[1600px]:mb-[5.6rem]'
+                                  className='text-[31px] md:text-[45px] min-[1400px]:text-[71px] mb-[2.4rem] min-[800px]:mb-[1.8rem] min-[1600px]:mb-[5.6rem]'
                                   style={{fontWeight: '200'}}
                               >
                                   {data?.contactSection?.label}
                               </p>
 
-                              <div className={'flex flex-col justify-center gap-[3.1rem] md:gap-[1.9rem] min-[1600px]:gap-[3.43rem]'}>
+                              <div className={'flex flex-col justify-center gap-[3.1rem] md:gap-[1.1rem] min-[1300px]:gap-[1.9rem] min-[1600px]:gap-[3.43rem]'}>
 
 
                                   {
@@ -514,7 +514,7 @@ const rubik = Rubik({
                                       ))
                                   }
                               </div>
-                              <div className='my-[3.38rem] md:mt-[2.9rem] min-[1600px]:mt-[6.25rem]'>
+                              <div className='my-[3.38rem] md:my-[2.1rem] min-[1400px]:my-[3.38rem] min-[1370px]:mt-[2.9rem] min-[1600px]:mt-[6.25rem]'>
                                   <SocialLinks socialLinks={data?.contactSection?.socialMedia}/>
                               </div>
 
