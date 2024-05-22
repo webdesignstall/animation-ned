@@ -39,13 +39,19 @@ function Project({data}) {
     initialSlide: initialSlideIndex,
     grabCursor: true,
     centeredSlides: true,
-    spaceBetween: 100,
+    spaceBetween: 0,
     slidesPerView: 'auto',
     speed: 1300,
     // duration: 100,
     mousewheel: true,
     modules: [Mousewheel],
     className: "mySwiper",
+    breakpoints: {
+        1401: {
+            spaceBetween: 100,
+            slidesPerView: 'auto'
+        }
+    }
   };
 
 
@@ -63,7 +69,7 @@ function Project({data}) {
         if (window.innerHeight <= 600) {
             element.style.scale = .95;
             elementImg.forEach(img => {
-                img.style.height = '220px';
+                img.style.height = '215px';
             });
 
         }
@@ -94,7 +100,9 @@ function Project({data}) {
                 {
                    data?.projects?.map((project, index) => (
                         <SwiperSlide role='group' className='is-galerie-projet py-4' style={{height: '100%!important'}} key={index}>
-                            <div style={{marginRight: '150px', height: '100%!important'}} className='slide-wrapp'>
+                            <div
+
+                                style={{marginRight: '0', height: '100%!important'}} className='slide-wrapp'>
                                 <Link
                                     href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`}
                                     className='projet-img-holder w-inline-block'>
@@ -115,9 +123,8 @@ function Project({data}) {
                                               href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`}>
 
                                             <p
-                                                className=''
+                                                className='text-[45.47px] md:text-[30px] min-[1400px]:text-[45.47px]'
                                                 style={{
-                                                    fontSize: "45.47px",
                                                     fontWeight: 200,
                                                     lineHeight: "46.58px",
                                                     letterSpacing: "0em",
