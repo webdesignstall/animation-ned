@@ -469,7 +469,7 @@ const rubik = Rubik({
                           ref={contactRef} id='contact'>
                           <div className="flex mx-[2rem] md:mx-0 mt-[4.2rem] md:mt-0 flex-col justify-center gap-[3rem] md:gap-0">
                               <p
-                                  className='text-[31px] md:text-[45px] min-[1400px]:text-[71px] mb-[2.4rem] min-[800px]:mb-[1.8rem] min-[1600px]:mb-[5.6rem]'
+                                  className='text-[31px] md:text-[40px] min-[1400px]:text-[71px] mb-[2.4rem] min-[800px]:mb-[1.8rem] min-[1600px]:mb-[5.6rem]'
                                   style={{fontWeight: '200'}}
                               >
                                   {data?.contactSection?.label}
@@ -482,9 +482,9 @@ const rubik = Rubik({
                                       data.contactSection?.contactRow?.map((ct, index) => (
                                           <div key={index}>
                                               <p
-                                                  className={`${rubik.className} uppercase mb-[.4rem] min-[1600px]:mb-[1.125rem]`}
+                                                  className={`${rubik.className} uppercase mb-[.4rem] min-[1600px]:mb-[1.125rem] text-[16px] md:text-[14px] min-[1400px]:text-[16px]`}
                                                   style={{
-                                                      fontSize: "16px",
+                                                      // fontSize: "16px",
                                                       fontWeight: 400,
                                                       lineHeight: "1.3em",
                                                       letterSpacing: "0em",
@@ -496,9 +496,8 @@ const rubik = Rubik({
                                               </p>
 
                                               <div
-                                                  className={`${rubik.className}`}
+                                                  className={`${rubik.className} text-[14px] md:text-[13px] min-[1400px]:text-[14px]`}
                                                   style={{
-                                                      fontSize: "14px",
                                                       fontWeight: 400,
                                                       lineHeight: "1.5rem",
                                                       letterSpacing: "0em",
