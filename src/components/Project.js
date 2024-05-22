@@ -82,16 +82,15 @@ function Project({data}) {
 
     useEffect(() => {
             handleResize();
-    }, []);
+        console.log('params', params?.category);
+    }, [params?.category]);
 
 
 
 
 
     return (
-
     <>
-
         <div className="hidden lg:block" style={{height: '100%!important'}}>
 
 

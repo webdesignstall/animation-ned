@@ -74,27 +74,30 @@ const queryFunc = (params)=>{
 }
 
 export default function Projects({data}) {
-    const params = useParams();
-    return (
-        <div className=''>
-
-            <Navber data={data} categories={data?.categories}/>
+     const params = useParams();
+            return (
 
 
-            <div className='md:h-[83vh] overflow-hidden flex justify-center items-center'>
-                <div className='md:w-[90vw]'>
-                    <Project data={data} />
+            <div className='category-page flex flex-wrap justify-stretch lg:flex lg:flex-wrap lg:justify-between h-[100vh]'>
+
+                <Navber data={data} categories={data?.categories}/>
+
+                <div className='overflow-hidden flex justify-center items-center w-[100%]'>
+                    <div>
+
+                        <Project data={data}/>
+                    </div>
                 </div>
+
+                <div className='self-end w-[100%] border-t-[1.02px] border-[#00000026]'>
+                    <Footer data={data?.generalFields}/>
+                </div>
+
+
             </div>
 
-            {/*<Project data={data} />*/}
-            <Footer data={data?.generalFields}/>
-
-        </div>
-
-    );
+        );
 }
-
 
 
 export const getServerSideProps = async ({params}) => {
