@@ -173,7 +173,7 @@ const MobileNav = ({data, isHomeMenu = false, socialLinks}) => {
                             <ul className='ml-8 mt-8' style={{fontSize: '40px', zIndex: 999, fontWeight: '300'}}>
                                 {
                                     data?.generalFields?.mainMenu?.items?.map((item) => (
-                                        <li style={{textAlign: 'left!important'}} onClick={() => menuClose()}>
+                                        <li key={item?.url} style={{textAlign: 'left!important'}} onClick={() => menuClose()}>
                                             <Link
                                                 style={{textAlign: 'left!important'}}
                                                 className={` menu-nav-link project-mobile-nav ${'/' + item?.url?.split('/')[item?.url?.split('/')?.length - 1] === pathname ? 'italic text-[#556555]' : ''}`}

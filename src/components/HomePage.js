@@ -47,13 +47,21 @@ const rubik = Rubik({
 
 
      useEffect(() => {
+         console.log('router', router.query);
          // Check if there are any query parameters
          if (Object.keys(router.query).length > 0) {
+
              // Remove the query parameters by updating the URL
              const { pathname } = router;
              router.replace(pathname, undefined, { shallow: true });
          }
      }, [router]);
+
+
+
+
+
+
 
 
 
@@ -528,7 +536,7 @@ const rubik = Rubik({
                                   }
                               </div>
                               <div className='my-[3.38rem] md:my-[2.1rem] min-[1400px]:my-[3.38rem] min-[1370px]:mt-[2.9rem] min-[1600px]:mt-[6.25rem]'>
-                                  <SocialLinks socialLinks={data?.contactSection?.socialMedia}/>
+                                  <SocialLinks homePage={true} socialLinks={data?.contactSection?.socialMedia}/>
                               </div>
 
                           </div>
@@ -543,6 +551,7 @@ const rubik = Rubik({
 
 
               <Footer homeDeskop={true} data={data?.generalFields}/>
+              <Footer data={data?.generalFields}/>
           </section>
 
 
