@@ -20,6 +20,7 @@ import {gql} from "@apollo/client";
 import MobileNav from "@/components/MobileNav";
 import SocialLinks from "@/components/SocialLinks";
 import Lenis from 'lenis';
+import {usePathname, useSearchParams} from "next/navigation";
 
 
 const rubik = Rubik({
@@ -40,6 +41,20 @@ const rubik = Rubik({
 
     const homeTitle = useRef();
     const contactRef = useRef(null);
+     const router = useRouter();
+
+
+
+
+     useEffect(() => {
+         // Check if there are any query parameters
+         if (Object.keys(router.query).length > 0) {
+             // Remove the query parameters by updating the URL
+             const { pathname } = router;
+             router.replace(pathname, undefined, { shallow: true });
+         }
+     }, [router]);
+
 
 
      useEffect(() => {
@@ -255,7 +270,6 @@ const rubik = Rubik({
          })
      };
 
-     const router = useRouter();
      const { contactSection } = router.query;
 
 
@@ -300,7 +314,7 @@ const rubik = Rubik({
                               {
                                   data.gallaries?.map((image, index) => (
 
-                                      <div className="motiv motiv01">
+                                      <div className="motiv motiv01" key={index}>
                                           <Image
                                               src={image}
                                               alt={'home image'}
