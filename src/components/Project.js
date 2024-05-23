@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Mousewheel, EffectCoverflow } from "swiper/modules";
+import { Mousewheel } from "swiper/modules";
 import Link from "next/link";
 import Image from "next/image";
 import {useParams } from "next/navigation";
@@ -17,7 +17,7 @@ function Project({data}) {
 
   const params = useParams();
 
-    const [projects, setProjects] = useState([]);
+    const [initialSlideIndex, setInitialSlideIndex] = useState(Math.round(data?.projects?.length / 2) - 1);
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -33,7 +33,6 @@ function Project({data}) {
       })
   })
 
-    const initialSlideIndex = Math.round( data?.projects?.length / 2 ) - 1
 
   const settings = {
     initialSlide: initialSlideIndex,
@@ -81,11 +80,15 @@ function Project({data}) {
 
     useEffect(() => {
             handleResize();
-        console.log('data length', initialSlideIndex)
+        setInitialSlideIndex(Math.round(data?.projects?.length / 2) - 1);
+
     }, [params?.category]);
 
-
-
+    useEffect(() => {
+        if (swiperRef.current && swiperRef.current.swiper) {
+            swiperRef.current.swiper.slideTo(initialSlideIndex, 0, false);
+        }
+    }, [initialSlideIndex]);
 
 
     return (
@@ -96,7 +99,7 @@ function Project({data}) {
             <Swiper {...settings} ref={swiperRef} className='is-projet-galerie' style={{height: '100%!important'}}>
 
                 {
-                   data?.projects?.map((project, index) => (
+                   data.projects?.map((project, index) => (
                         <SwiperSlide role='group' className='is-galerie-projet py-4' style={{height: '100%!important'}} key={index}>
                             <div
 
