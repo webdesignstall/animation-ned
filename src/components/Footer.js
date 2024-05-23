@@ -7,7 +7,7 @@ export default function Footer({homeDeskop= false, data}) {
       <div>
 
           <div className={`flex justify-center md:justify-between items-center 
-            ${homeDeskop ? 'py-[1.6rem] px-[1.69rem]' : 'py-3 md:mx-auto md:px-16'}
+            ${homeDeskop ? 'py-[1.6rem] px-[1.69rem] hidden md:flex' : 'py-3 md:mx-auto md:px-16 md:hidden'}
           `}>
               <p></p>
               <p style={{fontWeight: 500, zIndex: 999}} className='text-[16px] md:text-[14px] min-[1400px]:text-[16px]'>
