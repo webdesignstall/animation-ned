@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import { Mousewheel, EffectCoverflow } from "swiper/modules";
 import Link from "next/link";
 import Image from "next/image";
-import {useParams} from "next/navigation";
+import {useParams } from "next/navigation";
 import {useGSAP} from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -58,7 +58,6 @@ function Project({data}) {
     const handleResize = () => {
         const element = document.querySelector('.swiper-wrapper');
         const elementImg = document.querySelectorAll('.swiper-wrapper img');
-        console.log('innerHeight', window.innerHeight);
         if (window.innerHeight <= 768) {
             element.style.scale = .9;
             elementImg.forEach(img => {
@@ -82,7 +81,7 @@ function Project({data}) {
 
     useEffect(() => {
             handleResize();
-        console.log('params', params?.category);
+        console.log('data length', initialSlideIndex)
     }, [params?.category]);
 
 
@@ -91,7 +90,7 @@ function Project({data}) {
 
     return (
     <>
-        <div className="hidden lg:block" style={{height: '100%!important'}}>
+        <div className="hidden lg:block project-item" style={{height: '100%!important'}}>
 
 
             <Swiper {...settings} ref={swiperRef} className='is-projet-galerie' style={{height: '100%!important'}}>
@@ -165,7 +164,7 @@ function Project({data}) {
 
             {
                 data?.projects?.map((project, index) => (
-                    <div className='' key={project?.id}>
+                    <div key={project?.id}>
                         <div className="w-full mt-4">
                             <div className="w-10/12 mx-auto">
                                 <Link href={`/${params?.category || project?.categories?.nodes[0]?.slug}/${project?.slug}`} className='projet-img-holder w-inline-block'>

@@ -436,7 +436,7 @@ nav {
   }
 
   .pin-spacer{
-    height: auto!important;
+    height: auto !important;
   }
 }
 
@@ -503,6 +503,15 @@ nav {
     }
 }
 
+@media screen and (min-width: 1024px) {
+   .project-item .pin-spacer {
+     width: inherit !important;
+   }
+  .project-item .swiper.is-projet-galerie {
+    width: auto !important;
+    max-width: inherit !important;
+  }
+}
 
 
 
