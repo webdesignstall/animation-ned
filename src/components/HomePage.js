@@ -47,12 +47,20 @@ const rubik = Rubik({
 
 
      useEffect(() => {
-         console.log('router', router.query);
-         // Check if there are any query parameters
-         if (Object.keys(router.query).length > 0) {
+         // console.log('router', router.query);
+         // // Check if there are any query parameters
+         // if (Object.keys(router.query).length > 0) {
+         //
+         //     // Remove the query parameters by updating the URL
+         //     const { pathname } = router;
+         //     router.replace(pathname, undefined, { shallow: true });
+         // }
 
-             // Remove the query parameters by updating the URL
-             const { pathname } = router;
+         const { pathname, query, asPath } = router;
+
+         // Check if there are any query parameters or hash
+         if (Object.keys(query).length > 0 || asPath.includes('#contact')) {
+             // Remove the query parameters and hash by updating the URL
              router.replace(pathname, undefined, { shallow: true });
          }
      }, [router]);
