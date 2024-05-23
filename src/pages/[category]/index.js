@@ -135,7 +135,7 @@ export default function Projects({data}) {
            </div>
 
            <div className='self-end w-[100%] border-t-[1.02px] border-[#00000026]'>
-               <Footer data={data?.generalFields}/>
+               <Footer details={true} data={data?.generalFields}/>
            </div>
 
 
